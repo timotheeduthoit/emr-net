@@ -1,0 +1,26 @@
+# Hyperledger Fabric Test Network Setup Log
+# Date: 2025-02-12
+
+# 1. Bringing down any existing network
+./network.sh down
+
+# 2. Starting the network
+./network.sh up
+
+# 3. Creating and joining channel
+./network.sh createChannel
+Channel 'emrchannel' created and joined by org1 and org2
+
+# 4. Deploying the chaincode
+./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go
+Chaincode basic successfully deployed to channel 'emrchannel'
+- Version: 1.0
+- Sequence: 1
+- Approvals: [Org1MSP: true, Org2MSP: true]
+
+# Network is now ready for testing with the following components:
+# - Two organizations (Org1 and Org2)
+# - One orderer (orderer.example.com)
+# - Two peers (peer0.org1.example.com and peer0.org2.example.com)
+# - One channel (emrchannel)
+# - Basic asset-transfer chaincode deployed
