@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"time"
 
+	"slices"
+
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 )
 
@@ -13,13 +15,13 @@ type EMRChaincode struct {
 }
 
 type EMR struct {
-    EMRID               string   `json:"emrID"`
-    PatientID           string   `json:"patientID"`
-    DoctorID            string   `json:"doctorID"`
-    CreatedOn           string   `json:"createdOn"`
-    LastModified        string   `json:"lastModified"`
-    Diagnosis           string   `json:"diagnosis"`
-    SharedWithDoctors   []string `json:"sharedWithDoctors"`
+	EMRID               string   `json:"emrID"`
+	PatientID           string   `json:"patientID"`
+	DoctorID            string   `json:"doctorID"`
+	CreatedOn           string   `json:"createdOn"`
+	LastModified        string   `json:"lastModified"`
+	Diagnosis           string   `json:"diagnosis"`
+	SharedWithDoctors   []string `json:"sharedWithDoctors"`
 	SharedWithHospitals []string `json:"sharedWithHospitals"`
 }
 
@@ -80,20 +82,10 @@ func (c *EMRChaincode) ReadRecord(ctx contractapi.TransactionContextInterface, e
 		return nil, fmt.Errorf("failed to get client ID: %v", err)
 	}
 
-	if role == "patient" && clientID != emr.PatientID {
-        return nil, fmt.Errorf("this patient is not authorized to read this record")
-	}
-
-	if role == "doctor" {
-		if clientID != emr.DoctorID && !contains(emr.SharedWithDoctors, clientID) {
-            return nil, fmt.Errorf("this doctor is not authorized to read this record")
-		}
-	}
-
-	if role == "hospital" {
-		if clientID != emr.DoctorID && !contains(emr.SharedWithHospitals, clientID) {
-            return nil, fmt.Errorf("this hospital is not authorized to read this record")
-		}
+	if (role == "patient" && clientID != emr.PatientID) ||
+		(role == "doctor" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithDoctors, clientID)) ||
+		(role == "hospital" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithHospitals, clientID)) {
+		return nil, fmt.Errorf("this %s is not authorized to read this record", role)
 	}
 
 	return &emr, nil
@@ -104,8 +96,8 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 	if err != nil {
 		return fmt.Errorf("failed to get role attribute: %v", err)
 	}
-    if !found {
-        return fmt.Errorf("role attribute not found")
+	if !found {
+		return fmt.Errorf("role attribute not found")
 	}
 
 	emrJSON, err := ctx.GetStub().GetState(emrID)
@@ -113,7 +105,7 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 		return err
 	}
 	if emrJSON == nil {
-        return fmt.Errorf("record with ID %s does not exist", emrID)
+		return fmt.Errorf("record with ID %s does not exist", emrID)
 	}
 
 	var emr EMR
@@ -127,29 +119,19 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 		return fmt.Errorf("failed to get client ID: %v", err)
 	}
 
-    if role == "patient" && clientID != emr.PatientID {
-        return fmt.Errorf("patients can only share their own records")
+	if (role == "patient" && clientID != emr.PatientID) ||
+		(role == "doctor" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithDoctors, clientID)) ||
+		(role == "hospital" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithHospitals, clientID)) {
+		return fmt.Errorf("this %s is not authorized to share this record", role)
 	}
 
-    if role == "doctor" {
-        if clientID != emr.DoctorID && !contains(emr.SharedWithDoctors, clientID) {
-            return fmt.Errorf("this doctor is not authorized to share this record")
-        }
-    }
-
-    if role == "hospital" {
-        if clientID != emr.DoctorID && !contains(emr.SharedWithHospitals, clientID) {
-            return fmt.Errorf("this hospital is not authorized to share this record")
-        }
-    }
-
-    if shareWithRole == "doctor" {
-        emr.SharedWithDoctors = append(emr.SharedWithDoctors, shareWithID)
-    } else if shareWithRole == "hospital" {
-        emr.SharedWithHospitals = append(emr.SharedWithHospitals, shareWithID)
-    } else {
-        return fmt.Errorf("invalid role to share with: %s", shareWithRole)
-    }
+	if shareWithRole == "doctor" {
+		emr.SharedWithDoctors = append(emr.SharedWithDoctors, shareWithID)
+	} else if shareWithRole == "hospital" {
+		emr.SharedWithHospitals = append(emr.SharedWithHospitals, shareWithID)
+	} else {
+		return fmt.Errorf("invalid role to share with: %s", shareWithRole)
+	}
 
 	emrJSON, err = json.Marshal(emr)
 	if err != nil {
@@ -157,6 +139,61 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 	}
 
 	return ctx.GetStub().PutState(emrID, emrJSON)
+}
+
+func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContextInterface, patientID string) ([]*EMR, error) {
+	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
+	if err != nil {
+		return nil, fmt.Errorf("failed to get role attribute: %v", err)
+	}
+	if !found {
+		return nil, fmt.Errorf("role attribute not found")
+	}
+
+	clientID, err := ctx.GetClientIdentity().GetID()
+	if err != nil {
+		return nil, fmt.Errorf("failed to get client ID: %v", err)
+	}
+
+	queryString := fmt.Sprintf(`{"selector":{"patientID":"%s"}}`, patientID)
+
+	resultsIterator, err := ctx.GetStub().GetQueryResult(queryString)
+	if err != nil {
+		return nil, err
+	}
+	defer resultsIterator.Close()
+
+	var emrs []*EMR
+	var skipped bool
+	for resultsIterator.HasNext() {
+		queryResponse, err := resultsIterator.Next()
+		if err != nil {
+			return nil, err
+		}
+
+		var emr EMR
+		err = json.Unmarshal(queryResponse.Value, &emr)
+		if err != nil {
+			return nil, err
+		}
+
+		// Access control checks
+		if (role == "patient" && clientID != emr.PatientID) ||
+			(role == "doctor" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithDoctors, clientID)) ||
+			(role == "hospital" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithHospitals, clientID)) {
+			skipped = true
+			continue // Skip records that the client is not authorized to access
+		}
+
+		emrs = append(emrs, &emr)
+	}
+
+	// Check if emrs is empty and if any records were skipped
+	if len(emrs) == 0 && skipped {
+		return nil, fmt.Errorf("records found for patient %s, but permission denied", patientID)
+	}
+
+	return emrs, nil
 }
 
 func main() {
@@ -169,13 +206,4 @@ func main() {
 	if err := chaincode.Start(); err != nil {
 		fmt.Printf("Error starting EMRChaincode: %s", err.Error())
 	}
-}
-
-func contains(slice []string, item string) bool {
-	for _, s := range slice {
-		if s == item {
-			return true
-		}
-	}
-	return false
 }
