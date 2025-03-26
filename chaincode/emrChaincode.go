@@ -25,6 +25,7 @@ type EMR struct {
 	SharedWithHospitals []string `json:"sharedWithHospitals"`
 }
 
+// CreateRecord creates a new EMR record
 func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface, emrID string, patientID string, doctorID string, diagnosis string) error {
 	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
 	if err != nil {
@@ -48,12 +49,13 @@ func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface,
 
 	emrJSON, err := json.Marshal(emr)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to marshal EMR: %v", err)
 	}
 
 	return ctx.GetStub().PutState(emrID, emrJSON)
 }
 
+// ReadRecord retrieves an EMR record by ID
 func (c *EMRChaincode) ReadRecord(ctx contractapi.TransactionContextInterface, emrID string) (*EMR, error) {
 	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
 	if err != nil {
@@ -65,7 +67,7 @@ func (c *EMRChaincode) ReadRecord(ctx contractapi.TransactionContextInterface, e
 
 	emrJSON, err := ctx.GetStub().GetState(emrID)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to get state for EMR ID %s: %v", emrID, err)
 	}
 	if emrJSON == nil {
 		return nil, fmt.Errorf("record with ID %s does not exist", emrID)
@@ -74,7 +76,7 @@ func (c *EMRChaincode) ReadRecord(ctx contractapi.TransactionContextInterface, e
 	var emr EMR
 	err = json.Unmarshal(emrJSON, &emr)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to unmarshal EMR: %v", err)
 	}
 
 	clientID, err := ctx.GetClientIdentity().GetID()
@@ -82,15 +84,14 @@ func (c *EMRChaincode) ReadRecord(ctx contractapi.TransactionContextInterface, e
 		return nil, fmt.Errorf("failed to get client ID: %v", err)
 	}
 
-	if (role == "patient" && clientID != emr.PatientID) ||
-		(role == "doctor" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithDoctors, clientID)) ||
-		(role == "hospital" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithHospitals, clientID)) {
+	if !c.isAuthorizedToRead(role, clientID, &emr) {
 		return nil, fmt.Errorf("this %s is not authorized to read this record", role)
 	}
 
 	return &emr, nil
 }
 
+// ShareRecord shares an EMR record with another entity
 func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, emrID string, shareWithID string, shareWithRole string) error {
 	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
 	if err != nil {
@@ -102,7 +103,7 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 
 	emrJSON, err := ctx.GetStub().GetState(emrID)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to get state for EMR ID %s: %v", emrID, err)
 	}
 	if emrJSON == nil {
 		return fmt.Errorf("record with ID %s does not exist", emrID)
@@ -111,7 +112,7 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 	var emr EMR
 	err = json.Unmarshal(emrJSON, &emr)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to unmarshal EMR: %v", err)
 	}
 
 	clientID, err := ctx.GetClientIdentity().GetID()
@@ -119,9 +120,7 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 		return fmt.Errorf("failed to get client ID: %v", err)
 	}
 
-	if (role == "patient" && clientID != emr.PatientID) ||
-		(role == "doctor" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithDoctors, clientID)) ||
-		(role == "hospital" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithHospitals, clientID)) {
+	if !c.isAuthorizedToShare(role, clientID, &emr) {
 		return fmt.Errorf("this %s is not authorized to share this record", role)
 	}
 
@@ -135,12 +134,13 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 
 	emrJSON, err = json.Marshal(emr)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to marshal EMR: %v", err)
 	}
 
 	return ctx.GetStub().PutState(emrID, emrJSON)
 }
 
+// GetAllRecordsForPatient retrieves all EMR records for a given patient
 func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContextInterface, patientID string) ([]*EMR, error) {
 	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
 	if err != nil {
@@ -159,41 +159,45 @@ func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContex
 
 	resultsIterator, err := ctx.GetStub().GetQueryResult(queryString)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to get query result: %v", err)
 	}
 	defer resultsIterator.Close()
 
 	var emrs []*EMR
-	var skipped bool
 	for resultsIterator.HasNext() {
 		queryResponse, err := resultsIterator.Next()
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("failed to get next query result: %v", err)
 		}
 
 		var emr EMR
 		err = json.Unmarshal(queryResponse.Value, &emr)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("failed to unmarshal EMR: %v", err)
 		}
 
-		// Access control checks
-		if (role == "patient" && clientID != emr.PatientID) ||
-			(role == "doctor" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithDoctors, clientID)) ||
-			(role == "hospital" && clientID != emr.DoctorID && !slices.Contains(emr.SharedWithHospitals, clientID)) {
-			skipped = true
+		if !c.isAuthorizedToRead(role, clientID, &emr) {
 			continue // Skip records that the client is not authorized to access
 		}
 
 		emrs = append(emrs, &emr)
 	}
 
-	// Check if emrs is empty and if any records were skipped
-	if len(emrs) == 0 && skipped {
-		return nil, fmt.Errorf("records found for patient %s, but permission denied", patientID)
-	}
-
 	return emrs, nil
+}
+
+// isAuthorizedToRead checks if the client is authorized to read the EMR
+func (c *EMRChaincode) isAuthorizedToRead(role string, clientID string, emr *EMR) bool {
+	return (role == "patient" && clientID == emr.PatientID) ||
+		(role == "doctor" && (clientID == emr.DoctorID || slices.Contains(emr.SharedWithDoctors, clientID))) ||
+		(role == "hospital" && (clientID == emr.DoctorID || slices.Contains(emr.SharedWithHospitals, clientID)))
+}
+
+// isAuthorizedToShare checks if the client is authorized to share the EMR
+func (c *EMRChaincode) isAuthorizedToShare(role string, clientID string, emr *EMR) bool {
+	return (role == "patient" && clientID == emr.PatientID) ||
+		(role == "doctor" && (clientID == emr.DoctorID || slices.Contains(emr.SharedWithDoctors, clientID))) ||
+		(role == "hospital" && (clientID == emr.DoctorID || slices.Contains(emr.SharedWithHospitals, clientID)))
 }
 
 func main() {
