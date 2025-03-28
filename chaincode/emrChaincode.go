@@ -15,18 +15,19 @@ type EMRChaincode struct {
 }
 
 type EMR struct {
-	EMRID               string   `json:"emrID"`
-	PatientID           string   `json:"patientID"`
-	DoctorID            string   `json:"doctorID"`
+	EMRID               string   `json:"emrId"`
+	PatientID           string   `json:"patientId"`
+	DoctorID            string   `json:"doctorId"`
+	HospitalID          string   `json:"hospitalId,omitempty"` // Optional field
+	Diagnosis           string   `json:"diagnosis"`
 	CreatedOn           string   `json:"createdOn"`
 	LastModified        string   `json:"lastModified"`
-	Diagnosis           string   `json:"diagnosis"`
 	SharedWithDoctors   []string `json:"sharedWithDoctors"`
 	SharedWithHospitals []string `json:"sharedWithHospitals"`
 }
 
 // CreateRecord creates a new EMR record
-func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface, emrID string, patientID string, doctorID string, diagnosis string) error {
+func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface, emrID string, patientID string, doctorID string, hospitalID string, diagnosis string) error {
 	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
 	if err != nil {
 		return fmt.Errorf("failed to get role attribute: %v", err)
@@ -40,6 +41,7 @@ func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface,
 		EMRID:               emrID,
 		PatientID:           patientID,
 		DoctorID:            doctorID,
+		HospitalID:          hospitalID,
 		CreatedOn:           timestamp,
 		LastModified:        timestamp,
 		Diagnosis:           diagnosis,
@@ -190,14 +192,14 @@ func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContex
 func (c *EMRChaincode) isAuthorizedToRead(role string, clientID string, emr *EMR) bool {
 	return (role == "patient" && clientID == emr.PatientID) ||
 		(role == "doctor" && (clientID == emr.DoctorID || slices.Contains(emr.SharedWithDoctors, clientID))) ||
-		(role == "hospital" && (clientID == emr.DoctorID || slices.Contains(emr.SharedWithHospitals, clientID)))
+		(role == "hospital" && (clientID == emr.HospitalID || slices.Contains(emr.SharedWithHospitals, clientID)))
 }
 
 // isAuthorizedToShare checks if the client is authorized to share the EMR
 func (c *EMRChaincode) isAuthorizedToShare(role string, clientID string, emr *EMR) bool {
 	return (role == "patient" && clientID == emr.PatientID) ||
 		(role == "doctor" && (clientID == emr.DoctorID || slices.Contains(emr.SharedWithDoctors, clientID))) ||
-		(role == "hospital" && (clientID == emr.DoctorID || slices.Contains(emr.SharedWithHospitals, clientID)))
+		(role == "hospital" && (clientID == emr.HospitalID || slices.Contains(emr.SharedWithHospitals, clientID)))
 }
 
 func main() {
