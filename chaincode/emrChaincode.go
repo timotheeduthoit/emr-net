@@ -143,7 +143,7 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 }
 
 // GetAllRecordsForPatient retrieves all EMR records for a given patient
-func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContextInterface, patientID string) ([]*EMR, error) {
+func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContextInterface, patientID string) ([]EMR, error) {
 	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
 	if err != nil {
 		return nil, fmt.Errorf("failed to get role attribute: %v", err)
@@ -165,7 +165,7 @@ func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContex
 	}
 	defer resultsIterator.Close()
 
-	var emrs []*EMR
+	var emrs []EMR
 	for resultsIterator.HasNext() {
 		queryResponse, err := resultsIterator.Next()
 		if err != nil {
@@ -182,7 +182,7 @@ func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContex
 			continue // Skip records that the client is not authorized to access
 		}
 
-		emrs = append(emrs, &emr)
+		emrs = append(emrs, emr)
 	}
 
 	return emrs, nil
