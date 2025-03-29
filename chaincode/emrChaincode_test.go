@@ -252,6 +252,115 @@ func TestReadRecordHospitalOwner(t *testing.T) {
 
 }
 
+// Hospitals should not be able to read records they did not create
+func TestReadRecordHospitalNotOwner(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		Diagnosis:           "diagnosis1",
+		HospitalID:          "hospital1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{},
+		SharedWithHospitals: []string{},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentity.On("GetID").Return("hospital2", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil)
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+// Test read for hospital when no hospital ID is present
+func TestReadRecordHospitalNoID(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		Diagnosis:           "diagnosis1",
+		HospitalID:          "",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{},
+		SharedWithHospitals: []string{},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentity.On("GetID").Return("hospital2", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil)
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+// Empty hospital ID should not be allowed
+func TestReadRecordHospitalEmptyID(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		Diagnosis:           "diagnosis1",
+		HospitalID:          "",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{},
+		SharedWithHospitals: []string{},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentity.On("GetID").Return("", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil)
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+// Patients should be able to read their own records
 func TestReadRecordPatientOwner(t *testing.T) {
 	chaincode := new(EMRChaincode)
 	mockStub := new(MockStub)
@@ -287,6 +396,7 @@ func TestReadRecordPatientOwner(t *testing.T) {
 	mockStub.AssertExpectations(t)
 }
 
+// Patients should not be able to read records they do not own
 func TestReadRecordPatientNotOwner(t *testing.T) {
 	chaincode := new(EMRChaincode)
 	mockStub := new(MockStub)
@@ -322,7 +432,228 @@ func TestReadRecordPatientNotOwner(t *testing.T) {
 	mockStub.AssertExpectations(t)
 }
 
-func TestShareRecord(t *testing.T) {
+func TestShareRecordDoctorOwnerToDoctor(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	emrBase := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		Diagnosis:           "diagnosis1",
+		HospitalID:          "hospital1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{},
+		SharedWithHospitals: []string{},
+	}
+	emrBaseJSON, _ := json.Marshal(emrBase)
+
+	emrExpected := emrBase
+	emrExpected.SharedWithDoctors = []string{"doctor2"}
+	emrExpectedJSON, _ := json.Marshal(emrExpected)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentity.On("GetID").Return("doctor1", nil)
+	mockStub.On("GetState", "emr1").Return(emrBaseJSON, nil)
+	mockStub.On("PutState", "emr1", emrExpectedJSON).Return(nil)
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	// Share the record with another doctor
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor2", "doctor")
+	assert.NoError(t, err)
+
+	// Verify doctor2 can access the record
+	mockClientIdentityDoctor2 := new(MockClientIdentity)
+	mockClientIdentityDoctor2.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentityDoctor2.On("GetID").Return("doctor2", nil)
+	mockStubDoctor := new(MockStub)
+	mockStubDoctor.On("GetState", "emr1").Return(emrExpectedJSON, nil)
+	ctx.clientIdentity = mockClientIdentityDoctor2
+	ctx.stub = mockStubDoctor
+	// Attempt to read the record
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.NoError(t, err)
+	assert.Equal(t, &emrExpected, result)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+func TestShareRecordDoctorShareListToDoctor(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		Diagnosis:           "diagnosis1",
+		HospitalID:          "hospital1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{"doctor2"},
+		SharedWithHospitals: []string{},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentity.On("GetID").Return("doctor2", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil)
+	mockStub.On("PutState", "emr1", mock.Anything).Return(nil)
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor3", "doctor")
+	assert.NoError(t, err)
+
+	// Verify doctor3 can access the record
+	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentity.On("GetID").Return("doctor3", nil)
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.NoError(t, err)
+	assert.Equal(t, &emr, result)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+func TestShareRecordDoctorOwnerToHospital(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		Diagnosis:           "diagnosis1",
+		HospitalID:          "hospital1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{},
+		SharedWithHospitals: []string{},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentity.On("GetID").Return("doctor1", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil)
+	mockStub.On("PutState", "emr1", mock.Anything).Return(nil)
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	err := chaincode.ShareRecord(ctx, "emr1", "hospital2", "hospital")
+	assert.NoError(t, err)
+
+	// Verify hospital2 can access the record
+	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentity.On("GetID").Return("hospital2", nil)
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.NoError(t, err)
+	assert.Equal(t, &emr, result)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+func TestShareRecordHospitalOwnerToDoctor(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		Diagnosis:           "diagnosis1",
+		HospitalID:          "hospital1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{},
+		SharedWithHospitals: []string{},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentity.On("GetID").Return("hospital1", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil)
+	mockStub.On("PutState", "emr1", mock.Anything).Return(nil)
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor2", "doctor")
+	assert.NoError(t, err)
+
+	// Verify doctor2 can access the record
+	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentity.On("GetID").Return("doctor2", nil)
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.NoError(t, err)
+	assert.Equal(t, &emr, result)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+func TestShareRecordHospitalShareListToHospital(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		Diagnosis:           "diagnosis1",
+		HospitalID:          "hospital1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{},
+		SharedWithHospitals: []string{"hospital2"},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentity.On("GetID").Return("hospital2", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil)
+	mockStub.On("PutState", "emr1", mock.Anything).Return(nil)
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	err := chaincode.ShareRecord(ctx, "emr1", "hospital3", "hospital")
+	assert.NoError(t, err)
+
+	// Verify hospital3 can access the record
+	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentity.On("GetID").Return("hospital3", nil)
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.NoError(t, err)
+	assert.Equal(t, &emr, result)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+func TestShareRecordPatientOwnerToDoctor(t *testing.T) {
 	chaincode := new(EMRChaincode)
 	mockStub := new(MockStub)
 	mockClientIdentity := new(MockClientIdentity)
@@ -353,8 +684,383 @@ func TestShareRecord(t *testing.T) {
 	err := chaincode.ShareRecord(ctx, "emr1", "doctor2", "doctor")
 	assert.NoError(t, err)
 
+	// Verify doctor2 can access the record
+	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentity.On("GetID").Return("doctor2", nil)
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.NoError(t, err)
+	assert.Equal(t, &emr, result)
+
 	mockClientIdentity.AssertExpectations(t)
 	mockStub.AssertExpectations(t)
+}
+
+func TestShareRecordPatientOwnerToHospital(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		Diagnosis:           "diagnosis1",
+		HospitalID:          "hospital1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{},
+		SharedWithHospitals: []string{},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("patient", true, nil)
+	mockClientIdentity.On("GetID").Return("patient1", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil)
+	mockStub.On("PutState", "emr1", mock.Anything).Return(nil)
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	err := chaincode.ShareRecord(ctx, "emr1", "hospital2", "hospital")
+	assert.NoError(t, err)
+
+	// Verify hospital2 can access the record
+	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentity.On("GetID").Return("hospital2", nil)
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.NoError(t, err)
+	assert.Equal(t, &emr, result)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+func TestShareRecordDoctorNotAuthorizedToDoctorAndHospital(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		HospitalID:          "hospital1",
+		Diagnosis:           "diagnosis1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{"doctor2"},
+		SharedWithHospitals: []string{},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentity.On("GetID").Return("doctor3", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Times(2) // Once for doctor, once for hospital
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	// Attempt to share with a doctor
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor4", "doctor")
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "doctor is not authorized to share")
+
+	// Attempt to share with a hospital
+	err = chaincode.ShareRecord(ctx, "emr1", "hospital2", "hospital")
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "doctor is not authorized to share")
+
+	// Verify doctor4 cannot access the record
+	mockClientIdentityDoctor := new(MockClientIdentity)
+	mockClientIdentityDoctor.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentityDoctor.On("GetID").Return("doctor4", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	ctx.clientIdentity = mockClientIdentityDoctor
+	// Attempt to read the record
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+	assert.Contains(t, err.Error(), "doctor is not authorized to read")
+
+	// Verify hospital2 cannot access the record
+	mockClientIdentityHospital := new(MockClientIdentity)
+	mockClientIdentityHospital.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentityHospital.On("GetID").Return("hospital2", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	ctx.clientIdentity = mockClientIdentityHospital
+	// Attempt to read the record
+	result, err = chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+	assert.Contains(t, err.Error(), "hospital is not authorized to read")
+
+	mockClientIdentity.AssertExpectations(t)
+	mockClientIdentityDoctor.AssertExpectations(t)
+	mockClientIdentityHospital.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+func TestShareRecordHospitalNotAuthorizedToDoctorAndHospital(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		HospitalID:          "hospital1",
+		Diagnosis:           "diagnosis1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{"doctor2"},
+		SharedWithHospitals: []string{"hospital2"},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentity.On("GetID").Return("hospital3", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Times(2) // Once for doctor, once for hospital
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	// Attempt to share with a doctor
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor3", "doctor")
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "hospital is not authorized to share")
+
+	// Attempt to share with a hospital
+	err = chaincode.ShareRecord(ctx, "emr1", "hospital4", "hospital")
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "hospital is not authorized to share")
+
+	// Verify doctor3 cannot access the record
+	mockClientIdentityDoctor := new(MockClientIdentity)
+	mockClientIdentityDoctor.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentityDoctor.On("GetID").Return("doctor3", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	ctx.clientIdentity = mockClientIdentityDoctor
+	// Attempt to read the record
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+	assert.Contains(t, err.Error(), "doctor is not authorized to read")
+
+	// Verify hospital4 cannot access the record
+	mockClientIdentityHospital := new(MockClientIdentity)
+	mockClientIdentityHospital.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentityHospital.On("GetID").Return("hospital4", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	ctx.clientIdentity = mockClientIdentityHospital
+	// Attempt to read the record
+	result, err = chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+	assert.Contains(t, err.Error(), "hospital is not authorized to read")
+
+	mockClientIdentity.AssertExpectations(t)
+	mockClientIdentityDoctor.AssertExpectations(t)
+	mockClientIdentityHospital.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+func TestShareRecordPatientNotAuthorizedToDoctorAndHospital(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		HospitalID:          "hospital1",
+		Diagnosis:           "diagnosis1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{"doctor2"},
+		SharedWithHospitals: []string{"hospital2"},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("patient", true, nil)
+	mockClientIdentity.On("GetID").Return("patient2", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Times(2) // Once for doctor, once for hospital
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	// Attempt to share with a doctor
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor3", "doctor")
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "patient is not authorized to share")
+
+	// Attempt to share with a hospital
+	err = chaincode.ShareRecord(ctx, "emr1", "hospital3", "hospital")
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "patient is not authorized to share")
+
+	// Verify doctor3 cannot access the record
+	mockClientIdentityDoctor := new(MockClientIdentity)
+	mockClientIdentityDoctor.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentityDoctor.On("GetID").Return("doctor3", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	ctx.clientIdentity = mockClientIdentityDoctor
+	// Attempt to read the record
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+	assert.Contains(t, err.Error(), "doctor is not authorized to read")
+
+	// Verify hospital3 cannot access the record
+	mockClientIdentityHospital := new(MockClientIdentity)
+	mockClientIdentityHospital.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentityHospital.On("GetID").Return("hospital3", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	ctx.clientIdentity = mockClientIdentityHospital
+	// Attempt to read the record
+	result, err = chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+	assert.Contains(t, err.Error(), "hospital is not authorized to read")
+
+	mockClientIdentity.AssertExpectations(t)
+	mockClientIdentityDoctor.AssertExpectations(t)
+	mockClientIdentityHospital.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+func TestShareRecordUnauthorizedRole(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		HospitalID:          "hospital1",
+		Diagnosis:           "diagnosis1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{},
+		SharedWithHospitals: []string{},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	// Nurse tries to share the record
+	mockClientIdentity.On("GetAttributeValue", "role").Return("nurse", true, nil)
+	mockClientIdentity.On("GetID").Return("nurse1", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Times(2) // Once for doctor, once for hospital
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	// Attempt to share with a doctor
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor2", "doctor")
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "nurse is not authorized to share")
+
+	// Attempt to share with a hospital
+	err = chaincode.ShareRecord(ctx, "emr1", "hospital2", "hospital")
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "nurse is not authorized to share")
+
+	// Doctor tries to read the record
+	// Setup mock
+	mockClientIdentityDoctor := new(MockClientIdentity)
+	mockClientIdentityDoctor.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentityDoctor.On("GetID").Return("doctor2", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	ctx.clientIdentity = mockClientIdentityDoctor
+	// Attempt to read the record
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+	assert.Contains(t, err.Error(), "doctor is not authorized to read")
+
+	// Hospital tries to read the record
+	// Setup mock
+	mockClientIdentityHospital := new(MockClientIdentity)
+	mockClientIdentityHospital.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentityHospital.On("GetID").Return("hospital2", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	ctx.clientIdentity = mockClientIdentityHospital
+	// Attempt to read the record
+	result, err = chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+	assert.Contains(t, err.Error(), "hospital is not authorized to read")
+
+	// Assert expectations
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+	mockClientIdentityDoctor.AssertExpectations(t)
+	mockClientIdentityHospital.AssertExpectations(t)
+}
+
+func TestShareRecordRightIDWrongRole(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+	emr := EMR{
+		EMRID:               "emr1",
+		PatientID:           "patient1",
+		DoctorID:            "doctor1",
+		HospitalID:          "hospital1",
+		Diagnosis:           "diagnosis1",
+		CreatedOn:           "2025-03-27T12:00:00Z",
+		LastModified:        "2025-03-27T12:00:00Z",
+		SharedWithDoctors:   []string{"doctor2"},
+		SharedWithHospitals: []string{"hospital2"},
+	}
+	emrJSON, _ := json.Marshal(emr)
+
+	// Share from doctor with access
+	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentity.On("GetID").Return("doctor1", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	mockStub.On("PutState", "emr1", mock.Anything).Return(nil).Once()
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	// Share with a doctor using right ID but wrong role
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor3", "hospital")
+	assert.NoError(t, err)
+
+	// Verify doctor3 cannot access the record as doctor
+	mockClientIdentityDoctor := new(MockClientIdentity)
+	mockClientIdentityDoctor.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentityDoctor.On("GetID").Return("doctor3", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	ctx.clientIdentity = mockClientIdentityDoctor
+	// Attempt to read the record
+	result, err := chaincode.ReadRecord(ctx, "emr1")
+	assert.Error(t, err)
+	assert.Nil(t, result)
+	assert.Contains(t, err.Error(), "doctor is not authorized to read")
+
+	// Verify doctor3 can access the record as hospital
+	mockClientIdentityHospital := new(MockClientIdentity)
+	mockClientIdentityHospital.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentityHospital.On("GetID").Return("doctor3", nil)
+	mockStub.On("GetState", "emr1").Return(emrJSON, nil).Once()
+	ctx.clientIdentity = mockClientIdentityHospital
+	// Attempt to read the record
+	result, err = chaincode.ReadRecord(ctx, "emr1")
+	assert.NoError(t, err)
+	assert.Equal(t, &emr, result)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+	mockClientIdentityDoctor.AssertExpectations(t)
+	mockClientIdentityHospital.AssertExpectations(t)
 }
 
 func TestGetAllRecordsForPatient(t *testing.T) {

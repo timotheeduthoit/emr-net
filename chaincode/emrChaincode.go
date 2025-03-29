@@ -190,6 +190,11 @@ func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContex
 
 // isAuthorizedToRead checks if the client is authorized to read the EMR
 func (c *EMRChaincode) isAuthorizedToRead(role string, clientID string, emr *EMR) bool {
+	if role == "hospital" && (clientID == "" || emr.HospitalID == "") {
+		// Explicitly deny access if either clientID or HospitalID is empty
+		return false
+	}
+
 	return (role == "patient" && clientID == emr.PatientID) ||
 		(role == "doctor" && (clientID == emr.DoctorID || slices.Contains(emr.SharedWithDoctors, clientID))) ||
 		(role == "hospital" && (clientID == emr.HospitalID || slices.Contains(emr.SharedWithHospitals, clientID)))
