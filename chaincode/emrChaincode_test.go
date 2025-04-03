@@ -35,6 +35,9 @@ func (m *MockStub) PutState(key string, value []byte) error {
 
 func (m *MockStub) GetState(key string) ([]byte, error) {
 	args := m.Called(key)
+	if args.Get(0) == nil {
+		return nil, args.Error(1)
+	}
 	return args.Get(0).([]byte), args.Error(1)
 }
 
@@ -90,6 +93,7 @@ func TestCreateRecordDoctor(t *testing.T) {
 
 	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
 	mockClientIdentity.On("GetID").Return("doctor1", nil)
+	mockStub.On("GetState", "emr1").Return(nil, nil) // Mock no existing record
 	mockStub.On("PutState", "emr1", mock.Anything).Return(nil)
 
 	ctx := &mockTransactionContext{
@@ -112,6 +116,7 @@ func TestCreateRecordHospital(t *testing.T) {
 
 	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
 	mockClientIdentity.On("GetID").Return("hospital1", nil)
+	mockStub.On("GetState", "emr1").Return(nil, nil) // Mock no existing record
 	mockStub.On("PutState", "emr1", mock.Anything).Return(nil)
 
 	ctx := &mockTransactionContext{
@@ -133,6 +138,7 @@ func TestCreateRecordPatient(t *testing.T) {
 	mockClientIdentity := new(MockClientIdentity)
 
 	mockClientIdentity.On("GetAttributeValue", "role").Return("patient", true, nil)
+	// Don't need mock for rest as it should not be called
 
 	ctx := &mockTransactionContext{
 		stub:           mockStub,
@@ -141,6 +147,29 @@ func TestCreateRecordPatient(t *testing.T) {
 
 	err := chaincode.CreateRecord(ctx, "emr1", "patient1", "doctor1", "hospital1", "diagnosis1")
 	assert.Error(t, err)
+
+	mockClientIdentity.AssertExpectations(t)
+	mockStub.AssertExpectations(t)
+}
+
+// Attempt to create a record with an existing EMR ID
+func TestCreateRecordWithExistingID(t *testing.T) {
+	chaincode := new(EMRChaincode)
+	mockStub := new(MockStub)
+	mockClientIdentity := new(MockClientIdentity)
+
+	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentity.On("GetID").Return("doctor1", nil)
+	mockStub.On("GetState", "emr1").Return([]byte("existing record"), nil) // Mock existing record
+
+	ctx := &mockTransactionContext{
+		stub:           mockStub,
+		clientIdentity: mockClientIdentity,
+	}
+
+	err := chaincode.CreateRecord(ctx, "emr1", "patient1", "doctor1", "hospital1", "diagnosis1")
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "EMR with ID emr1 already exists")
 
 	mockClientIdentity.AssertExpectations(t)
 	mockStub.AssertExpectations(t)

@@ -50,6 +50,15 @@ func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface,
 		return fmt.Errorf("invalid role: %s", role)
 	}
 
+	// Check if the EMR ID already exists
+	existingEMR, err := ctx.GetStub().GetState(emrID)
+	if err != nil {
+		return fmt.Errorf("failed to check if EMR ID exists: %v", err)
+	}
+	if existingEMR != nil {
+		return fmt.Errorf("EMR with ID %s already exists", emrID)
+	}
+
 	timestamp := time.Now().Format(time.RFC3339)
 	emr := EMR{
 		EMRID:               emrID,
