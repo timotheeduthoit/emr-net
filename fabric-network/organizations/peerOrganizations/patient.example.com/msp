@@ -1,0 +1,21 @@
+organizations/peerOrganizations/patient.example.com/msp
+├── cacerts
+│   └── ca-cert.pem
+├── tlscacerts
+│   └── tls-cert.pem
+├── users
+│   └── patients
+│       └── patient1@example.com
+│           ├── msp
+│           │   ├── signcerts
+│           │   │   └── cert.pem
+│           │   ├── cacerts
+│           │   │   └── ca-cert.pem
+│           │   └── keystore
+│           │       └── key.pem
+│           └── tls
+│               ├── signcerts
+│               │   └── cert.pem
+│               └── cacerts
+│                   └── tls-cert.pem
+└── config.yaml
