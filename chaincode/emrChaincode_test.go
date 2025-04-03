@@ -89,6 +89,7 @@ func TestCreateRecordDoctor(t *testing.T) {
 	mockClientIdentity := new(MockClientIdentity)
 
 	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
+	mockClientIdentity.On("GetID").Return("doctor1", nil)
 	mockStub.On("PutState", "emr1", mock.Anything).Return(nil)
 
 	ctx := &mockTransactionContext{
@@ -110,6 +111,7 @@ func TestCreateRecordHospital(t *testing.T) {
 	mockClientIdentity := new(MockClientIdentity)
 
 	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
+	mockClientIdentity.On("GetID").Return("hospital1", nil)
 	mockStub.On("PutState", "emr1", mock.Anything).Return(nil)
 
 	ctx := &mockTransactionContext{

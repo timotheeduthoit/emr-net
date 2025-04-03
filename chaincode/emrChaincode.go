@@ -36,6 +36,20 @@ func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface,
 		return fmt.Errorf("only doctors and hospitals can create records")
 	}
 
+	// Get ID from ctx
+	clientID, err := ctx.GetClientIdentity().GetID()
+	if err != nil {
+		return fmt.Errorf("failed to get client ID: %v", err)
+	}
+
+	if role == "doctor" {
+		doctorID = clientID
+	} else if role == "hospital" {
+		hospitalID = clientID
+	} else {
+		return fmt.Errorf("invalid role: %s", role)
+	}
+
 	timestamp := time.Now().Format(time.RFC3339)
 	emr := EMR{
 		EMRID:               emrID,
