@@ -22,6 +22,17 @@
 #    - If enrollment errors appear, re-run registerEnroll.sh or fix configurations in Fabric-CA.
 #    - If chaincode install fails, review logs for error messages, check Go version/dependencies, and re-try the deployment steps.
 
+# Setup env for peer1.org2 and join channel
+
+export FABRIC_CFG_PATH=$PWD/../config/ &&
+export CORE_PEER_TLS_ENABLED=true &&
+export CORE_PEER_LOCALMSPID="Org2MSP" &&
+export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt &&
+export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp &&
+export CORE_PEER_ADDRESS=localhost:9051 && peer channel join -b ./channel-artifacts/emrchannel.block
+
+
+
 
 export CORE_PEER_TLS_ENABLED=true
 export CORE_PEER_LOCALMSPID="Org1MSP"

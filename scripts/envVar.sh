@@ -30,27 +30,48 @@ export PEER0_ORG3_CA=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org3.e
 # Updated setGlobals function to include role-specific attributes if needed
 setGlobals() {
   local USING_ORG=""
+  local USING_PEER=${2:-0} # Default to peer0 if $2 is not provided
+
   if [ -z "$OVERRIDE_ORG" ]; then
     USING_ORG=$1
   else
     USING_ORG="${OVERRIDE_ORG}"
   fi
-  infoln "Using organization ${USING_ORG}"
+
+  infoln "Using organization ${USING_ORG} and peer ${USING_PEER}"
   if [ $USING_ORG -eq 1 ]; then
     export CORE_PEER_LOCALMSPID=Org1MSP
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG1_CA
     export CORE_PEER_MSPCONFIGPATH=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
-    export CORE_PEER_ADDRESS=localhost:7051 # Matches peer0.org1.example.com
+    if [ $USING_PEER -eq 0 ]; then
+      export CORE_PEER_ADDRESS=localhost:7051 # Matches peer0.org1.example.com
+    elif [ $USING_PEER -eq 1 ]; then
+      export CORE_PEER_ADDRESS=localhost:8051 # Matches peer1.org1.example.com
+    else
+      errorln "Unknown peer for Org1"
+    fi
   elif [ $USING_ORG -eq 2 ]; then
     export CORE_PEER_LOCALMSPID=Org2MSP
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG2_CA
     export CORE_PEER_MSPCONFIGPATH=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
-    export CORE_PEER_ADDRESS=localhost:9051 # Matches peer0.org2.example.com
+    if [ $USING_PEER -eq 0 ]; then
+      export CORE_PEER_ADDRESS=localhost:9051 # Matches peer0.org2.example.com
+    elif [ $USING_PEER -eq 1 ]; then
+      export CORE_PEER_ADDRESS=localhost:10051 # Matches peer1.org2.example.com
+    else
+      errorln "Unknown peer for Org2"
+    fi
   elif [ $USING_ORG -eq 3 ]; then
     export CORE_PEER_LOCALMSPID=Org3MSP
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG3_CA
     export CORE_PEER_MSPCONFIGPATH=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp
-    export CORE_PEER_ADDRESS=localhost:11051 # Matches peer0.org3.example.com (if applicable)
+    if [ $USING_PEER -eq 0 ]; then
+      export CORE_PEER_ADDRESS=localhost:11051 # Matches peer0.org3.example.com
+    elif [ $USING_PEER -eq 1 ]; then
+      export CORE_PEER_ADDRESS=localhost:12051 # Matches peer1.org3.example.com
+    else
+      errorln "Unknown peer for Org3"
+    fi
   else
     errorln "ORG Unknown"
   fi

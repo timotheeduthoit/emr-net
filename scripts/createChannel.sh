@@ -73,7 +73,7 @@ createChannel() {
 joinChannel() {
   ORG=$1
   FABRIC_CFG_PATH=$PWD/../config/
-  for PEER in 0 1; do
+  for PEER in 0; do
     setGlobals $ORG $PEER
     local rc=1
     local COUNTER=1
