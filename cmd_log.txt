@@ -1,72 +1,90 @@
-./network.sh down && ./network.sh up createChannel -c emrchannel -ca > cmd_log.txt
+./network.sh up createChannel -ca -c emrchannel
 Using docker and docker-compose
-Stopping network
-[+] Running 7/0
- ✔ Volume compose_orderer3.example.com    Removed                                                                                                                                                             0.0s
- ✔ Volume compose_peer0.org2.example.com  Removed                                                                                                                                                             0.0s
- ✔ Volume compose_orderer.example.com     Removed                                                                                                                                                             0.0s
- ✔ Volume compose_orderer4.example.com    Removed                                                                                                                                                             0.0s
- ✔ Volume compose_peer0.org1.example.com  Removed                                                                                                                                                             0.0s
- ✔ Volume compose_orderer2.example.com    Removed                                                                                                                                                             0.0s
- ✔ Volume compose_peer0.org3.example.com  Removed                                                                                                                                                             0.0s
-Error response from daemon: get docker_orderer.example.com: no such volume
-Error response from daemon: get docker_peer0.org1.example.com: no such volume
-Error response from daemon: get docker_peer0.org2.example.com: no such volume
-Removing remaining containers
-Removing generated chaincode docker images
+Creating channel 'emrchannel'.
+If network is not up, starting nodes with CLI timeout of '5' tries and CLI delay of '3' seconds and using database 'leveldb with crypto from 'Certificate Authorities'
+Bringing up network
+LOCAL_VERSION=v2.5.10
+DOCKER_IMAGE_VERSION=v2.5.10
+CA_LOCAL_VERSION=v1.5.13
+CA_DOCKER_IMAGE_VERSION=v1.5.13
+Generating certificates using Fabric CA
+[+] Running 4/4
+ ✔ Network fabric_test   Created                                                                                                                                                                              0.0s
+ ✔ Container ca_org1     Started                                                                                                                                                                              0.3s
+ ✔ Container ca_org2     Started                                                                                                                                                                              0.3s
+ ✔ Container ca_orderer  Started                                                                                                                                                                              0.3s
+registerEnroll.sh called: Setting up the Fabric CA client and enrolling the CA admin
+Waiting for CA to start before while loop
+CA started... after while loop
+Creating Org1 Identities
+Enrolling the CA admin for Org1
+createOrg1: Enrolling the CA admin for Org1
 + fabric-ca-client enroll -u https://admin:adminpw@localhost:7054 --caname ca-org1 --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-2025/04/07 11:17:29 [INFO] Created a default configuration file at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:29 [INFO] TLS Enabled
-2025/04/07 11:17:29 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:29 [INFO] encoded CSR
-2025/04/07 11:17:29 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/msp/signcerts/cert.pem
-2025/04/07 11:17:29 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/msp/cacerts/localhost-7054-ca-org1.pem
-2025/04/07 11:17:29 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/msp/IssuerPublicKey
-2025/04/07 11:17:29 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/msp/IssuerRevocationPublicKey
+2025/04/07 12:39:53 [INFO] Created a default configuration file at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:53 [INFO] TLS Enabled
+2025/04/07 12:39:53 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:53 [INFO] encoded CSR
+2025/04/07 12:39:53 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:53 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/msp/cacerts/localhost-7054-ca-org1.pem
+2025/04/07 12:39:53 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/msp/IssuerPublicKey
+2025/04/07 12:39:53 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/msp/IssuerRevocationPublicKey
+Registering peer0
 + fabric-ca-client register --caname ca-org1 --id.name peer0 --id.secret peer0pw --id.type peer --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-2025/04/07 11:17:29 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:29 [INFO] TLS Enabled
-2025/04/07 11:17:29 [INFO] TLS Enabled
-+ fabric-ca-client enroll -u https://peer0:peer0pw@loca
-2025/04/07 11:17:29 [INFO] TLS Enabled
-Error: Failed to get client TLS config: No trusted root certificates for TLS were provided
-+ t:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-organizations/fabric-ca/registerEnroll.sh: line 58: t:7054: command not found
-cp: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/config.yaml: No such file or directory
+2025/04/07 12:39:53 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:53 [INFO] TLS Enabled
+2025/04/07 12:39:53 [INFO] TLS Enabled
+Password: peer0pw
+Generating the peer0 msp
++ fabric-ca-client enroll -u https://peer0:peer0pw@localhost:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
+2025/04/07 12:39:53 [INFO] TLS Enabled
+2025/04/07 12:39:53 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:53 [INFO] encoded CSR
+2025/04/07 12:39:53 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:53 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/cacerts/localhost-7054-ca-org1.pem
+2025/04/07 12:39:53 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/IssuerPublicKey
+2025/04/07 12:39:53 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/IssuerRevocationPublicKey
+Generating the peer0 TLS certificates
 + fabric-ca-client enroll -u https://peer0:peer0pw@localhost:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls --enrollment.profile tls --csr.hosts peer0.org1.example.com --csr.hosts localhost --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-2025/04/07 11:17:29 [INFO] TLS Enabled
-2025/04/07 11:17:29 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:29 [INFO] encoded CSR
-2025/04/07 11:17:29 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/signcerts/cert.pem
-2025/04/07 11:17:29 [INFO] Stored TLS root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/tlscacerts/tls-localhost-7054-ca-org1.pem
-2025/04/07 11:17:29 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/IssuerPublicKey
-2025/04/07 11:17:29 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/IssuerRevocationPublicKey
+2025/04/07 12:39:53 [INFO] TLS Enabled
+2025/04/07 12:39:53 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:53 [INFO] encoded CSR
+2025/04/07 12:39:53 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/signcerts/cert.pem
+2025/04/07 12:39:53 [INFO] Stored TLS root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/tlscacerts/tls-localhost-7054-ca-org1.pem
+2025/04/07 12:39:53 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/IssuerPublicKey
+2025/04/07 12:39:53 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/IssuerRevocationPublicKey
+Registering peer1
 + fabric-ca-client register --caname ca-org1 --id.name peer1 --id.secret peer1pw --id.type peer --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-2025/04/07 11:17:29 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:29 [INFO] TLS Enabled
-2025/04/07 11:17:29 [INFO] TLS Enabled
+2025/04/07 12:39:53 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:53 [INFO] TLS Enabled
+2025/04/07 12:39:53 [INFO] TLS Enabled
+Password: peer1pw
+Generating the peer1 msp
 + fabric-ca-client enroll -u https://peer1:peer1pw@localhost:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-2025/04/07 11:17:29 [INFO] TLS Enabled
-2025/04/07 11:17:29 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:29 [INFO] encoded CSR
-2025/04/07 11:17:29 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp/signcerts/cert.pem
-2025/04/07 11:17:29 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp/cacerts/localhost-7054-ca-org1.pem
-2025/04/07 11:17:29 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp/IssuerPublicKey
-2025/04/07 11:17:29 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp/IssuerRevocationPublicKey
+2025/04/07 12:39:53 [INFO] TLS Enabled
+2025/04/07 12:39:53 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:53 [INFO] encoded CSR
+2025/04/07 12:39:53 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:53 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp/cacerts/localhost-7054-ca-org1.pem
+2025/04/07 12:39:53 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp/IssuerPublicKey
+2025/04/07 12:39:53 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp/IssuerRevocationPublicKey
+Generating the peer1 TLS certificates
 + fabric-ca-client enroll -u https://peer1:peer1pw@localhost:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls --enrollment.profile tls --csr.hosts peer1.org1.example.com --csr.hosts localhost --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-2025/04/07 11:17:29 [INFO] TLS Enabled
-2025/04/07 11:17:29 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:29 [INFO] encoded CSR
-2025/04/07 11:17:29 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/signcerts/cert.pem
-2025/04/07 11:17:29 [INFO] Stored TLS root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/tlscacerts/tls-localhost-7054-ca-org1.pem
-2025/04/07 11:17:29 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/IssuerPublicKey
-2025/04/07 11:17:29 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/IssuerRevocationPublicKey
+2025/04/07 12:39:53 [INFO] TLS Enabled
+2025/04/07 12:39:53 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:53 [INFO] encoded CSR
+2025/04/07 12:39:53 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/signcerts/cert.pem
+2025/04/07 12:39:53 [INFO] Stored TLS root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/tlscacerts/tls-localhost-7054-ca-org1.pem
+2025/04/07 12:39:53 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/IssuerPublicKey
+2025/04/07 12:39:53 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/IssuerRevocationPublicKey
+Registering hospital1
 + fabric-ca-client register --caname ca-org1 --id.name hospital1 --id.secret h1pass --id.type client --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-2025/04/07 11:17:29 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:29 [INFO] TLS Enabled
-2025/04/07 11:17:29 [INFO] TLS Enabled
-+ fabric-ca-client enroll -u https://hospital1:h1pass@localhost:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp --csr.attrs role=hospital --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-Error: unknown flag: --csr.attrs
+2025/04/07 12:39:53 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:53 [INFO] TLS Enabled
+2025/04/07 12:39:53 [INFO] TLS Enabled
+Password: h1pass
+Enrolling hospital1
++ fabric-ca-client enroll -u https://hospital1:h1pass@localhost:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp ----enrollment.attrs role=hospital --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
+Error: bad flag syntax: ----enrollment.attrs
 Usage:
   fabric-ca-client enroll -u http://user:userpw@serverAddr:serverPort [flags]
 
@@ -107,12 +125,15 @@ Global Flags:
   -u, --url string                   URL of fabric-ca-server (default "http://localhost:7054")
 
 cp: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp/config.yaml: No such file or directory
+Registering hospital2
 + fabric-ca-client register --caname ca-org1 --id.name hospital2 --id.secret h2pass --id.type client --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-2025/04/07 11:17:30 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:30 [INFO] TLS Enabled
-2025/04/07 11:17:30 [INFO] TLS Enabled
-+ fabric-ca-client enroll -u https://hospital2:h2pass@localhost:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Hospital2@org1.example.com/msp --csr.attrs role=hospital --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-Error: unknown flag: --csr.attrs
+2025/04/07 12:39:54 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:54 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] TLS Enabled
+Password: h2pass
+Enrolling hospital2
++ fabric-ca-client enroll -u https://hospital2:h2pass@localhost:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Hospital2@org1.example.com/msp ----enrollment.attrs role=hospital --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
+Error: bad flag syntax: ----enrollment.attrs
 Usage:
   fabric-ca-client enroll -u http://user:userpw@serverAddr:serverPort [flags]
 
@@ -153,57 +174,89 @@ Global Flags:
   -u, --url string                   URL of fabric-ca-server (default "http://localhost:7054")
 
 cp: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Hospital2@org1.example.com/msp/config.yaml: No such file or directory
+Registering the org admin
 + fabric-ca-client register --caname ca-org1 --id.name org1admin --id.secret org1adminpw --id.type admin --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-2025/04/07 11:17:30 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:30 [INFO] TLS Enabled
-2025/04/07 11:17:30 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:54 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] TLS Enabled
+Password: org1adminpw
+Enrolling the org admin
 + fabric-ca-client enroll -u https://org1admin:org1adminpw@localhost:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
-2025/04/07 11:17:30 [INFO] TLS Enabled
-2025/04/07 11:17:30 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:30 [INFO] encoded CSR
-2025/04/07 11:17:30 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/cert.pem
-2025/04/07 11:17:30 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/cacerts/localhost-7054-ca-org1.pem
-2025/04/07 11:17:30 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/IssuerPublicKey
-2025/04/07 11:17:30 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/IssuerRevocationPublicKey
+2025/04/07 12:39:54 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:54 [INFO] encoded CSR
+2025/04/07 12:39:54 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:54 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/cacerts/localhost-7054-ca-org1.pem
+2025/04/07 12:39:54 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/IssuerPublicKey
+2025/04/07 12:39:54 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/IssuerRevocationPublicKey
+Creating Org2 Identities
+Enrolling the CA admin for Org2
 + fabric-ca-client enroll -u https://admin:adminpw@localhost:8054 --caname ca-org2 --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-2025/04/07 11:17:30 [INFO] Created a default configuration file at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:30 [INFO] TLS Enabled
-2025/04/07 11:17:30 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:30 [INFO] encoded CSR
-2025/04/07 11:17:30 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/msp/signcerts/cert.pem
-2025/04/07 11:17:30 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem
-2025/04/07 11:17:30 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/msp/IssuerPublicKey
-2025/04/07 11:17:30 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/msp/IssuerRevocationPublicKey
+2025/04/07 12:39:54 [INFO] Created a default configuration file at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:54 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:54 [INFO] encoded CSR
+2025/04/07 12:39:54 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:54 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem
+2025/04/07 12:39:54 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/msp/IssuerPublicKey
+2025/04/07 12:39:54 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/msp/IssuerRevocationPublicKey
+Registering peer0
 + fabric-ca-client register --caname ca-org2 --id.name peer0 --id.secret peer0pw --id.type peer --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-2025/04/07 11:17:30 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:30 [INFO] TLS Enabled
-2025/04/07 11:17:30 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:54 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] TLS Enabled
+Password: peer0pw
+Generating the peer0 msp
 + fabric-ca-client enroll -u https://peer0:peer0pw@localhost:8054 --caname ca-org2 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-2025/04/07 11:17:30 [INFO] TLS Enabled
-2025/04/07 11:17:30 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:30 [INFO] encoded CSR
-2025/04/07 11:17:30 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/signcerts/cert.pem
-2025/04/07 11:17:30 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem
-2025/04/07 11:17:30 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/IssuerPublicKey
-2025/04/07 11:17:30 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/IssuerRevocationPublicKey
+2025/04/07 12:39:54 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:54 [INFO] encoded CSR
+2025/04/07 12:39:54 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:54 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem
+2025/04/07 12:39:54 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/IssuerPublicKey
+2025/04/07 12:39:54 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/IssuerRevocationPublicKey
+Generating the peer0 TLS certificates
++ fabric-ca-client enroll -u https://peer0:peer0pw@localhost:8054 --caname ca-org2 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls --enrollment.profile tls --csr.hosts peer0.org2.example.com --csr.hosts localhost --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
+2025/04/07 12:39:54 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:54 [INFO] encoded CSR
+2025/04/07 12:39:54 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/signcerts/cert.pem
+2025/04/07 12:39:54 [INFO] Stored TLS root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/tlscacerts/tls-localhost-8054-ca-org2.pem
+2025/04/07 12:39:54 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/IssuerPublicKey
+2025/04/07 12:39:54 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/IssuerRevocationPublicKey
+Registering peer1
 + fabric-ca-client register --caname ca-org2 --id.name peer1 --id.secret peer1pw --id.type peer --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-2025/04/07 11:17:31 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:31 [INFO] TLS Enabled
-2025/04/07 11:17:31 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:54 [INFO] TLS Enabled
+2025/04/07 12:39:54 [INFO] TLS Enabled
+Password: peer1pw
+Generating the peer1 msp
 + fabric-ca-client enroll -u https://peer1:peer1pw@localhost:8054 --caname ca-org2 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-2025/04/07 11:17:31 [INFO] TLS Enabled
-2025/04/07 11:17:31 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:31 [INFO] encoded CSR
-2025/04/07 11:17:31 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/signcerts/cert.pem
-2025/04/07 11:17:31 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem
-2025/04/07 11:17:31 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/IssuerPublicKey
-2025/04/07 11:17:31 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/IssuerRevocationPublicKey
+2025/04/07 12:39:55 [INFO] TLS Enabled
+2025/04/07 12:39:55 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:55 [INFO] encoded CSR
+2025/04/07 12:39:55 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:55 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem
+2025/04/07 12:39:55 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/IssuerPublicKey
+2025/04/07 12:39:55 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/IssuerRevocationPublicKey
+Generating the peer1 TLS certificates
++ fabric-ca-client enroll -u https://peer1:peer1pw@localhost:8054 --caname ca-org2 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls --enrollment.profile tls --csr.hosts peer1.org2.example.com --csr.hosts localhost --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
+2025/04/07 12:39:55 [INFO] TLS Enabled
+2025/04/07 12:39:55 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:55 [INFO] encoded CSR
+2025/04/07 12:39:55 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/signcerts/cert.pem
+2025/04/07 12:39:55 [INFO] Stored TLS root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/tlscacerts/tls-localhost-8054-ca-org2.pem
+2025/04/07 12:39:55 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/IssuerPublicKey
+2025/04/07 12:39:55 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/IssuerRevocationPublicKey
+Registering patient1
 + fabric-ca-client register --caname ca-org2 --id.name patient1 --id.secret p1pass --id.type client --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-2025/04/07 11:17:31 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:31 [INFO] TLS Enabled
-2025/04/07 11:17:31 [INFO] TLS Enabled
-+ fabric-ca-client enroll -u https://patient1:p1pass@localhost:8054 --caname ca-org2 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Patient1@org2.example.com/msp --csr.attrs role=patient --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-Error: unknown flag: --csr.attrs
+2025/04/07 12:39:55 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:55 [INFO] TLS Enabled
+2025/04/07 12:39:55 [INFO] TLS Enabled
+Password: p1pass
+Enrolling patient1
++ fabric-ca-client enroll -u https://patient1:p1pass@localhost:8054 --caname ca-org2 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Patient1@org2.example.com/msp ----enrollment.attrs role=patient --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
+Error: bad flag syntax: ----enrollment.attrs
 Usage:
   fabric-ca-client enroll -u http://user:userpw@serverAddr:serverPort [flags]
 
@@ -244,12 +297,15 @@ Global Flags:
   -u, --url string                   URL of fabric-ca-server (default "http://localhost:7054")
 
 cp: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Patient1@org2.example.com/msp/config.yaml: No such file or directory
+Registering patient2
 + fabric-ca-client register --caname ca-org2 --id.name patient2 --id.secret p2pass --id.type client --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-2025/04/07 11:17:31 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:31 [INFO] TLS Enabled
-2025/04/07 11:17:31 [INFO] TLS Enabled
-+ fabric-ca-client enroll -u https://patient2:p2pass@localhost:8054 --caname ca-org2 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Patient2@org2.example.com/msp --csr.attrs role=patient --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-Error: unknown flag: --csr.attrs
+2025/04/07 12:39:55 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:55 [INFO] TLS Enabled
+2025/04/07 12:39:55 [INFO] TLS Enabled
+Password: p2pass
+Enrolling patient2
++ fabric-ca-client enroll -u https://patient2:p2pass@localhost:8054 --caname ca-org2 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Patient2@org2.example.com/msp ----enrollment.attrs role=patient --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
+Error: bad flag syntax: ----enrollment.attrs
 Usage:
   fabric-ca-client enroll -u http://user:userpw@serverAddr:serverPort [flags]
 
@@ -290,198 +346,110 @@ Global Flags:
   -u, --url string                   URL of fabric-ca-server (default "http://localhost:7054")
 
 cp: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Patient2@org2.example.com/msp/config.yaml: No such file or directory
+Registering the org admin
 + fabric-ca-client register --caname ca-org2 --id.name org2admin --id.secret org2adminpw --id.type admin --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-2025/04/07 11:17:31 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:31 [INFO] TLS Enabled
-2025/04/07 11:17:31 [INFO] TLS Enabled
+2025/04/07 12:39:55 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:55 [INFO] TLS Enabled
+2025/04/07 12:39:55 [INFO] TLS Enabled
+Password: org2adminpw
+Enrolling the org admin
 + fabric-ca-client enroll -u https://org2admin:org2adminpw@localhost:8054 --caname ca-org2 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org2/ca-cert.pem
-2025/04/07 11:17:31 [INFO] TLS Enabled
-2025/04/07 11:17:31 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:31 [INFO] encoded CSR
-2025/04/07 11:17:31 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts/cert.pem
-2025/04/07 11:17:31 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem
-2025/04/07 11:17:31 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/IssuerPublicKey
-2025/04/07 11:17:31 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/IssuerRevocationPublicKey
+2025/04/07 12:39:55 [INFO] TLS Enabled
+2025/04/07 12:39:55 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:55 [INFO] encoded CSR
+2025/04/07 12:39:55 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:55 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem
+2025/04/07 12:39:55 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/IssuerPublicKey
+2025/04/07 12:39:55 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/IssuerRevocationPublicKey
+Creating Orderer Org Identities
+Enrolling the CA admin
 + fabric-ca-client enroll -u https://admin:adminpw@localhost:9054 --caname ca-orderer --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/ordererOrg/ca-cert.pem
-2025/04/07 11:17:31 [INFO] Created a default configuration file at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:31 [INFO] TLS Enabled
-2025/04/07 11:17:31 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:31 [INFO] encoded CSR
-2025/04/07 11:17:31 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/msp/signcerts/cert.pem
-2025/04/07 11:17:31 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/msp/cacerts/localhost-9054-ca-orderer.pem
-2025/04/07 11:17:31 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/msp/IssuerPublicKey
-2025/04/07 11:17:31 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/msp/IssuerRevocationPublicKey
+2025/04/07 12:39:55 [INFO] Created a default configuration file at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:55 [INFO] TLS Enabled
+2025/04/07 12:39:55 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:55 [INFO] encoded CSR
+2025/04/07 12:39:55 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:55 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/msp/cacerts/localhost-9054-ca-orderer.pem
+2025/04/07 12:39:55 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/msp/IssuerPublicKey
+2025/04/07 12:39:55 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/msp/IssuerRevocationPublicKey
+Registering orderer
 + fabric-ca-client register --caname ca-orderer --id.name orderer --id.secret ordererpw --id.type orderer --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/ordererOrg/ca-cert.pem
-2025/04/07 11:17:31 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:31 [INFO] TLS Enabled
-2025/04/07 11:17:31 [INFO] TLS Enabled
+2025/04/07 12:39:55 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:55 [INFO] TLS Enabled
+2025/04/07 12:39:55 [INFO] TLS Enabled
+Password: ordererpw
+Registering the orderer admin
 + fabric-ca-client register --caname ca-orderer --id.name ordererAdmin --id.secret ordererAdminpw --id.type admin --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/ordererOrg/ca-cert.pem
-2025/04/07 11:17:32 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/fabric-ca-client-config.yaml
-2025/04/07 11:17:32 [INFO] TLS Enabled
-2025/04/07 11:17:32 [INFO] TLS Enabled
+2025/04/07 12:39:56 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/fabric-ca-client-config.yaml
+2025/04/07 12:39:56 [INFO] TLS Enabled
+2025/04/07 12:39:56 [INFO] TLS Enabled
+Password: ordererAdminpw
+Generating the orderer msp
 + fabric-ca-client enroll -u https://orderer:ordererpw@localhost:9054 --caname ca-orderer -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/ordererOrg/ca-cert.pem
-2025/04/07 11:17:32 [INFO] TLS Enabled
-2025/04/07 11:17:32 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:32 [INFO] encoded CSR
-2025/04/07 11:17:32 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/signcerts/cert.pem
-2025/04/07 11:17:32 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/cacerts/localhost-9054-ca-orderer.pem
-2025/04/07 11:17:32 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/IssuerPublicKey
-2025/04/07 11:17:32 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/IssuerRevocationPublicKey
+2025/04/07 12:39:56 [INFO] TLS Enabled
+2025/04/07 12:39:56 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:56 [INFO] encoded CSR
+2025/04/07 12:39:56 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:56 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/cacerts/localhost-9054-ca-orderer.pem
+2025/04/07 12:39:56 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/IssuerPublicKey
+2025/04/07 12:39:56 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/IssuerRevocationPublicKey
+Generating the orderer-tls certificates, use --csr.hosts to specify Subject Alternative Names
 + fabric-ca-client enroll -u https://orderer:ordererpw@localhost:9054 --caname ca-orderer -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls --enrollment.profile tls --csr.hosts orderer.example.com --csr.hosts localhost --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/ordererOrg/ca-cert.pem
-2025/04/07 11:17:32 [INFO] TLS Enabled
-2025/04/07 11:17:32 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:32 [INFO] encoded CSR
-2025/04/07 11:17:32 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/signcerts/cert.pem
-2025/04/07 11:17:32 [INFO] Stored TLS root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/tlscacerts/tls-localhost-9054-ca-orderer.pem
-2025/04/07 11:17:32 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/IssuerPublicKey
-2025/04/07 11:17:32 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/IssuerRevocationPublicKey
+2025/04/07 12:39:56 [INFO] TLS Enabled
+2025/04/07 12:39:56 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:56 [INFO] encoded CSR
+2025/04/07 12:39:56 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/signcerts/cert.pem
+2025/04/07 12:39:56 [INFO] Stored TLS root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/tlscacerts/tls-localhost-9054-ca-orderer.pem
+2025/04/07 12:39:56 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/IssuerPublicKey
+2025/04/07 12:39:56 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/IssuerRevocationPublicKey
+Generating the admin msp
 + fabric-ca-client enroll -u https://ordererAdmin:ordererAdminpw@localhost:9054 --caname ca-orderer -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/users/Admin@example.com/msp --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/ordererOrg/ca-cert.pem
-2025/04/07 11:17:32 [INFO] TLS Enabled
-2025/04/07 11:17:32 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/07 11:17:32 [INFO] encoded CSR
-2025/04/07 11:17:32 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/users/Admin@example.com/msp/signcerts/cert.pem
-2025/04/07 11:17:32 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/users/Admin@example.com/msp/cacerts/localhost-9054-ca-orderer.pem
-2025/04/07 11:17:32 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/users/Admin@example.com/msp/IssuerPublicKey
-2025/04/07 11:17:32 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/users/Admin@example.com/msp/IssuerRevocationPublicKey
+2025/04/07 12:39:56 [INFO] TLS Enabled
+2025/04/07 12:39:56 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/07 12:39:56 [INFO] encoded CSR
+2025/04/07 12:39:56 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/users/Admin@example.com/msp/signcerts/cert.pem
+2025/04/07 12:39:56 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/users/Admin@example.com/msp/cacerts/localhost-9054-ca-orderer.pem
+2025/04/07 12:39:56 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/users/Admin@example.com/msp/IssuerPublicKey
+2025/04/07 12:39:56 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/users/Admin@example.com/msp/IssuerRevocationPublicKey
+Generating CCP files for Org1 and Org2
+WARN[0000] Found orphan containers ([ca_orderer ca_org1 ca_org2]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
+[+] Running 8/8
+ ✔ Volume "compose_peer0.org1.example.com"  Created                                                                                                                                                           0.0s
+ ✔ Volume "compose_peer0.org2.example.com"  Created                                                                                                                                                           0.0s
+ ✔ Volume "compose_orderer.example.com"     Created                                                                                                                                                           0.0s
+ ✔ Container peer0.org2.example.com         Started                                                                                                                                                           0.5s
+ ✔ Container peer0.org1.example.com         Started                                                                                                                                                           0.5s
+ ✔ Container peer1.org2.example.com         Started                                                                                                                                                           0.4s
+ ✔ Container orderer.example.com            Started                                                                                                                                                           0.5s
+ ✔ Container peer1.org1.example.com         Started                                                                                                                                                           0.5s
+CONTAINER ID   IMAGE                               COMMAND                  CREATED         STATUS                  PORTS                                                                    NAMES
+f5273f74b67d   hyperledger/fabric-orderer:latest   "orderer"                1 second ago    Up Less than a second   0.0.0.0:7050->7050/tcp, 0.0.0.0:7053->7053/tcp, 0.0.0.0:9443->9443/tcp   orderer.example.com
+60c75f57a1e4   hyperledger/fabric-peer:latest      "peer node start"        1 second ago    Up Less than a second   0.0.0.0:9447->9447/tcp, 7051/tcp, 0.0.0.0:10051->10051/tcp               peer1.org2.example.com
+354f3cf911ff   hyperledger/fabric-peer:latest      "peer node start"        1 second ago    Up Less than a second   0.0.0.0:9051->9051/tcp, 7051/tcp, 0.0.0.0:9446->9446/tcp                 peer0.org2.example.com
+cf0dd234051f   hyperledger/fabric-peer:latest      "peer node start"        1 second ago    Up Less than a second   0.0.0.0:8051->8051/tcp, 7051/tcp, 0.0.0.0:9445->9445/tcp                 peer1.org1.example.com
+a912af461b5a   hyperledger/fabric-peer:latest      "peer node start"        1 second ago    Up Less than a second   0.0.0.0:7051->7051/tcp, 0.0.0.0:9444->9444/tcp                           peer0.org1.example.com
+36833425f913   hyperledger/fabric-ca:latest        "sh -c 'fabric-ca-se…"   6 seconds ago   Up 5 seconds            0.0.0.0:9054->9054/tcp, 7054/tcp, 0.0.0.0:19054->19054/tcp               ca_orderer
+458be3e548df   hyperledger/fabric-ca:latest        "sh -c 'fabric-ca-se…"   6 seconds ago   Up 5 seconds            0.0.0.0:7054->7054/tcp, 0.0.0.0:17054->17054/tcp                         ca_org1
+c4c8dc4c97ff   hyperledger/fabric-ca:latest        "sh -c 'fabric-ca-se…"   6 seconds ago   Up 5 seconds            0.0.0.0:8054->8054/tcp, 7054/tcp, 0.0.0.0:18054->18054/tcp               ca_org2
+Using docker and docker-compose
+Generating channel genesis block 'emrchannel.block'
+Using organization 1
+/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/../bin/configtxgen
 + '[' 0 -eq 1 ']'
 + configtxgen -profile ChannelUsingRaft -outputBlock ./channel-artifacts/emrchannel.block -channelID emrchannel
-2025-04-07 11:17:33.174 EDT 0001 INFO [common.tools.configtxgen] main -> Loading configuration
-2025-04-07 11:17:33.177 EDT 0002 INFO [common.tools.configtxgen.localconfig] completeInitialization -> orderer type: etcdraft
-2025-04-07 11:17:33.177 EDT 0003 INFO [common.tools.configtxgen.localconfig] completeInitialization -> Orderer.EtcdRaft.Options unset, setting to tick_interval:"500ms" election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216
-2025-04-07 11:17:33.177 EDT 0004 INFO [common.tools.configtxgen.localconfig] Load -> Loaded configuration: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/configtx/configtx.yaml
-2025-04-07 11:17:33.179 EDT 0005 INFO [common.tools.configtxgen] doOutputBlock -> Generating genesis block
-2025-04-07 11:17:33.179 EDT 0006 INFO [common.tools.configtxgen] doOutputBlock -> Creating application channel genesis block
-2025-04-07 11:17:33.179 EDT 0007 INFO [common.tools.configtxgen] doOutputBlock -> Writing genesis block
+2025-04-07 12:39:57.392 EDT 0001 INFO [common.tools.configtxgen] main -> Loading configuration
+2025-04-07 12:39:57.395 EDT 0002 INFO [common.tools.configtxgen.localconfig] completeInitialization -> orderer type: etcdraft
+2025-04-07 12:39:57.395 EDT 0003 INFO [common.tools.configtxgen.localconfig] completeInitialization -> Orderer.EtcdRaft.Options unset, setting to tick_interval:"500ms" election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216
+2025-04-07 12:39:57.395 EDT 0004 INFO [common.tools.configtxgen.localconfig] Load -> Loaded configuration: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/configtx/configtx.yaml
+2025-04-07 12:39:57.396 EDT 0005 INFO [common.tools.configtxgen] doOutputBlock -> Generating genesis block
+2025-04-07 12:39:57.396 EDT 0006 INFO [common.tools.configtxgen] doOutputBlock -> Creating application channel genesis block
+2025-04-07 12:39:57.397 EDT 0007 INFO [common.tools.configtxgen] doOutputBlock -> Writing genesis block
 + res=0
+Creating channel emrchannel
+Adding orderers
 + . scripts/orderer.sh emrchannel
 + '[' 0 -eq 1 ']'
 + res=0
-+ peer channel join -b ./channel-artifacts/emrchannel.block
-+ res=1
-+ peer channel join -b ./channel-artifacts/emrchannel.block
-+ res=1
-+ peer channel join -b ./channel-artifacts/emrchannel.block
-+ res=1
-+ peer channel join -b ./channel-artifacts/emrchannel.block
-+ res=1
-
-
-
-[0;34mUsing docker and docker-compose[0m
-[0;34mCreating channel 'emrchannel'.[0m
-[0;34mIf network is not up, starting nodes with CLI timeout of '5' tries and CLI delay of '3' seconds and using database 'leveldb with crypto from 'Certificate Authorities'[0m
-[0;34mBringing up network[0m
-[0;34mLOCAL_VERSION=v2.5.10[0m
-[0;34mDOCKER_IMAGE_VERSION=v2.5.10[0m
-[0;34mCA_LOCAL_VERSION=v1.5.13[0m
-[0;34mCA_DOCKER_IMAGE_VERSION=v1.5.13[0m
-[0;34mGenerating certificates using Fabric CA[0m
- Network fabric_test  Creating
- Network fabric_test  Created
- Container ca_org2  Creating
- Container ca_org1  Creating
- Container ca_orderer  Creating
- Container ca_orderer  Created
- Container ca_org2  Created
- Container ca_org1  Created
- Container ca_orderer  Starting
- Container ca_org2  Starting
- Container ca_org1  Starting
- Container ca_orderer  Started
- Container ca_org2  Started
- Container ca_org1  Started
-registerEnroll.sh called: Setting up the Fabric CA client and enrolling the CA admin
-Waiting for CA to start before while loop
-CA started... after while loop
-[0;34mCreating Org1 Identities[0m
-[0;34mEnrolling the CA admin for Org1[0m
-createOrg1: Enrolling the CA admin for Org1
-[0;34mRegistering peer0[0m
-Password: peer0pw
-[0;34mGenerating the peer0 msp[0m
-[0;34mGenerating the peer0 TLS certificates[0m
-[0;34mRegistering peer1[0m
-Password: peer1pw
-[0;34mGenerating the peer1 msp[0m
-[0;34mGenerating the peer1 TLS certificates[0m
-[0;34mRegistering hospital1[0m
-Password: h1pass
-[0;34mEnrolling hospital1[0m
-[0;34mRegistering hospital2[0m
-Password: h2pass
-[0;34mEnrolling hospital2[0m
-[0;34mRegistering the org admin[0m
-Password: org1adminpw
-[0;34mEnrolling the org admin[0m
-[0;34mCreating Org2 Identities[0m
-[0;34mEnrolling the CA admin for Org2[0m
-[0;34mRegistering peer0[0m
-Password: peer0pw
-[0;34mGenerating the peer0 msp[0m
-[0;34mRegistering peer1[0m
-Password: peer1pw
-[0;34mGenerating the peer1 msp[0m
-[0;34mRegistering patient1[0m
-Password: p1pass
-[0;34mEnrolling patient1[0m
-[0;34mRegistering patient2[0m
-Password: p2pass
-[0;34mEnrolling patient2[0m
-[0;34mRegistering the org admin[0m
-Password: org2adminpw
-[0;34mEnrolling the org admin[0m
-[0;34mCreating Orderer Org Identities[0m
-[0;34mEnrolling the CA admin[0m
-[0;34mRegistering orderer[0m
-Password: ordererpw
-[0;34mRegistering the orderer admin[0m
-Password: ordererAdminpw
-[0;34mGenerating the orderer msp[0m
-[0;34mGenerating the orderer-tls certificates, use --csr.hosts to specify Subject Alternative Names[0m
-[0;34mGenerating the admin msp[0m
-[0;34mGenerating CCP files for Org1 and Org2[0m
- Volume "compose_orderer.example.com"  Creating
- Volume "compose_orderer.example.com"  Created
- Volume "compose_peer0.org1.example.com"  Creating
- Volume "compose_peer0.org1.example.com"  Created
- Volume "compose_peer0.org2.example.com"  Creating
- Volume "compose_peer0.org2.example.com"  Created
-time="2025-04-07T11:17:32-04:00" level=warning msg="Found orphan containers ([ca_org1 ca_org2 ca_orderer]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
- Container peer1.org1.example.com  Creating
- Container peer0.org2.example.com  Creating
- Container orderer.example.com  Creating
- Container peer1.org2.example.com  Creating
- Container peer0.org1.example.com  Creating
- Container peer0.org1.example.com  Created
- Container orderer.example.com  Created
- Container peer1.org2.example.com  Created
- Container peer0.org2.example.com  Created
- Container peer1.org1.example.com  Created
- Container peer1.org2.example.com  Starting
- Container peer0.org2.example.com  Starting
- Container orderer.example.com  Starting
- Container peer0.org1.example.com  Starting
- Container peer1.org1.example.com  Starting
- Container orderer.example.com  Started
- Container peer1.org2.example.com  Started
- Container peer1.org1.example.com  Started
- Container peer0.org1.example.com  Started
- Container peer0.org2.example.com  Started
-CONTAINER ID   IMAGE                               COMMAND                  CREATED         STATUS                  PORTS                                                                    NAMES
-0b9d3c8132b7   hyperledger/fabric-peer:latest      "peer node start"        1 second ago    Up Less than a second   0.0.0.0:9051->9051/tcp, 7051/tcp, 0.0.0.0:9446->9446/tcp                 peer0.org2.example.com
-14fd8f75eb53   hyperledger/fabric-peer:latest      "peer node start"        1 second ago    Up Less than a second   0.0.0.0:9447->9447/tcp, 7051/tcp, 0.0.0.0:10051->10051/tcp               peer1.org2.example.com
-2f0ed1753ee9   hyperledger/fabric-peer:latest      "peer node start"        1 second ago    Up Less than a second   0.0.0.0:7051->7051/tcp, 0.0.0.0:9444->9444/tcp                           peer0.org1.example.com
-401be2c4e55b   hyperledger/fabric-peer:latest      "peer node start"        1 second ago    Up Less than a second   0.0.0.0:8051->8051/tcp, 7051/tcp, 0.0.0.0:9445->9445/tcp                 peer1.org1.example.com
-02694349cf9e   hyperledger/fabric-orderer:latest   "orderer"                1 second ago    Up Less than a second   0.0.0.0:7050->7050/tcp, 0.0.0.0:7053->7053/tcp, 0.0.0.0:9443->9443/tcp   orderer.example.com
-abe8aef4a676   hyperledger/fabric-ca:latest        "sh -c 'fabric-ca-se…"   6 seconds ago   Up 5 seconds            0.0.0.0:7054->7054/tcp, 0.0.0.0:17054->17054/tcp                         ca_org1
-de6c8ba7f1d2   hyperledger/fabric-ca:latest        "sh -c 'fabric-ca-se…"   6 seconds ago   Up 5 seconds            0.0.0.0:8054->8054/tcp, 7054/tcp, 0.0.0.0:18054->18054/tcp               ca_org2
-7297e726bc48   hyperledger/fabric-ca:latest        "sh -c 'fabric-ca-se…"   6 seconds ago   Up 5 seconds            0.0.0.0:9054->9054/tcp, 7054/tcp, 0.0.0.0:19054->19054/tcp               ca_orderer
-[0;34mUsing docker and docker-compose[0m
-[0;34mGenerating channel genesis block 'emrchannel.block'[0m
-[0;34mUsing organization 1[0m
-/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/../bin/configtxgen
-[0;34mCreating channel emrchannel[0m
-[0;34mAdding orderers[0m
 Status: 201
 {
 	"name": "emrchannel",
@@ -491,8 +459,145 @@ Status: 201
 	"height": 1
 }
 
-[0;32mChannel 'emrchannel' created[0m
-[0;34mJoining org1 peer to the channel...[0m
-[0;34mUsing organization 1[0m
-Error: error getting endorser client for channel: endorser client failed to connect to localhost:7051: failed to create new connection: connection error: desc = "transport: error while dialing: dial tcp [::1]:7051: connect: connection refused"
-[0;31mAfter 5 attempts, peer0.org1 has failed to join channel 'emrchannel' [0m
+Channel 'emrchannel' created
+Joining org1 peer to the channel...
+Using organization 1
++ peer channel join -b ./channel-artifacts/emrchannel.block
++ res=0
+2025-04-07 12:40:03.570 EDT 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2025-04-07 12:40:03.585 EDT 0002 INFO [channelCmd] executeJoin -> Successfully submitted proposal to join channel
+Joining org2 peer to the channel...
+Using organization 2
++ peer channel join -b ./channel-artifacts/emrchannel.block
++ res=0
+2025-04-07 12:40:06.667 EDT 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2025-04-07 12:40:06.683 EDT 0002 INFO [channelCmd] executeJoin -> Successfully submitted proposal to join channel
+Setting anchor peer for org1...
+Using organization 1
+Fetching channel config for channel emrchannel
+Using organization 1
+Fetching the most recent configuration block for the channel
+++ peer channel fetch config /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com -c emrchannel --tls --cafile /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+2025-04-07 12:40:06.733 EDT 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2025-04-07 12:40:06.734 EDT 0002 INFO [cli.common] readBlock -> Received block: 0
+2025-04-07 12:40:06.734 EDT 0003 INFO [channelCmd] fetch -> Retrieving last config block: 0
+2025-04-07 12:40:06.735 EDT 0004 INFO [cli.common] readBlock -> Received block: 0
+Decoding config block to JSON and isolating config to /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/Org1MSPconfig.json
+++ configtxlator proto_decode --input /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_block.pb --type common.Block --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_block.json
+++ jq '.data.data[0].payload.data.config' /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_block.json
+++ res=0
+Generating anchor peer update transaction for Org1 on channel emrchannel
+++ jq '.channel_group.groups.Application.groups.Org1MSP.values += {"AnchorPeers":{"mod_policy": "Admins","value":{"anchor_peers": [{"host": "peer0.org1.example.com","port": 7051}]},"version": "0"}}' /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/Org1MSPconfig.json
+++ res=0
+++ configtxlator proto_encode --input /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/Org1MSPconfig.json --type common.Config --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/original_config.pb
+++ configtxlator proto_encode --input /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/Org1MSPmodified_config.json --type common.Config --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/modified_config.pb
+++ configtxlator compute_update --channel_id emrchannel --original /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/original_config.pb --updated /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/modified_config.pb --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_update.pb
+++ configtxlator proto_decode --input /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_update.pb --type common.ConfigUpdate --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_update.json
+++ jq .
++++ cat /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_update.json
+++ echo '{"payload":{"header":{"channel_header":{"channel_id":"emrchannel", "type":2}},"data":{"config_update":{' '"channel_id":' '"emrchannel",' '"isolated_data":' '{},' '"read_set":' '{' '"groups":' '{' '"Application":' '{' '"groups":' '{' '"Org1MSP":' '{' '"groups":' '{},' '"mod_policy":' '"",' '"policies":' '{' '"Admins":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Endorsement":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Readers":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Writers":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '}' '},' '"values":' '{' '"MSP":' '{' '"mod_policy":' '"",' '"value":' null, '"version":' '"0"' '}' '},' '"version":' '"0"' '}' '},' '"mod_policy":' '"",' '"policies":' '{},' '"values":' '{},' '"version":' '"0"' '}' '},' '"mod_policy":' '"",' '"policies":' '{},' '"values":' '{},' '"version":' '"0"' '},' '"write_set":' '{' '"groups":' '{' '"Application":' '{' '"groups":' '{' '"Org1MSP":' '{' '"groups":' '{},' '"mod_policy":' '"Admins",' '"policies":' '{' '"Admins":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Endorsement":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Readers":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Writers":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '}' '},' '"values":' '{' '"AnchorPeers":' '{' '"mod_policy":' '"Admins",' '"value":' '{' '"anchor_peers":' '[' '{' '"host":' '"peer0.org1.example.com",' '"port":' 7051 '}' ']' '},' '"version":' '"0"' '},' '"MSP":' '{' '"mod_policy":' '"",' '"value":' null, '"version":' '"0"' '}' '},' '"version":' '"1"' '}' '},' '"mod_policy":' '"",' '"policies":' '{},' '"values":' '{},' '"version":' '"0"' '}' '},' '"mod_policy":' '"",' '"policies":' '{},' '"values":' '{},' '"version":' '"0"' '}' '}}}}'
+++ configtxlator proto_encode --input /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_update_in_envelope.json --type common.Envelope --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/Org1MSPanchors.tx
+2025-04-07 12:40:06.941 EDT 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2025-04-07 12:40:06.955 EDT 0002 INFO [channelCmd] update -> Successfully submitted channel update
+Anchor peer set for org 'Org1MSP' on channel 'emrchannel'
+Setting anchor peer for org2...
+Using organization 2
+Fetching channel config for channel emrchannel
+Using organization 2
+Fetching the most recent configuration block for the channel
+++ peer channel fetch config /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com -c emrchannel --tls --cafile /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+2025-04-07 12:40:06.998 EDT 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2025-04-07 12:40:07.001 EDT 0002 INFO [cli.common] readBlock -> Received block: 1
+2025-04-07 12:40:07.001 EDT 0003 INFO [channelCmd] fetch -> Retrieving last config block: 1
+2025-04-07 12:40:07.002 EDT 0004 INFO [cli.common] readBlock -> Received block: 1
+Decoding config block to JSON and isolating config to /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/Org2MSPconfig.json
+++ configtxlator proto_decode --input /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_block.pb --type common.Block --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_block.json
+++ jq '.data.data[0].payload.data.config' /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_block.json
+++ res=0
+Generating anchor peer update transaction for Org2 on channel emrchannel
+++ jq '.channel_group.groups.Application.groups.Org2MSP.values += {"AnchorPeers":{"mod_policy": "Admins","value":{"anchor_peers": [{"host": "peer0.org2.example.com","port": 9051}]},"version": "0"}}' /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/Org2MSPconfig.json
+++ res=0
+++ configtxlator proto_encode --input /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/Org2MSPconfig.json --type common.Config --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/original_config.pb
+++ configtxlator proto_encode --input /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/Org2MSPmodified_config.json --type common.Config --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/modified_config.pb
+++ configtxlator compute_update --channel_id emrchannel --original /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/original_config.pb --updated /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/modified_config.pb --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_update.pb
+++ configtxlator proto_decode --input /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_update.pb --type common.ConfigUpdate --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_update.json
+++ jq .
++++ cat /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_update.json
+++ echo '{"payload":{"header":{"channel_header":{"channel_id":"emrchannel", "type":2}},"data":{"config_update":{' '"channel_id":' '"emrchannel",' '"isolated_data":' '{},' '"read_set":' '{' '"groups":' '{' '"Application":' '{' '"groups":' '{' '"Org2MSP":' '{' '"groups":' '{},' '"mod_policy":' '"",' '"policies":' '{' '"Admins":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Endorsement":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Readers":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Writers":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '}' '},' '"values":' '{' '"MSP":' '{' '"mod_policy":' '"",' '"value":' null, '"version":' '"0"' '}' '},' '"version":' '"0"' '}' '},' '"mod_policy":' '"",' '"policies":' '{},' '"values":' '{},' '"version":' '"0"' '}' '},' '"mod_policy":' '"",' '"policies":' '{},' '"values":' '{},' '"version":' '"0"' '},' '"write_set":' '{' '"groups":' '{' '"Application":' '{' '"groups":' '{' '"Org2MSP":' '{' '"groups":' '{},' '"mod_policy":' '"Admins",' '"policies":' '{' '"Admins":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Endorsement":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Readers":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '},' '"Writers":' '{' '"mod_policy":' '"",' '"policy":' null, '"version":' '"0"' '}' '},' '"values":' '{' '"AnchorPeers":' '{' '"mod_policy":' '"Admins",' '"value":' '{' '"anchor_peers":' '[' '{' '"host":' '"peer0.org2.example.com",' '"port":' 9051 '}' ']' '},' '"version":' '"0"' '},' '"MSP":' '{' '"mod_policy":' '"",' '"value":' null, '"version":' '"0"' '}' '},' '"version":' '"1"' '}' '},' '"mod_policy":' '"",' '"policies":' '{},' '"values":' '{},' '"version":' '"0"' '}' '},' '"mod_policy":' '"",' '"policies":' '{},' '"values":' '{},' '"version":' '"0"' '}' '}}}}'
+++ configtxlator proto_encode --input /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/config_update_in_envelope.json --type common.Envelope --output /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/channel-artifacts/Org2MSPanchors.tx
+2025-04-07 12:40:07.152 EDT 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2025-04-07 12:40:07.167 EDT 0002 INFO [channelCmd] update -> Successfully submitted channel update
+Anchor peer set for org 'Org2MSP' on channel 'emrchannel'
+Channel 'emrchannel' joined
+
+
+
+./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+Using docker and docker-compose
+deploying chaincode on channel 'emrchannel'
+executing with the following
+- CHANNEL_NAME: emrchannel
+- CC_NAME: emr
+- CC_SRC_PATH: ./chaincode
+- CC_SRC_LANGUAGE: go
+- CC_VERSION: 1.0
+- CC_SEQUENCE: auto
+- CC_END_POLICY: NA
+- CC_COLL_CONFIG: NA
+- CC_INIT_FCN: NA
+- DELAY: 3
+- MAX_RETRY: 5
+- VERBOSE: false
+executing with the following
+- CC_NAME: emr
+- CC_SRC_PATH: ./chaincode
+- CC_SRC_LANGUAGE: go
+- CC_VERSION: 1.0
+Vendoring Go dependencies at ./chaincode
+~/hyperledger/fabric-samples/emr-net/chaincode ~/hyperledger/fabric-samples/emr-net
+~/hyperledger/fabric-samples/emr-net
+Finished vendoring Go dependencies
++ '[' false = true ']'
++ peer lifecycle chaincode package emr.tar.gz --path ./chaincode --lang golang --label emr_1.0
++ res=0
+Chaincode is packaged
+Installing chaincode on peer0.org1...
+Using organization 1
++ peer lifecycle chaincode queryinstalled --output json
++ jq -r 'try (.installed_chaincodes[].package_id)'
++ grep '^emr_1.0:6abdcb4ca42467a390b0cb5927ec2c2854d2513b010448a6894703faa65c8ce8$'
++ test 1 -ne 0
++ peer lifecycle chaincode install emr.tar.gz
++ res=0
+2025-04-07 12:42:52.455 EDT 0001 INFO [cli.lifecycle.chaincode] submitInstallProposal -> Installed remotely: response:<status:200 payload:"\nHemr_1.0:6abdcb4ca42467a390b0cb5927ec2c2854d2513b010448a6894703faa65c8ce8\022\007emr_1.0" >
+2025-04-07 12:42:52.455 EDT 0002 INFO [cli.lifecycle.chaincode] submitInstallProposal -> Chaincode code package identifier: emr_1.0:6abdcb4ca42467a390b0cb5927ec2c2854d2513b010448a6894703faa65c8ce8
+Chaincode is installed on peer0.org1
+Install chaincode on peer0.org2...
+Using organization 2
++ peer lifecycle chaincode queryinstalled --output json
++ jq -r 'try (.installed_chaincodes[].package_id)'
++ grep '^emr_1.0:6abdcb4ca42467a390b0cb5927ec2c2854d2513b010448a6894703faa65c8ce8$'
++ test 1 -ne 0
++ peer lifecycle chaincode install emr.tar.gz
++ res=0
+2025-04-07 12:43:12.399 EDT 0001 INFO [cli.lifecycle.chaincode] submitInstallProposal -> Installed remotely: response:<status:200 payload:"\nHemr_1.0:6abdcb4ca42467a390b0cb5927ec2c2854d2513b010448a6894703faa65c8ce8\022\007emr_1.0" >
+2025-04-07 12:43:12.399 EDT 0002 INFO [cli.lifecycle.chaincode] submitInstallProposal -> Chaincode code package identifier: emr_1.0:6abdcb4ca42467a390b0cb5927ec2c2854d2513b010448a6894703faa65c8ce8
+Chaincode is installed on peer0.org2
+++ peer lifecycle chaincode querycommitted --channelID emrchannel --name emr
+++ sed -n '/Version:/{s/.*Sequence: //; s/, Endorsement Plugin:.*$//; p;}'
+Error: query failed with status: 500 - channel 'emrchannel' not found
++ COMMITTED_CC_SEQUENCE=
++ res=0
+Using organization 1
++ jq -r 'try (.installed_chaincodes[].package_id)'
++ peer lifecycle chaincode queryinstalled --output json
++ grep '^emr_1.0:6abdcb4ca42467a390b0cb5927ec2c2854d2513b010448a6894703faa65c8ce8$'
++ res=0
+emr_1.0:6abdcb4ca42467a390b0cb5927ec2c2854d2513b010448a6894703faa65c8ce8
+Query installed successful on peer0.org1 on channel
+Using organization 1
++ peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem --channelID emrchannel --name emr --version 1.0 --package-id emr_1.0:6abdcb4ca42467a390b0cb5927ec2c2854d2513b010448a6894703faa65c8ce8 --sequence 1
++ res=1
+Error: proposal failed with status: 500 - channel 'emrchannel' not found
+Chaincode definition approved on peer0.org1 on channel 'emrchannel' failed
+Deploying chaincode failed

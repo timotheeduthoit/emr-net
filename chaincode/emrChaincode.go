@@ -241,3 +241,34 @@ func main() {
 		fmt.Printf("Error starting EMRChaincode: %s", err.Error())
 	}
 }
+
+// GetIdentityAttributes retrieves all attributes of the invoking client identity
+func (c *EMRChaincode) GetIdentityAttributes(ctx contractapi.TransactionContextInterface) (map[string]string, error) {
+	attributes := make(map[string]string)
+
+	// Get the client ID
+	clientID, err := ctx.GetClientIdentity().GetID()
+	if err != nil {
+		return nil, fmt.Errorf("failed to get client ID: %v", err)
+	}
+	attributes["clientID"] = clientID
+
+	// Get the role attribute
+	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
+	if err != nil {
+		return nil, fmt.Errorf("failed to get role attribute: %v", err)
+	}
+	if !found {
+		return nil, fmt.Errorf("role attribute not found for client ID: %s", clientID)
+	}
+	attributes["role"] = role
+
+	// Add other attributes as needed
+	// Example: department, organization, etc.
+	// department, found, err := ctx.GetClientIdentity().GetAttributeValue("department")
+	// if found {
+	//     attributes["department"] = department
+	// }
+
+	return attributes, nil
+}
