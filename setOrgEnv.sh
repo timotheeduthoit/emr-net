@@ -2,8 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-
-
+echo "setOrgEnv.sh called: Setting environment variables for Org1, Org2, or Org3"
 
 # default to using Org1
 ORG=${1:-Org1}
@@ -20,24 +19,30 @@ PEER0_ORG1_CA=${DIR}/emr-net/organizations/peerOrganizations/org1.example.com/tl
 PEER0_ORG2_CA=${DIR}/emr-net/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem
 PEER0_ORG3_CA=${DIR}/emr-net/organizations/peerOrganizations/org3.example.com/tlsca/tlsca.org3.example.com-cert.pem
 
-
 if [[ ${ORG,,} == "org1" || ${ORG,,} == "digibank" ]]; then
 
    CORE_PEER_LOCALMSPID=Org1MSP
    CORE_PEER_MSPCONFIGPATH=${DIR}/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
-   CORE_PEER_ADDRESS=localhost:7051
+   CORE_PEER_ADDRESS=localhost:7051 # Matches peer0.org1.example.com
    CORE_PEER_TLS_ROOTCERT_FILE=${DIR}/emr-net/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
 
 elif [[ ${ORG,,} == "org2" || ${ORG,,} == "magnetocorp" ]]; then
 
    CORE_PEER_LOCALMSPID=Org2MSP
    CORE_PEER_MSPCONFIGPATH=${DIR}/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
-   CORE_PEER_ADDRESS=localhost:9051
+   CORE_PEER_ADDRESS=localhost:9051 # Matches peer0.org2.example.com
    CORE_PEER_TLS_ROOTCERT_FILE=${DIR}/emr-net/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem
 
+elif [[ ${ORG,,} == "org3" ]]; then
+
+   CORE_PEER_LOCALMSPID=Org3MSP
+   CORE_PEER_MSPCONFIGPATH=${DIR}/emr-net/organizations/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp
+   CORE_PEER_ADDRESS=localhost:11051 # Matches peer0.org3.example.com (if applicable)
+   CORE_PEER_TLS_ROOTCERT_FILE=${DIR}/emr-net/organizations/peerOrganizations/org3.example.com/tlsca/tlsca.org3.example.com-cert.pem
+
 else
-   echo "Unknown \"$ORG\", please choose Org1/Digibank or Org2/Magnetocorp"
-   echo "For example to get the environment variables to set upa Org2 shell environment run:  ./setOrgEnv.sh Org2"
+   echo "Unknown \"$ORG\", please choose Org1/Digibank, Org2/Magnetocorp, or Org3"
+   echo "For example to get the environment variables to set up an Org2 shell environment run:  ./setOrgEnv.sh Org2"
    echo
    echo "This can be automated to set them as well with:"
    echo

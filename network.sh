@@ -96,7 +96,7 @@ function checkPrereqs() {
 
   ## check for cfssl binaries
   if [ "$CRYPTO" == "cfssl" ]; then
-  
+
     cfssl version > /dev/null 2>&1
     if [[ $? -ne 0 ]]; then
       errorln "cfssl binary not found.."
@@ -213,11 +213,11 @@ function createOrgs() {
     peer_cert admin Admin@org2.example.com org2
 
     infoln "Creating Orderer Org Identities"
-    #function_name cert-type   CN   
+    #function_name cert-type   CN
     orderer_cert orderer orderer.example.com
     orderer_cert admin Admin@example.com
 
-  fi 
+  fi
 
   # Create crypto material using Fabric CA
   if [ "$CRYPTO" == "Certificate Authorities" ]; then
@@ -225,6 +225,8 @@ function createOrgs() {
     ${CONTAINER_CLI_COMPOSE} -f compose/$COMPOSE_FILE_CA -f compose/$CONTAINER_CLI/${CONTAINER_CLI}-$COMPOSE_FILE_CA up -d 2>&1
 
     . organizations/fabric-ca/registerEnroll.sh
+
+    echo "Waiting for CA to start before while loop"
 
     while :
     do
@@ -235,6 +237,9 @@ function createOrgs() {
       fi
     done
 
+    echo "CA started... after while loop"
+
+
     infoln "Creating Org1 Identities"
 
     createOrg1
@@ -242,6 +247,7 @@ function createOrgs() {
     infoln "Creating Org2 Identities"
 
     createOrg2
+
 
     infoln "Creating Orderer Org Identities"
 
@@ -386,7 +392,7 @@ function listChaincode() {
 
 }
 
-## Call the script to invoke 
+## Call the script to invoke
 function invokeChaincode() {
 
   export FABRIC_CFG_PATH=${PWD}/../config
@@ -400,11 +406,11 @@ function invokeChaincode() {
 
 }
 
-## Call the script to query chaincode 
+## Call the script to query chaincode
 function queryChaincode() {
 
   export FABRIC_CFG_PATH=${PWD}/../config
-  
+
   . scripts/envVar.sh
   . scripts/ccutils.sh
 
@@ -609,7 +615,7 @@ while [[ $# -ge 1 ]] ; do
   -ccqc )
     CC_QUERY_CONSTRUCTOR="$2"
     shift
-    ;;    
+    ;;
   * )
     errorln "Unknown flag: $key"
     printHelp

@@ -24,6 +24,10 @@ export PEER0_ORG2_CA=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org2.e
 export PEER0_ORG3_CA=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org3.example.com/tlsca/tlsca.org3.example.com-cert.pem
 
 # Set environment variables for the peer org
+# Added comments to align with the new roles and attributes in registerEnroll.sh
+# Ensure the environment variables are consistent with the roles defined in registerEnroll.sh
+
+# Updated setGlobals function to include role-specific attributes if needed
 setGlobals() {
   local USING_ORG=""
   if [ -z "$OVERRIDE_ORG" ]; then
@@ -36,21 +40,22 @@ setGlobals() {
     export CORE_PEER_LOCALMSPID=Org1MSP
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG1_CA
     export CORE_PEER_MSPCONFIGPATH=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
-    export CORE_PEER_ADDRESS=localhost:7051
+    export CORE_PEER_ADDRESS=localhost:7051 # Matches peer0.org1.example.com
   elif [ $USING_ORG -eq 2 ]; then
     export CORE_PEER_LOCALMSPID=Org2MSP
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG2_CA
     export CORE_PEER_MSPCONFIGPATH=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
-    export CORE_PEER_ADDRESS=localhost:9051
+    export CORE_PEER_ADDRESS=localhost:9051 # Matches peer0.org2.example.com
   elif [ $USING_ORG -eq 3 ]; then
     export CORE_PEER_LOCALMSPID=Org3MSP
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG3_CA
     export CORE_PEER_MSPCONFIGPATH=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp
-    export CORE_PEER_ADDRESS=localhost:11051
+    export CORE_PEER_ADDRESS=localhost:11051 # Matches peer0.org3.example.com (if applicable)
   else
     errorln "ORG Unknown"
   fi
 
+  # Added VERBOSE check for debugging
   if [ "$VERBOSE" = "true" ]; then
     env | grep CORE
   fi
@@ -68,9 +73,9 @@ parsePeerConnectionParameters() {
     ## Set peer addresses
     if [ -z "$PEERS" ]
     then
-	PEERS="$PEER"
+    PEERS="$PEER"
     else
-	PEERS="$PEERS $PEER"
+    PEERS="$PEERS $PEER"
     fi
     PEER_CONN_PARMS=("${PEER_CONN_PARMS[@]}" --peerAddresses $CORE_PEER_ADDRESS)
     ## Set path to TLS certificate

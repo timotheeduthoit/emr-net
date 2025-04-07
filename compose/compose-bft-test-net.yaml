@@ -258,6 +258,6 @@ services:
     command: peer node start
     ports:
       - 9051:9051
-      - 9445:9445
+      - 9446:9446
     networks:
       - test

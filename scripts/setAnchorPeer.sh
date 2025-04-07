@@ -24,13 +24,13 @@ createAnchorPeerUpdate() {
 
   if [ $ORG -eq 1 ]; then
     HOST="peer0.org1.example.com"
-    PORT=7051
+    PORT=7051 # Matches peer0.org1.example.com in compose-test-net.yaml
   elif [ $ORG -eq 2 ]; then
     HOST="peer0.org2.example.com"
-    PORT=9051
+    PORT=9051 # Matches peer0.org2.example.com in compose-test-net.yaml
   elif [ $ORG -eq 3 ]; then
     HOST="peer0.org3.example.com"
-    PORT=11051
+    PORT=11051 # Matches peer0.org3.example.com in compose-test-net.yaml (if applicable)
   else
     errorln "Org${ORG} unknown"
   fi
