@@ -17,6 +17,8 @@
 # this script is run from is critical. To ease this, get the directory
 # this script is actually in and infer location from there. (putting first)
 
+# run ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h_reg.sh && ./p_reg.sh && ./d_reg.sh && ./create_n_share_111.sh
+
 ROOTDIR=$(cd "$(dirname "$0")" && pwd)
 export PATH=${ROOTDIR}/../bin:${PWD}/../bin:$PATH
 export FABRIC_CFG_PATH=${PWD}/configtx

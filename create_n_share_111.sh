@@ -3,15 +3,29 @@
 # Exit on any error
 set -e
 
+# Set the Fabric configuration path
+export FABRIC_CFG_PATH=${PWD}/../config
+
 # Function to set environment variables for a specific user
 set_user_env() {
     local org=$1
     local user=$2
     local port=$3
     
+    # Convert org to lowercase for paths
+    local org_lower
+    if [ "$org" = "Org1" ]; then
+        org_lower="org1"
+    elif [ "$org" = "Org2" ]; then
+        org_lower="org2"
+    else
+        org_lower=$(echo "$org" | tr '[:upper:]' '[:lower:]')
+    fi
+
     export CORE_PEER_LOCALMSPID="${org}MSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/${org,,}.example.com/tlsca/tlsca.${org,,}.example.com-cert.pem
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/${org,,}.example.com/users/${user}@${org,,}.example.com/msp
+    export CORE_PEER_TLS_ENABLED=true
+    export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/${org_lower}.example.com/tlsca/tlsca.${org_lower}.example.com-cert.pem
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/${org_lower}.example.com/users/${user}@${org_lower}.example.com/msp
     export CORE_PEER_ADDRESS=localhost:${port}
 }
 
@@ -25,7 +39,7 @@ set_user_env "Org1" "doctor1" "7051"
 peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \
 -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
 --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \
--c '{"Args":["CreateEMR","EMR111","not actually sick"]}'
+-c '{"Args":["CreateRecord","EMR111","patient1@org2.example.com","doctor1@org1.example.com","hospital1@org1.example.com","not actually sick"]}'
 sleep 3
 
 echo -e "\n2. Testing access as patient2 (should fail)..."

@@ -1,0 +1,1084 @@
+  100* cd COEN_6331_EXAM/
+  101* cd pythonProject/
+  102* python3 art.py
+  103* python3 art_16_7.py 
+  104* python3 art_16_7.py
+  105* pip install numpy
+  106* pip install --upgrade pip
+  107* diskutil list
+  108* curl -sL https://ubuntuasahi.org/install > install.sh
+  109* ls
+  110* less install.sh\t\t\t\t\t\t# Review\n
+  111* ls
+  112* less De
+  113* less Desktop/
+  114* sh install.sh 
+  115* tmutil listlocalsnapshots /
+  116* sudo tmutil deletelocalsnapshots
+  117* sudo tmutil deletelocalsnapshots 2024-04-03-183213
+  118* sudo tmutil deletelocalsnapshots 2024-04-03-200005
+  119* sudo tmutil deletelocalsnapshots 2024-04-03-230259
+  120* tmutil listlocalsnapshots /
+  121* sudo tmutil deletelocalsnapshots 2024-04-04-105206
+  122* sudo tmutil deletelocalsnapshots 2024-04-04-125245
+  123* sudo tmutil deletelocalsnapshots 2024-04-04-134012
+  124* sudo tmutil deletelocalsnapshots 2024-04-04-170112
+  125* tmutil listlocalsnapshots /
+  126* sudo tmutil deletelocalsnapshots 2024-04-04-175653
+  127* tmutil listlocalsnapshots /
+  128* sh install.sh
+  129* brew -h
+  130* brew upgrade 
+  131* brew list mininet
+  132* brew -h
+  133* brew info mininet
+  134* python3
+  135* /Users/timotheeduthoit/.pyenv/versions/3.9.12/bin/python /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2024.4.1/python_files/printEnvVariablesToFile.py /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2024.4.1/python_files/deactivate/zsh/envVars.txt
+  136* git info
+  137* git --help
+  138* git branch
+  139* git pull
+  140* /Users/timotheeduthoit/.pyenv/versions/3.9.12/bin/python /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2024.4.1/python_files/printEnvVariablesToFile.py /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2024.4.1/python_files/deactivate/zsh/envVars.txt
+  141* speedtest
+  142* /Users/timotheeduthoit/.pyenv/versions/3.9.12/bin/python /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2024.4.1/python_files/printEnvVariablesToFile.py /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2024.4.1/python_files/deactivate/zsh/envVars.txt
+  143* kaggle
+  144* brew -h
+  145* brew update
+  146* brew upgrade
+  147* brew search kaggle
+  148* pip install --upgrade pip
+  149* pip install -q kaggle
+  150* kaggle competitions download -c imagenet-object-localization-challenge
+  151* kaggle -h
+  152* kaggle competitions download imagenet-object-localization-challenge
+  153* cd PycharmProjects/COEN_6331_PROJECT/NN\ Project/
+  154* ls
+  155* python3 matrices.py 
+  156* cd PycharmProjects/COEN_6331_PROJECT/NN\ Project/
+  157* python3 plotter.py 
+  158* python3
+  159* git rm test.py
+  160* git rm -- cached test.py
+  161* git rm --cached test.py
+  162* kaggle
+  163* speed
+  164* speedtest 
+  165* brew update
+  166* cd 
+  167* brew upgrade 
+  168* ls
+  169* mv Knowledge\ as\ a\ public\ good.pdf Industrial\ insight/
+  170* cd
+  171* nmap 
+  172* arp -a
+  173* speedtest
+  174* cd Desktop/
+  175* nano temp.txt
+  176* cd De
+  177* cd Desktop/
+  178* ls 
+  179* nano temp.txt
+  180* mv temp.txt chatgpt_outline.txt
+  181* ls -al 
+  182* nano temp.txt
+  183* arp -a
+  184* nmap -sn 192.168.1.0/24
+  185* ping 127.0.0.1
+  186* sudo killall -HUP mDNSResponder
+  187* ifconfig 
+  188* ipconfig getifaddr en0
+  189* ping 192.168.2.58
+  190* ipconfig getifaddr en0
+  191* ssh timothee@homeassistant.local:8123 
+  192* ssh timothee@homeassistant.local
+  193* ssh timothee@homeassistant.local:22
+  194* ssh timotheeduthoit@192.168.2.14
+  195* ssh 192.168.2.14
+  196* ping 192.168.2.14
+  197* sudo killall -HUP mDNSResponder
+  198* exit
+  199* sudo xcodebuild -license
+  200* pip install requests
+  201* pip install --upgrade pip
+  202* pip install requests
+  203* speedtest
+  204* pio --help
+  205* /usr/local/bin/python3 /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2024.14.1-darwin-arm64/python_files/printEnvVariablesToFile.py /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2024.14.1-darwin-arm64/python_files/deactivate/zsh/envVars.txt
+  206* cd Desktop/
+  207* unzip BlankArduinoUno.zip 
+  208* mkdir test\ zip
+  209* mv BlankArduinoUno test\ zip/
+  210* mv test\ zip/BlankArduinoUno/ /Desktop
+  211* mv test\ zip/BlankArduinoUno/ ../
+  212* cd ../
+  213* ls -al
+  214* mv BlankArduinoUno Desktop/
+  215* cd Desktop/
+  216* mv BlankArduinoUno.zip test\ zip/
+  217* cd test\ zip/
+  218* ls -al
+  219* unzip BlankArduinoUno.zip 
+  220* ls -al
+  221* cd __MACOSX/
+  222* ls -al
+  223* infocmp ._BlankArduinoUno
+  224* /Users/timotheeduthoit/Desktop/test\ zip/__MACOSX/._BlankArduinoUno ; exit;
+  225* nano ._BlankArduinoUno 
+  226* TextEdit ._BlankArduinoUno 
+  227* textedit ._BlankArduinoUno 
+  228* xedit ._BlankArduinoUno
+  229* hexfriend
+  230* more ._BlankArduinoUno
+  231* more BlankArduinoUno
+  232* ls -al
+  233* cd '/Users/timotheeduthoit/Documents/Univ/Master/Terms/Fall 2024/ENGR 6412/Midterm 1 review/
+  234* cd '/Users/timotheeduthoit/Documents/Univ/Master/Terms/Fall 2024/ENGR 6412/Midterm 1 review/''
+  235* cd '/Users/timotheeduthoit/Documents/Univ/Master/Terms/Fall 2024/ENGR 6412/'
+  236* mv Midterm\ 1\ review/ELEC473_Homework1_2024_Solutions.pdf Assignments/Assignment\ 1/
+  237* speedtest
+  238* exit
+  239* spee
+  240* speedtest 
+  241* pip 
+  242* pip install allantools
+  243* pip install --upgrade pip
+  244* pip install numpy
+  245* pip install matplotlib
+  246* pip install pandas
+  247* finder ./
+  248* open .
+  249* cd Desktop/
+  250* cd
+  251* cd Des
+  252* cd Desktop
+  253* ll
+  254* ls 
+  255* # rar -h
+  256* rar HeartBeatSensor.rar 
+  257* speedtest
+  258* exit
+  259* clc
+  260* clear
+  261* which monkeyc
+  262* cd wi
+  263* cd wifi
+  264* cd -
+  265* java -version
+  266* which connectiq
+  267* if command -v sdk > /dev/null; then sdk list; else echo "SDKMAN is not installed"; fi
+  268* which monkeyc
+  269* /usr/local/bin/python3 /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2024.22.2-darwin-arm64/python_files/printEnvVariablesToFile.py /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2024.22.2-darwin-arm64/python_files/deactivate/zsh/envVars.txt
+  270* which iqsharp
+  271* pwd
+  272* cd builds
+  273* ls
+  274* iqsharp
+  275* cd .. 
+  276* cd ...
+  277* ls
+  278* cd 
+  279* ls 
+  280* mkdir spin
+  281* cd spin
+  282* git clone https://github.com/nimble-code/Spin
+  283* ls -al
+  284* cd ..
+  285* exit
+  286* cd spin
+  287* find make Spin/
+  288* cd Spin
+  289* ls
+  290* make
+  291* make run
+  292* make all
+  293* cd Src
+  294* ls
+  295* /Users/timotheeduthoit/spin/Spin/Src/spin ; exit;
+  296* cd ..
+  297* cd source
+  298* cd -
+  299* spin ../Examples/calculator.pml
+  300* spin
+  301* /Users/timotheeduthoit/spin/Spin/Src/spin ; exit;
+  302* ./spin
+  303* ./spin ../Examples/calculator.pml
+  304* ispin
+  305* Xspin
+  306* cd '/Users/timotheeduthoit/Documents/Univ/Master/Terms/Winter 2025/COEN 311/Assignments/Assignment 1'
+  307* ls -al
+  308* ls -al ./COEN-311-2244-Y-Assignment\ 1-4122839/ 
+  309* ls -al ./COEN-311-2244-Y-Assignment\ 1-4122839/ > submissions.csv
+  310* exit
+  311* cd '/Users/timotheeduthoit/Documents/Univ/Master/Terms/Winter 2025/COEN 317/Assignments/Assignment 1/COEN-317-2244-U-Assignment 1-4129531'
+  312* cd ..
+  313* ls
+  314* cd -
+  315* ls
+  316* ls -al > submissions.csv
+  317* curl --version
+  318* curl --help
+  319* brew upgrade 
+  320* docker --version
+  321* pyenv --help
+  322* pyenv versions
+  323* pyenv install 2.7
+  324* docker --version
+  325* docker-compose --version
+  326* python --version
+  327* pyenv global 2.7.18
+  328* python --version
+  329* go --help
+  330* python --version
+  331* brew --help
+  332* brew update
+  333* brew doctor
+  334* brew link wireshark
+  335* go -- version
+  336* go --version
+  337* go version
+  338* node -v
+  339* uname -m
+  340* cd /usr/local/bin/
+  341* ls -al
+  342* node -v 
+  343* npm --version
+  344* cd
+  345* ls 
+  346* mkdir hyperledger
+  347* cd hyperledger
+  348* ls
+  349* curl -sSL http://bit.ly/2ysbOFE | bash -s
+  350* git config --global core.autocrlf false
+  351* git config --global core.longpaths true
+  352* curl -sSL http://bit.ly/2ysbOFE | bash -s
+  353* docker-compose up 
+  354* curl -sSL http://bit.ly/2ysbOFE | bash -s
+  355* pwd
+  356* ls 
+  357* cd fabric-samples/
+  358* ls
+  359* cd test_network
+  360* cd test-network
+  361* ls -al 
+  362* ls *.sh
+  363* vscode network.sh
+  364* code network.sh
+  365* ./test-network.sh generate 
+  366* ./network.sh generate
+  367* ls
+  368* ./network.sh up
+  369* ./network.sh createChannel
+  370* ./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go
+  371* export PATH=${PWD}/../bin:${PATH}\nexport FABRIC_CFG_PATH=$PWD/../config/\nexport CORE_PEER_TLS_ENABLED=true\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\npeer chaincode query -C mychannel -n basic -c '{"Args":["GetAllAssets"]}'\n
+  372* peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls \\n--cafile ${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem \\n-C mychannel -n basic --peerAddresses localhost:7051 \\n--tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem \\n--peerAddresses localhost:9051 \\n--tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem \\n-c '{"function":"CreateAsset","Args":["asset1","blue","5","tom","100"]}'\n
+  373* peer chaincode query -C mychannel -n basic -c '{"Args":["GetAllAssets"]}'
+  374* peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls \\n--cafile ${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem \\n-C mychannel -n basic --peerAddresses localhost:7051 \\n--tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem \\n--peerAddresses localhost:9051 \\n--tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem \\n-c '{"function":"TransferAsset","Args":["asset1","mary"]}'\n
+  375* peer chaincode query -C mychannel -n basic -c '{"Args":["ReadAsset","asset1"]}'
+  376* ./network.sh down
+  377* pwd
+  378* ls -l
+  379* ./network.sh down
+  380* docker --version
+  381* ./network.sh down
+  382* ./network.sh up
+  383* ./network.sh createChannel
+  384* ./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go
+  385* history | grep -A 1 "network.sh" > testnetwork_out.txt
+  386* cat << 'EOF' > testnetwork_out.txt\n# Hyperledger Fabric Test Network Setup Log\n# Date: 2025-02-12\n\n# 1. Bringing down any existing network\n./network.sh down\n\n# 2. Starting the network\n./network.sh up\n\n# 3. Creating and joining channel\n./network.sh createChannel\nChannel 'mychannel' created and joined by org1 and org2\n\n# 4. Deploying the chaincode\n./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go\nChaincode basic successfully deployed to channel 'mychannel'\n- Version: 1.0\n- Sequence: 1\n- Approvals: [Org1MSP: true, Org2MSP: true]\n\n# Network is now ready for testing with the following components:\n# - Two organizations (Org1 and Org2)\n# - One orderer (orderer.example.com)\n# - Two peers (peer0.org1.example.com and peer0.org2.example.com)\n# - One channel (mychannel)\n# - Basic asset-transfer chaincode deployed\nEOF\n
+  387* cat testnetwork_out.txt
+  388* ./network.sh down
+  389* speedtest
+  390* ifconfig
+  391* speedtest
+  392* cd ../../emr-net/
+  393* ./network.sh up
+  394* cd -
+  395* ./network.sh up
+  396* ./network.sh down
+  397* cd ../../emr-net/
+  398* ./network.sh down
+  399* ./network.sh up
+  400* cd ../test-network/
+  401* ./network.sh down
+  402* ./network.sh up
+  403* cd ../fabric-samples/emr-net
+  404* pwd
+  405* cd ../fabric-samples
+  406* cd ../
+  407* pwd
+  408* cd -
+  409* cd
+  410* cd /hyperledger/
+  411* ls
+  412* cd /hyperledger/fabric-samples/emr-net
+  413* cd /hyperledger/
+  414* ls -al
+  415* cd h
+  416* cd hyperledger
+  417* clear
+  418* ls
+  419* cd fabric-samples/emr-net/
+  420* ls -al
+  421* ./network.sh down
+  422* ./network.sh up
+  423* ./network.sh createChannel
+  424* ./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go
+  425* ./network.sh down
+  426* find -f 'test-network*'
+  427* find -f -n 'test-network*'
+  428* which spin
+  429* brew install spin
+  430* which spin
+  431* spin
+  432* pwd
+  433* ls -al
+  434* ls -al | grep trash
+  435* grep AndroidStudioProjects/
+  436* which grep
+  437* ls -al | grep trash
+  438* cd .Trash/
+  439* ls -al 
+  440* ls -al
+  441* sudo ls -al
+  442* ls -la
+  443* stat -x .
+  444* cd
+  445* systeminfo
+  446* pmset -g log | grep -i "battery health" | tail -n 100
+  447* pmset -g log | grep -i "battery" | tail -n 50
+  448* system_profiler SPPowerDataType
+  449* log show --predicate 'eventMessage CONTAINS "battery"' --last 48h
+  450* ls 
+  451* ./network.sh down
+  452* ./network.sh up
+  453* ./network.sh createChannel
+  454* ./network.sh down
+  455* find . -name "*.yaml" -path "*/compose/*" | grep -v node_modules | grep -E 'compose-|docker-compose-'
+  456* head -n 10 ./compose/compose-bft-test-net.yaml
+  457* cat << 'EOF' > remove_version.sh\n#!/bin/bash\n\n# Find all docker-compose files\ncompose_files=$(find . -name "*.yaml" -path "*/compose/*" | grep -v node_modules | grep -E 'compose-|docker-compose-')\n\nfor file in $compose_files; do\n    echo "Processing $file..."\n    # Create a temporary file\n    sed '/^version:/d' "$file" > "$file.tmp"\n    # Replace the original file with the modified content\n    mv "$file.tmp" "$file"\n    echo "Removed version attribute from $file"\ndone\n\necho "All done! Removed version attributes from all docker-compose files."\nEOF\n\nchmod +x remove_version.sh\n
+  458* ./remove_version.sh
+  459* head -n 10 ./compose/compose-bft-test-net.yaml
+  460* ./network.sh up
+  461* ./network.sh createChannel
+  462* ./network.sh down
+  463* ./network.sh up createChannel
+  464* addOrg3/addOrg3.sh up
+  465* ./addOrg3/addOrg3.sh up
+  466* cd addOrg3/
+  467* ls
+  468* ./addOrg3.sh up
+  469* cd ..
+  470* ./network.sh down
+  471* cd 
+  472* go install go get github.com/hyperledger/fabric-contract-api-go/contractapi
+  473* go install github.com/hyperledger/fabric-contract-api-go/contractapi@latest
+  474* go get github.com/hyperledger/fabric-contract-api-go/contractapi@latest
+  475* go install github.com/hyperledger/fabric-contract-api-go/contractapi@latest
+  476* go version
+  477* ls -la | grep go.mod
+  478* find . -maxdepth 3 -name "go.mod" -type f
+  479* go version
+  480* go get github.com/hyperledger/fabric-contract-api-go/contractapi
+  481* go install github.com/hyperledger/fabric-contract-api-go/contractapi@latest
+  482* find . -name "*.go" | head -n 5
+  483* ls -la ./chaincode/
+  484* cd ./chaincode && go mod init emr-net/chaincode
+  485* cd ./chaincode && go get github.com/hyperledger/fabric-contract-api-go/contractapi
+  486* pwd
+  487* go get github.com/hyperledger/fabric-contract-api-go/contractapi
+  488* go mod tidy
+  489* cd
+  490* which gcc
+  491* brew install tcl-tk
+  492* which tcl-tk
+  493* ls -al
+  494* ls -al | grep zshrc
+  495* nano .zshrc
+  496* source .zshrc
+  497* which tcl-tk
+  498* curl -O http://spinroot.com/spin/Src/xspin525.tcl
+  499* ls -al | grep xspin
+  500* finder ./
+  501* open ./
+  502* cd Xspin
+  503* chmod +x ./xspin525.tcl 
+  504* which wish
+  505* wish xspin525.tcl 
+  506* wish ./
+  507* wish ./xspin525.tcl
+  508* curl -O https://spinroot.com/spin/Src/ispin.tcl
+  509* chmod +x ispin.tcl
+  510* wish ./ispin.tcl
+  511* brew search tcl-tk
+  512* brew info tcl-tk@8
+  513* cp ispin.tcl ispin.tcl.backup
+  514* head -n 200 ispin.tcl
+  515* sed -i.bak 's/package require Tcl 8.1.1/package require Tcl 8.1.1-/g' ispin.tcl
+  516* wish ./ispin.tcl
+  517* brew install tcl-tk@8
+  518* /opt/homebrew/opt/tcl-tk@8/bin/wish ./ispin.tcl
+  519* alias ispin='/opt/homebrew/opt/tcl-tk@8/bin/wish /Users/timotheeduthoit/Xspin/ispin.tcl'
+  520* ispin
+  521* cd ~/VSCode/
+  522* cd Pr
+  523* cd Promela/
+  524* cd TFTP_1/ ls
+  525* cd TFTP_1/
+  526* ls
+  527* cd ../TFTP_protocol_modeling/
+  528* ls 
+  529* ispin tftp_rrq_001.pml 
+  530* ispin tftp_rrq_001.pml
+  531* ls -al | grep zshrc
+  532* cd 
+  533* tail .zshrc
+  534* ispin tftp_rrq_001.pml
+  535* nano .zshrc
+  536* source .zshrc
+  537* cd -
+  538* ispin tftp_rrq_001.pml
+  539* ls 
+  540* ispin tftp_rrq_001.pml
+  541* ls /.
+  542* source /./.zshrc
+  543* cd
+  544* source .zshrc
+  545* cd -
+  546* ispin tftp_rrq_001.pml
+  547* exit
+  548* cd /Users/timotheeduthoit/Downloads
+  549* ls -al | grep pdf
+  550* ispin tftp_rrq_001.pml
+  551* find . -type f -name '*.go'
+  552* find . -type f -name 'chaincode'
+  553* find . -type d -name 'chaincode'
+  554* find . -name 'chaincode'
+  555* cd /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/chaincode\nls
+  556* mkdir chaincode
+  557* go get github.com/hyperledger/fabric-contract-api-go/contractapi
+  558* go install github.com/hyperledger/fabric-contract-api-go/contractapi
+  559* go get github.com/hyperledger/fabric-contract-api-go/contractapi
+  560* brew upgrade go
+  561* brew upgrade
+  562* speedtest
+  563* cd ..
+  564* ls
+  565* ./network.sh down
+  566* ./network.sh up createChannel -c emrchannel -ca
+  567* peer lifecycle chaincode package emrChaincode.tar.gz --path ./chaincode/emrChaincode.go --lang golang --label emrChaincode_1
+  568* ./network.sh down
+  569* ./network.sh up
+  570* ./network.sh down
+  571* ./network.sh up createChannel -c emrchannel -ca
+  572* which peer
+  573* ls -R
+  574* . ./organizations/fabric-ca/registerEnroll.sh && setOrg1
+  575* . ./setOrgEnv.sh 1
+  576* ls -R
+  577* ls -al
+  578* source ./setOrgEnv.sh Org1
+  579* source ./setOrgEnv.sh 1
+  580* source ./setOrgEnv.sh
+  581* source setOrgEnv.sh org1
+  582* source setOrgEnv.sh Org1
+  583* source setOrgEnv.sh 1
+  584* ./setOrgEnv.sh org1
+  585* cd -
+  586* clear
+  587* cd /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/
+  588* ./network.sh down
+  589* docker ps -a
+  590* ./network.sh up createChannel -c emrchannel
+  591* ls chaincode/
+  592* ./network.sh deployCC -ccn emrcc -ccp chaincode/ -ccl go -c emrchannel
+  593* chmod +x setup_network.sh
+  594* ./network.sh down
+  595* pwd
+  596* ls 
+  597* peer lifecycle chaincode package emrChaincode.tar.gz --path ./chaincode/emrChaincode.go --lang golang --label emrChaincode_1
+  598* go get github.com/stretchr/testify
+  599* cd chaincode
+  600* go get github.com/stretchr/testify
+  601* go mod vendor 
+  602* go mod tidy 
+  603* go mode vendor
+  604* go mod vendor
+  605* ls vendor/github.com/stretchr/testify
+  606* go test -v
+  607* go mod tidy 
+  608* go mod vendor
+  609* ls
+  610* cd chaincode/
+  611* go mod tidy
+  612* go mod vendor
+  613* go test -v
+  614* cat emrChaincode.go
+  615* go test -v
+  616* go mod tidy 
+  617* go mod vendor
+  618* go mod tidy 
+  619* go mod vendor
+  620* go test -v
+  621* cd tests
+  622* go test -v
+  623* cd ..
+  624* cd -
+  625* cd /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/chaincode
+  626* ls
+  627* go test -v
+  628* go mod tidy
+  629* go mod vendor
+  630* go test -v
+  631* cd 
+  632* ls
+  633* cd VSCode/
+  634* ls
+  635* cd Promela/TFTP_protocol_modeling/
+  636* ispin tftp_rrq_001.pml
+  637* go test -v
+  638* /usr/local/bin/python3 /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2025.2.0-darwin-arm64/python_files/printEnvVariablesToFile.py /Users/timotheeduthoit/.vscode/extensions/ms-python.python-2025.2.0-darwin-arm64/python_files/deactivate/zsh/envVars.txt
+  639* ls
+  640* cd ..
+  641* ks
+  642* ls
+  643* ls -al | grep sh
+  644* more setOrgEnv.sh
+  645* more setup_network.sh 
+  646* ./setup_network.sh
+  647* source setup_network.sh 
+  648* ls
+  649* ./network.sh down
+  650* ls -la network.sh
+  651* ./network.sh down
+  652* ./network.sh up createChannel -c channel1 -ca
+  653* ls -la chaincode/
+  654* ./network.sh deployCC -ccn emr -ccp chaincode/ -ccl go -c channel1
+  655* export CORE_PEER_TLS_ENABLED=true\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\nexport ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem\n
+  656* cat chaincode/emrChaincode.go
+  657* peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${ORDERER_CA} -C channel1 -n emr -c '{"Args":["CreateRecord", "EMR001", "PATIENT001", "DOCTOR001", "HOSPITAL001", "Common Cold"]}'\n
+  658* export PATH=${PWD}/../bin:$PATH\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${ORDERER_CA} -C channel1 -n emr -c '{"Args":["CreateRecord", "EMR001", "PATIENT001", "DOCTOR001", "HOSPITAL001", "Common Cold"]}'\n
+  659* export FABRIC_CFG_PATH=${PWD}/../config/\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${ORDERER_CA} -C channel1 -n emr -c '{"Args":["CreateRecord", "EMR001", "PATIENT001", "DOCTOR001", "HOSPITAL001", "Common Cold"]}' --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem\n
+  660* export PATH=${PWD}/../bin:$PATH\nexport FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/\nfabric-ca-client register --caname ca-org1 --id.name doctor1 --id.secret doctor1pw --id.type client --id.attrs "role=doctor:ecert" --tls.certfiles ${PWD}/organizations/fabric-ca/org1/ca-cert.pem\n
+  661* fabric-ca-client enroll -u https://doctor1:doctor1pw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp" --tls.certfiles ${PWD}/organizations/fabric-ca/org1/ca-cert.pem --enrollment.attrs "role"\n
+  662* cp ${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/config.yaml ${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp/config.yaml\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp\nexport FABRIC_CFG_PATH=${PWD}/../config/\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${ORDERER_CA} -C channel1 -n emr -c '{"Args":["CreateRecord", "EMR001", "PATIENT001", "DOCTOR001", "HOSPITAL001", "Common Cold"]}' --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem\n
+  663* peer chaincode query -C channel1 -n emr -c '{"Args":["ReadRecord", "EMR001"]}'\n
+  664* export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/\nfabric-ca-client register --caname ca-org1 --id.name PATIENT001 --id.secret patientpw --id.type client --id.attrs "role=patient:ecert" --tls.certfiles ${PWD}/organizations/fabric-ca/org1/ca-cert.pem\n
+  665* fabric-ca-client enroll -u https://PATIENT001:patientpw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/PATIENT001@org1.example.com/msp" --tls.certfiles ${PWD}/organizations/fabric-ca/org1/ca-cert.pem --enrollment.attrs "role"\n
+  666* cp ${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/config.yaml ${PWD}/organizations/peerOrganizations/org1.example.com/users/PATIENT001@org1.example.com/msp/config.yaml\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/PATIENT001@org1.example.com/msp\nexport FABRIC_CFG_PATH=${PWD}/../config/\npeer chaincode query -C channel1 -n emr -c '{"Args":["ReadRecord", "EMR001"]}'\n
+  667* peer chaincode query -C channel1 -n emr -c '{"Args":["GetAllRecordsForPatient", "PATIENT001"]}'\n
+  668* ./network.sh down\n./network.sh up createChannel -c channel1 -s couchdb\n
+  669* ./network.sh deployCC -ccn emr -ccp ../emr-chaincode/chaincode -ccl go -c channel1\n
+  670* ls -la ./chaincode/\n
+  671* ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c channel1\n
+  672* export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/\nfabric-ca-client register --caname ca-org1 --id.name doctor1 --id.secret doctor1pw --id.type client --id.attrs "role=doctor:ecert" --tls.certfiles ${PWD}/organizations/fabric-ca/org1/ca-cert.pem\n
+  673* export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/\nfabric-ca-client enroll -u https://admin:adminpw@localhost:7054 --caname ca-org1 --tls.certfiles ${PWD}/organizations/fabric-ca/org1/ca-cert.pem\n
+  674* ls -la organizations/\n
+  675* ls -la organizations/fabric-ca/\n
+  676* ./organizations/fabric-ca/registerEnroll.sh\n
+  677* export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/\nfabric-ca-client register --caname ca-org1 --id.name doctor1 --id.secret doctor1pw --id.type client --id.attrs "role=doctor:ecert" --tls.certfiles ${PWD}/organizations/fabric-ca/org1/ca-cert.pem\n
+  678* docker ps --format "table {{.Names}}\t{{.Status}}" | grep ca\n
+  679* ./network.sh -h\n
+  680* ./network.sh down && ./network.sh up createChannel -ca -c channel1 -s couchdb\n
+  681* ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c channel1\n
+  682* export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/\nfabric-ca-client register --caname ca-org1 --id.name doctor1 --id.secret doctor1pw --id.type client --id.attrs "role=doctor:ecert" --tls.certfiles ${PWD}/organizations/fabric-ca/org1/tls-cert.pem\n
+  683* fabric-ca-client enroll -u https://doctor1:doctor1pw@localhost:7054 --caname ca-org1 -M ${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp --tls.certfiles ${PWD}/organizations/fabric-ca/org1/ca-cert.pem\n
+  684* cp ${PWD}/organizations/peerOrganizations/org1.example.com/msp/config.yaml ${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp/config.yaml\n
+  685* export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C channel1 -n emr -c '{"function":"ReadRecord","Args":["1"]}'\n
+  686* peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C channel1 -n emr -c '{"function":"CreateRecord","Args":["1", "John Doe", "Fever", "2025-04-02", "Prescribed rest and medication", "PATIENT123"]}'\n
+  687* peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C channel1 -n emr -c '{"function":"ReadRecord","Args":["1"]}'\n
+  688* docker ps --format "table {{.Names}}\t{{.Status}}" | grep couchdb\n
+  689* docker logs peer0.org1.example.com 2>&1 | tail -n 50\n
+  690* ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c channel1 -ccep "OR('Org1MSP.peer','Org2MSP.peer')"\n
+  691* export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C channel1 -n emr -c '{"function":"CreateRecord","Args":["1", "John Doe", "Fever", "2025-04-02", "Prescribed rest and medication", "PATIENT123"]}'\n
+  692* peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C channel1 -n emr -c '{"function":"ReadRecord","Args":["1"]}'\n
+  693* openssl x509 -in ${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp/signcerts/cert.pem -text | grep "Subject:" \n
+  694* peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C channel1 -n emr -c '{"function":"DeleteRecord","Args":["1"]}'\n
+  695* peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C channel1 -n emr -c '{"function":"CreateRecord","Args":["2", "John Doe", "Fever", "2025-04-02", "Prescribed rest and medication", "PATIENT123", "doctor1"]}'\n
+  696* peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C channel1 -n emr -c '{"function":"ReadRecord","Args":["2"]}'\n
+  697* openssl x509 -in ${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp/signcerts/cert.pem -text | grep -A5 "X509v3 extensions"\n
+  698* export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com\nfabric-ca-client register --caname ca-org1 --id.name doctor1 --id.secret doctor1pw --id.type client --id.attrs 'role=doctor:ecert,doctorId=doctor1:ecert' --tls.certfiles ${PWD}/organizations/fabric-ca/org1/tls-cert.pem\n
+  699* fabric-ca-client revoke -e doctor1 --caname ca-org1 --tls.certfiles ${PWD}/organizations/fabric-ca/org1/tls-cert.pem\n
+  700* fabric-ca-client register --caname ca-org1 --id.name doctor1 --id.secret doctor1pw --id.type client --id.attrs 'role=doctor:ecert,doctorId=doctor1:ecert' --tls.certfiles ${PWD}/organizations/fabric-ca/org1/tls-cert.pem\n
+  701* fabric-ca-client register --caname ca-org1 --id.name doctor2 --id.secret doctor2pw --id.type client --id.attrs 'role=doctor:ecert,doctorId=doctor2:ecert' --tls.certfiles ${PWD}/organizations/fabric-ca/org1/tls-cert.pem\n
+  702* fabric-ca-client enroll -u https://doctor2:doctor2pw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor2@org1.example.com/msp" --tls.certfiles ${PWD}/organizations/fabric-ca/org1/tls-cert.pem\n
+  703* export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor2@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C channel1 -n emr -c '{"function":"CreateRecord","Args":["3", "Jane Smith", "Headache", "2025-04-02", "Prescribed painkillers", "PATIENT456", "doctor2"]}'\n
+  704* ./network.sh down
+  705* history
+  706* history -h
+  707* history -help
+  708* history --help
+  709* history 100
+  710* history 50
+  711* history 10
+  712* history 5
+  713* go version
+  714* brew --version
+  715* brew update
+  716* brew upgrade
+  717* brew cleanup
+  718* brew go version
+  719* go version
+  720* brew upgrade go
+  721* curl -OL https://go.dev/dl/go1.22.1.darwin-arm64.pkg
+  722* sudo installer -pkg go1.22.1.darwin-arm64.pkg -target /
+  723* rm go1.22.1.darwin-arm64.pkg
+  724* go version
+  725* which go
+  726* sudo rm -rf /usr/local/go
+  727* sudo rm /usr/local/go/bin/go
+  728* sudo rm /usr/local/go/bin/go1.22.1
+  729* ls -al /usr/local/ | grep go
+  730* ls -al /usr/local/ 
+  731* ls -la /usr/local/bin/ | grep -i go
+  732* ls -al /usr/local/go/bin/
+  733* ls -al $HOME/go/bin/
+  734* ls -al $HOME/go/bin/gopls
+  735* ls -al $HOME/go/bin/gopls/
+  736* ls -al $HOME/go/bin/gopls
+  737* ls -la /usr/local/go/bin/
+  738* ls -la ~/go/bin/
+  739* echo $PATH
+  740* rm -rf ~/go/bin/dlv ~/go/bin/gopls ~/go/bin/staticcheck
+  741* go version
+  742* brew install go
+  743* go version
+  744* go mod tidy 
+  745* cd chaincode
+  746* go mod tidy 
+  747* go mod vendor
+  748* \tgo test -v
+  749* clc
+  750* clear
+  751* ls
+  752* cd ..
+  753* open ./
+  754* ls -l ~/Library/LaunchAgents/com.google.android.file.transfer.agent.plist
+  755* ls -l "/Applications/Android File Transfer.app"
+  756* ls -l /Library/LaunchAgents | grep -i android
+  757* ps aux | grep -i "android.*transfer"
+  758* ls -la "/Users/timotheeduthoit/Library/Application Support/Google/Android File Transfer/"
+  759* killall "Android File Transfer Agent"
+  760* mv "/Users/timotheeduthoit/Library/Application Support/Google/Android File Transfer/Android File Transfer Agent.app" "/Users/timotheeduthoit/Library/Application Support/Google/Android File Transfer/Android File Transfer Agent.app.disabled"
+  761* ls -al
+  762* cd ..
+  763* ls
+  764* cd ..
+  765* ls -al
+  766* cd ..
+  767* ls -al
+  768* ls -al | grep sh
+  769* more setOrgEnv.sh
+  770* more setOrgEnv.sh | grep register
+  771* more setOrgEnv.sh | grep org
+  772* docker ps -a
+  773* ls docker-compose-ca.yaml
+  774* ls -la
+  775* ./network.sh up -ca
+  776* ./network.sh createChannel -c emrChannel
+  777* ./network.sh createChannel -c emrchannel
+  778* docker ps -a
+  779* ./network.sh down
+  780* ./network.sh up -ca
+  781* ./network.sh createChannel -c emrchannel
+  782* docker ps -a
+  783* ./network.sh down && mkdir -p channel-artifacts && ./network.sh up -ca
+  784* sleep 5 && ./network.sh createChannel -c emrchannel
+  785* docker logs peer0.org1.example.com
+  786* ./network.sh down && rm -rf organizations/peerOrganizations organizations/ordererOrganizations && ./network.sh up -ca -s couchdb
+  787* sleep 10 && ./network.sh createChannel -c emrchannel
+  788* export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && ./network.sh createChannel -c emrchannel
+  789* docker ps | grep peer0.org1
+  790* ./network.sh down && docker volume prune -f && ./network.sh up -ca -s couchdb
+  791* export FABRIC_CFG_PATH=${PWD}/config && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && sleep 10 && ./network.sh createChannel -c emrchannel
+  792* docker logs peer0.org1.example.com
+  793* ./network.sh down && docker volume prune -f && mkdir -p organizations/peerOrganizations && mkdir -p organizations/ordererOrganizations && ./network.sh up -ca -s couchdb
+  794* docker logs orderer.example.com
+  795* ./network.sh down && docker volume prune -f && rm -rf organizations/peerOrganizations organizations/ordererOrganizations && ./network.sh up -ca -s couchdb && sleep 15
+  796* sleep 10 && export FABRIC_CFG_PATH=${PWD}/config && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && ./network.sh createChannel -c emrchannel
+  797* docker logs peer0.org1.example.com
+  798* ls 
+  799* ./network.sh down
+  800* ./network.sh up createChannel -ca -c channel1 -s couchdb
+  801* ./network.sh down
+  802* ./network.sh up createChannel -ca -c channel1 -s couchdb
+  803* ./network.sh down
+  804* ./network.sh up -ca 
+  805* ./network.sh down
+  806* pwd
+  807* cd /Users/timotheeduthoit/hyperledger/fabric-samples/
+  808* ls
+  809* cd test-network/
+  810* ls -al
+  811* ./network.sh up
+  812* ./network.sh createChannel
+  813* ./network.sh down
+  814* ./ network.sh up -ca 
+  815* ./network.sh up -ca
+  816* ls
+  817* ./network.sh down
+  818* ./network.sh up createChannel -c emrchannel -ca
+  819* ./network.sh down && ./network.sh up createChannel -c emrChannel -ca
+  820* ls
+  821* ispin tftp_rrq_001.pml
+  822* ls -al 
+  823* rm tftp_rrq_001.pml.trail && ispin tftp_rrq_001.pml
+  824* ./network.sh down && ./network.sh up createChannel -c emrChannel -ca
+  825* ./network.sh down
+  826* ./network.sh up -ca
+  827* ./network.sh down
+  828* ./network.sh down && ./network.sh up createChannel -c emrChannel -ca
+  829* ./network.sh down && ./network.sh up createChannel -c emrChannel -ca > cmd_log.txt
+  830* ./network.sh down
+  831* ./network.sh down && ./network.sh up createChannel -c emrChannel -ca > cmd_log.txt
+  832* ./network.sh down
+  833* docker-compose down --volumes --remove-orphans\ndocker system prune -f
+  834* ./network.sh down && ./network.sh up createChannel -c emrchannel -ca > cmd_log.txt
+  835* pwd
+  836* cd /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net
+  837* ls
+  838* ./network.sh down
+  839* ls -la
+  840* docker ps -a
+  841* ./network.sh -h
+  842* ls -la chaincode
+  843* ls -la organizations/fabric-ca
+  844* ls -la compose
+  845* docker ps -a
+  846* ./network.sh up -ca -c emrchannel -s couchdb
+  847* docker exec -it peer0.org1.example.com peer channel list
+  848* ./network.sh createChannel -c emrchannel
+  849* docker ps -a
+  850* docker logs peer0.org2.example.com
+  851* chmod +x fix_enrollments.sh
+  852* ./fix_enrollments.sh
+  853* find .. -name "fabric-ca-client"
+  854* ./fix_enrollments.sh
+  855* cat organizations/fabric-ca/org1/fabric-ca-server-config.yaml
+  856* cat registerEnroll.sh
+  857* find .. -name "registerEnroll.sh"
+  858* cat ../emr-net/organizations/fabric-ca/registerEnroll.sh
+  859* chmod +x fix_enrollments.sh
+  860* ./fix_enrollments.sh
+  861* ./network.sh down 
+  862* ls -la
+  863* head -n 50 network.sh
+  864* grep -A 5 -B 5 "ca" network.sh | head -n 30
+  865* grep -n "function" network.sh | head -n 15
+  866* sed -n '157,250p' network.sh
+  867* sed -n '250,289p' network.sh
+  868* ./network.sh -h
+  869* ./network.sh up createChannel -ca -c emrchannel
+  870* docker ps
+  871* ls -la compose/
+  872* cat compose/compose-test-net.yaml
+  873* find . -name "core.yaml"
+  874* grep -A 10 "function networkUp" network.sh
+  875* grep -A 50 "function networkUp" network.sh
+  876* cat compose/docker/docker-compose-test-net.yaml
+  877* ./network.sh down
+  878* ./network.sh up createChannel -ca -c emrchannel
+  879* docker ps
+  880* cat compose/compose-test-net.yaml
+  881* ls -la organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls
+  882* ls -la organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls
+  883* cat organizations/fabric-ca/registerEnroll.sh | grep -A 20 createOrg2
+  884* cat organizations/fabric-ca/registerEnroll.sh
+  885* ./network.sh down
+  886* ./network.sh up createChannel -ca -c emrchannel
+  887* ./network.sh down
+  888* ./network.sh up -ca -c emrchannel -s couchdb
+  889* ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+  890* ./network.sh down
+  891* ./network.sh up -ca -c -s couchdb
+  892* ./network.sh up -ca -c emrchannel -s couchdb
+  893* which peer
+  894* docker ps -a
+  895* export CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/msp/peers/peer0.org1.example.com/tls/ca.crt && peer channel list
+  896* docker-compose -f docker-compose.yaml down --volumes --remove-orphans
+  897* ls -la
+  898* ./network.sh down
+  899* ./network.sh up createChannel -ca
+  900* export CORE_PEER_MSPCONFIGPATH=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && peer channel list
+  901* export PATH=${PWD}/../bin:$PATH && which peer
+  902* export PATH=${PWD}/../bin:$PATH && export FABRIC_CFG_PATH=$PWD/../config/ && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_ADDRESS=localhost:7051 && peer channel list
+  903* export PATH=${PWD}/../bin:$PATH && export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com && fabric-ca-client identity list --id.affiliation org1.example.com --tls.certfiles ${PWD}/organizations/fabric-ca/org1/ca-cert.pem --url https://localhost:7054 --caname ca-org1
+  904* export PATH=${PWD}/../bin:$PATH && export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org2.example.com && fabric-ca-client identity list --id.affiliation org2.example.com --tls.certfiles ${PWD}/organizations/fabric-ca/org2/ca-cert.pem --url https://localhost:8054 --caname ca-org2
+  905* export PATH=${PWD}/../bin:$PATH && export FABRIC_CFG_PATH=$PWD/../config/ && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org2MSP" && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt && export CORE_PEER_ADDRESS=localhost:9051 && peer channel list
+  906* export PATH=${PWD}/../bin:$PATH && export FABRIC_CFG_PATH=$PWD/../config/ && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_ADDRESS=localhost:7051 && peer channel fetch config config_block.pb -c emrchannel -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem && configtxlator proto_decode --input config_block.pb --type common.Block | jq .data.data[0].payload.data.config
+  907* export PATH=${PWD}/../bin:$PATH && export FABRIC_CFG_PATH=$PWD/../config/ && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_ADDRESS=localhost:7051 && peer channel getinfo -c emrchannel
+  908* echo 'export PATH=$PATH:$HOME/hyperledger/fabric-samples/bin' >> ~/.zshrc && source ~/.zshrc
+  909* which peer && which fabric-ca-client && which configtxgen
+  910* nano ~/.zshrc
+  911* ./network.sh down
+  912* ./network.sh up createChannel -ca
+  913* ./network.sh down
+  914* ./network.sh up createChannel -ca
+  915* docker-compose -f docker-compose.yaml down --volumes --remove-orphans
+  916* docker ps -a
+  917* nano ~/.zshrc
+  918* source ~/.zshrc
+  919* ./network.sh down
+  920* ./network.sh up createChannel -ca
+  921* ./network.sh down
+  922* ./network.sh up createChannel -ca
+  923* nano ~/.zshrc
+  924* source ~/.zshrc
+  925* docker ps --format "table {{.Names}}\t{{.Status}}"
+  926* peer channel list --tls --orderer orderer.example.com:7050 --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel
+  927* export CORE_PEER_TLS_ENABLED=true\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\npeer channel list
+  928* export CORE_PEER_TLS_ENABLED=true\nexport CORE_PEER_LOCALMSPID="Org2MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:9051\npeer channel list
+  929* export CORE_PEER_TLS_ENABLED=true\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\npeer lifecycle chaincode queryinstalled
+  930* ls -l chaincode/
+  931* peer lifecycle chaincode package emr.tar.gz --path ./chaincode/ --lang golang --label emr_1.0
+  932* peer lifecycle chaincode install emr.tar.gz
+  933* export CORE_PEER_TLS_ENABLED=true\nexport CORE_PEER_LOCALMSPID="Org2MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:9051\npeer lifecycle chaincode install emr.tar.gz
+  934* export CC_PACKAGE_ID=emr_1.0:6abdcb4ca42467a390b0cb5927ec2c2854d2513b010448a6894703faa65c8ce8\npeer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID emrchannel --name emr --version 1.0 --package-id $CC_PACKAGE_ID --sequence 1 --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+  935* export CORE_PEER_TLS_ENABLED=true\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\npeer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID emrchannel --name emr --version 1.0 --package-id $CC_PACKAGE_ID --sequence 1 --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+  936* peer lifecycle chaincode checkcommitreadiness --channelID emrchannel --name emr --version 1.0 --sequence 1 --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --output json
+  937* peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID emrchannel --name emr --version 1.0 --sequence 1 --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
+  938* peer lifecycle chaincode querycommitted --channelID emrchannel --name emr --output json
+  939* which peer
+  940* ls -al | grep _test
+  941* ls -al
+  942* ls -al | grep sh
+  943* cd .. && ls -al | grep sh
+  944* mv h1_tests.sh ./emr-net/
+  945* cd emr-net
+  946* ls -al | grep _test
+  947* cd ..
+  948* ls
+  949* ls -al | grep sh
+  950* cd -
+  951* chmod +x h1_tests.sh
+  952* ./h1_tests.sh
+  953* which peer
+  954* ls -l ${PWD}/organizations/peerOrganizations/org1.example.com/users/
+  955* ls -l ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/
+  956* export CORE_PEER_TLS_ENABLED=true\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\nexport ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem\n\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${ORDERER_CA} -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"Args":["CreateRecord","EMR001","patient1","doctor1","hospital1","Common Cold"]}'
+  957* ls -la ${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp/\necho "=== Compare with Admin MSP ==="\nls -la ${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/
+  958* ls -l ${PWD}/organizations/fabric-ca/ | grep -i hospital
+  959* export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/\nfabric-ca-client enroll -u https://hospital1:h1pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp" --enrollment.attrs "role=hospital" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  960* export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/\nfabric-ca-client register --caname ca-org1 --id.name hospital1 --id.secret h1pass --id.type client --id.attrs "role=hospital:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  961* export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/\nfabric-ca-client identity remove hospital1 --caname ca-org1 --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  962* export CORE_PEER_TLS_ENABLED=true\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\nexport ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem\n\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${ORDERER_CA} -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"Args":["CreateRecord","EMR001","patient1","doctor1","hospital1","Common Cold"]}'
+  963* ./network.sh down
+  964* ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+  965* ls -al
+  966* ./h1_tests.sh
+  967* peer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR001"]}'\n
+  968* ./network.sh down
+  969* ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+  970* ./h1_tests.sh
+  971* peer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR001"]}'\n
+  972* echo "=== Environment Variables ==="\nenv | grep CORE_PEER\necho "=== Hospital1 MSP Structure ==="\nls -R organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp/\necho "=== Certificate Info ==="\nopenssl x509 -in organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp/signcerts/cert.pem -text | grep -A1 "Subject Alternative Name" || echo "No SAN found"
+  973* export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt\nexport CORE_PEER_TLS_ENABLED=true\n\necho "Attempting query with Hospital1's MSP..."\npeer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR001"]}'
+  974* ./network.sh down && ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+  975* sleep 10
+  976* peer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR001"]}'
+  977* peer chaincode query -C emrchannel -n emr -c '{"Args":["GetIdentityAttributes"]}'
+  978* ./network.sh deployCC -ccn emrcc -ccp chaincode/ -ccl go -c emrchannel
+  979* peer chaincode query -C emrchannel -n emrcc -c '{"Args":["GetIdentityAttributes"]}'
+  980* peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${ORDERER_CA} -C emrchannel -n emr --peerAddresses localhost:8051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"Args":["CreateRecord","EMR002","patient1","doctor1","hospital1","Common Cold"]}'\n
+  981* ./network.sh down && ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+  982* ./network.sh down
+  983* run the following command and check if the peers properly join the channel. Investigate issues that may arrise and suggest a fix please. Command: ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+  984* ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+  985* peer channel list
+  986* export FABRIC_CFG_PATH=$PWD/../config/ && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && peer channel list
+  987* export FABRIC_CFG_PATH=$PWD/../config/ && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:8051 && peer channel join -b ./channel-artifacts/emrchannel.block
+  988* export FABRIC_CFG_PATH=$PWD/../config/ && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org2MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp && export CORE_PEER_ADDRESS=localhost:9051 && peer channel join -b ./channel-artifacts/emrchannel.block
+  989* export FABRIC_CFG_PATH=$PWD/../config/ && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org2MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp && export CORE_PEER_ADDRESS=localhost:10051 && peer channel join -b ./channel-artifacts/emrchannel.block
+  990* echo "Checking peer0.org1..." && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && peer channel list && echo -e "\nChecking peer1.org1..." && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt && export CORE_PEER_ADDRESS=localhost:8051 && peer channel list && echo -e "\nChecking peer0.org2..." && export CORE_PEER_LOCALMSPID="Org2MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp && export CORE_PEER_ADDRESS=localhost:9051 && peer channel list && echo -e "\nChecking peer1.org2..." && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt && export CORE_PEER_ADDRESS=localhost:10051 && peer channel list
+  991* ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+  992* ./network.sh down && ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+  993* go mod tisy
+  994* go mod tidy
+  995* go mod vendor
+  996* go test -v
+  997* cd chaincode 
+  998* go test -v
+  999* ./network.sh down && ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+ 1000* cd /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/
+ 1001* ls -al
+ 1002* ./network.sh down && ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+ 1003* export FABRIC_CFG_PATH=$PWD/../config/ &&\nexport CORE_PEER_TLS_ENABLED=true &&\nexport CORE_PEER_LOCALMSPID="Org2MSP" &&\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt &&\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp &&\nexport CORE_PEER_ADDRESS=localhost:9051 && peer channel join -b ./channel-artifacts/emrchannel.block
+ 1004* peer channel fetch config ./channel-artifacts/config_block.pb -o localhost:7050 -c emrchannel --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+ 1005* peer channel join -b ./channel-artifacts/emrchannel.block
+ 1006* peer channel fetch config ./channel-artifacts/config_block.pb -o localhost:7050 -c emrchannel --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+ 1007* peer channel join -b ./channel-artifacts/emrchannel.block
+ 1008* ./network.sh down && ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+ 1009* peer channel list
+ 1010* peer channel getinfo -c emrchannel
+ 1011* ls docker/
+ 1012* ls
+ 1013* ls organizations/peerOrganizations/
+ 1014* export CORE_PEER_MSPCONFIGPATH=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && peer channel list
+ 1015* export CORE_PEER_MSPCONFIGPATH=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp && export CORE_PEER_ADDRESS=localhost:9051 && export CORE_PEER_LOCALMSPID="Org2MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt && peer channel list
+ 1016* ls organizations/peerOrganizations/org1.example.com/peers/
+ 1017* ls organizations/peerOrganizations/org2.example.com/peers/
+ 1018* export CORE_PEER_MSPCONFIGPATH=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:8051 && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt && peer channel list
+ 1019* export CORE_PEER_MSPCONFIGPATH=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp && export CORE_PEER_ADDRESS=localhost:10051 && export CORE_PEER_LOCALMSPID="Org2MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt && peer channel list
+ 1020* ./network.sh down && ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+ 1021  ./h1_tests.sh
+ 1022  docker exec cli peer chaincode query -C emrchannel -n emrcc -c '{"Args":["GetAllIdentities"]}' | jq '.'
+ 1023  peer chaincode query -C emrchannel -n emrcc -c '{"Args":["GetAllIdentities"]}'
+ 1024  ./h1_tests.sh
+ 1025  ./h1_tests.sh
+ 1026  ./h1_tests.sh
+ 1027  ./h1_tests.sh
+ 1028  ./h1_tests.sh
+ 1029  ./h1_tests.sh
+ 1030  ls -la
+ 1031  ls -l organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/
+ 1032  ls -l organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/
+ 1033  find . -name "core.yaml"
+ 1034  export FABRIC_CFG_PATH=${PWD}/compose/docker/peercfg && ./h1_tests.sh
+ 1035  export FABRIC_CFG_PATH=${PWD}/compose/docker/peercfg && ./h1_tests.sh
+ 1036  ./h1_tests.sh
+ 1037* ./network.sh down
+ 1038  ./network.sh down && ./network.sh up createChannel -ca && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+ 1039  ./h1_tests.sh
+ 1040  ./network.sh down && ./network.sh up -ca -c emrchannel -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+ 1041  ./network.sh down && ./network.sh up -ca -c emrchannel -s couchdb
+ 1042  docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+ 1043  docker exec peer0.org1.example.com peer chaincode list --installed
+ 1044  export CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/org1-artifacts/msp/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/org1-artifacts/msp/tlscacerts/tls-cert.pem && peer chaincode list --installed
+ 1045  docker exec -e CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp peer0.org1.example.com peer chaincode list --installed
+ 1046  docker exec peer0.org1.example.com peer channel list
+ 1047  ./network.sh down
+ 1048  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+ 1049  docker ps -a
+ 1050  ./h1_tests.sh
+ 1051  peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser","hospital1"]}'\n
+ 1052  export CORE_PEER_TLS_ENABLED=true\nexport CORE_PEER_LOCALMSPID="Org1MSP"\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp\nexport CORE_PEER_ADDRESS=localhost:7051\nexport ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem\n
+ 1053  peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser","hospital1"]}'\n
+ 1054  docker ps --format "{{.Names}}" | grep couchdb
+ 1055  curl -s http://admin:adminpw@localhost:5984/_users/_all_docs
+ 1056  curl -s http://admin:adminpw@localhost:5984/_all_dbs
+ 1057  curl -s http://admin:adminpw@localhost:5984/emrchannel_/_all_docs
+ 1058  curl -s http://admin:adminpw@localhost:5984/emrchannel_emr/_all_docs
+ 1059  ls -la wallet/
+ 1060  export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=./organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=./organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ./organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles ./organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ./organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"function":"RegisterUser","Args":["hospital3"]}'
+ 1061  ls organizations/peerOrganizations/
+ 1062  ls organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/
+ 1063  export FABRIC_CFG_PATH=$PWD/config/ && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=$PWD/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=$PWD/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $PWD/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PWD/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles $PWD/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"function":"RegisterUser","Args":["hospital3"]}'
+ 1064  ls -la
+ 1065  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client register --caname ca-org1 --id.name hospital3 --id.secret hospital3pw --id.type client --id.attrs 'role=hospital:ecert' --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+ 1066  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client enroll -u https://hospital3:hospital3pw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" --enrollment.attrs "role"
+ 1067  cp "${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp/config.yaml" && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"function":"RegisterUser","Args":["hospital3"]}'
+ 1068  find . -name core.yaml
+ 1069  export FABRIC_CFG_PATH=${PWD}/compose/docker/peercfg && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"function":"RegisterUser","Args":["hospital3"]}'
+ 1070  peer chaincode query -C emrchannel -n emr -c '{"function":"GetUser","Args":["hospital3"]}'
+ 1071  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client register --caname ca-org1 --id.name doctor1 --id.secret doctor1pw --id.type client --id.attrs 'role=doctor:ecert' --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+ 1072  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client enroll -u https://doctor1:doctor1pw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" --enrollment.attrs "role"
+ 1073  cp "${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp/config.yaml" && export FABRIC_CFG_PATH=${PWD}/compose/docker/peercfg && export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"function":"RegisterUser","Args":["doctor1"]}'
+ 1074  peer chaincode query -C emrchannel -n emr -c '{"function":"GetUser","Args":["doctor1"]}'
+ 1075  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+ 1076  ./h1_tests.sh
+ 1077  ./h1_tests.sh
+ 1078  ./h1_tests.sh
+ 1079  ls -l organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp 2>/dev/null || echo "Directory not found"
+ 1080  fabric-ca-client register --caname ca-org1 --id.name hospital3 --id.secret h3pass --id.type client --id.attrs "role=hospital:ecert,hf.Affiliation=org1" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+ 1081  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client enroll -u https://admin:adminpw@localhost:7054 --caname ca-org1 --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+ 1082  fabric-ca-client register --caname ca-org1 --id.name hospital3 --id.secret h3pass --id.type client --id.attrs "role=hospital:ecert,hf.Affiliation=org1" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && fabric-ca-client enroll -u https://hospital3:h3pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp" --enrollment.attrs "role,hf.Affiliation" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+ 1083  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp && fabric-ca-client register --caname ca-org1 --id.name hospital3 --id.secret h3pass --id.type client --id.attrs "role=hospital:ecert,hf.Affiliation=org1" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+ 1084  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+ 1085  ./h1_tests.sh
+ 1086  ./h1_tests.sh
+ 1087  ls -la organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp/
+ 1088  cat organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp/config.yaml
+ 1089  ls -la organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp/cacerts/
+ 1090  cp organizations/fabric-ca/org1/ca-cert.pem organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp/cacerts/localhost-7054-ca-org1.pem && ls -la organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp/signcerts/
+ 1091  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel
+ 1092* go test -v
+ 1093* go mod tidy
+ 1094* cd chaincode 
+ 1095* go mod vendor
+ 1096* go test -v
+ 1097  ./h1_tests.sh
+ 1098  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1099  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1100  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1101  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1102  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client identity remove hospital1 2>/dev/null; fabric-ca-client register --caname ca-org1 --id.name hospital1 --id.secret h1pass --id.type client --id.affiliation org1 --id.attrs "role=hospital:ecert,hf.Affiliation=org1" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && mkdir -p organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp/admincerts && fabric-ca-client enroll -u https://hospital1:h1pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp" --id.affiliation org1 --enrollment.attrs "role,hf.Affiliation" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && cp organizations/peerOrganizations/org1.example.com/msp/config.yaml organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp/config.yaml
+ 1103  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client enroll -u https://admin:adminpw@localhost:7054 --caname ca-org1 --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && fabric-ca-client register --caname ca-org1 --id.name hospital1 --id.secret h1pass --id.type client --id.affiliation org1 --id.attrs "role=hospital:ecert,hf.Affiliation=org1" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+ 1104  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client affiliation add org1 --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+ 1105  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client register --caname ca-org1 --id.name hospital3 --id.secret h3pass --id.type client --id.affiliation org1 --id.attrs "role=hospital:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && mkdir -p organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp/admincerts && fabric-ca-client enroll -u https://hospital3:h3pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp" --enrollment.attrs "role" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && cp organizations/peerOrganizations/org1.example.com/msp/config.yaml organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp/config.yaml
+ 1106  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"function":"registerUser","Args":["hospital3@org1.example.com"]}'
+ 1107  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client enroll -u https://admin:adminpw@localhost:7054 --caname ca-org1 --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && fabric-ca-client affiliation list --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+ 1108  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client register --caname ca-org1 --id.name hospital3 --id.secret h3pass --id.type client --id.affiliation org1.hospital --id.attrs "role=hospital:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && mkdir -p organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp/admincerts && fabric-ca-client enroll -u https://hospital3:h3pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp" --enrollment.attrs "role" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && cp organizations/peerOrganizations/org1.example.com/msp/config.yaml organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp/config.yaml
+ 1109  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ && fabric-ca-client register --caname ca-org1 --id.name hospital4 --id.secret h4pass --id.type client --id.affiliation org1.hospital --id.attrs "role=hospital:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && mkdir -p organizations/peerOrganizations/org1.example.com/users/hospital4@org1.example.com/msp/admincerts && fabric-ca-client enroll -u https://hospital4:h4pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital4@org1.example.com/msp" --enrollment.attrs "role" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && cp organizations/peerOrganizations/org1.example.com/msp/config.yaml organizations/peerOrganizations/org1.example.com/users/hospital4@org1.example.com/msp/config.yaml
+ 1110  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1111  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1112  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1113  fabric-ca-client affiliation list -u https://admin:adminpw@localhost:7054 --tls.certfiles organizations/fabric-ca/org1/ca-cert.pem
+ 1114  fabric-ca-client affiliation list -u https://admin:adminpw@localhost:7054 --tls.certfiles organizations/fabric-ca/org1/ca-cert.pem --caname ca-org1
+ 1115  ls -R organizations/fabric-ca/
+ 1116  fabric-ca-client affiliation list -u https://admin:adminpw@localhost:7054 --tls.certfiles organizations/fabric-ca/org1/ca-cert.pem --caname ca-org1
+ 1117  fabric-ca-client affiliation add org1 -u https://admin:adminpw@localhost:7054 --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem --caname ca-org1
+ 1118  fabric-ca-client register --caname ca-org1 --id.name hospital3 --id.secret h3pass --id.type client --id.affiliation . --id.attrs "role=hospital:ecert" -u https://admin:adminpw@localhost:7054 --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
+ 1119  fabric-ca-client enroll -u https://admin:adminpw@localhost:7054 --caname ca-org1 --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
+ 1120  fabric-ca-client register --caname ca-org1 --id.name hospital3 --id.secret h3pass --id.type client --id.affiliation org1 --id.attrs "role=hospital:ecert" -u https://admin:adminpw@localhost:7054 --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
+ 1121  fabric-ca-client enroll -u https://hospital3:h3pass@localhost:7054 --caname ca-org1 -M /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp --enrollment.attrs "role,hf.Affiliation" --tls.certfiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/fabric-ca/org1/ca-cert.pem
+ 1122  openssl x509 -in organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp/signcerts/cert.pem -text -noout
+ 1123  peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"function":"registerUser","Args":["hospital3", "org1"]}'
+ 1124  cp organizations/peerOrganizations/org1.example.com/msp/config.yaml organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp/config.yaml
+ 1125  export CORE_PEER_MSPCONFIGPATH=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp && peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"function":"RegisterUser","Args":[]}'
+ 1126  export FABRIC_CFG_PATH=/Users/timotheeduthoit/hyperledger/fabric-samples/config && export CORE_PEER_MSPCONFIGPATH=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/hospital3@org1.example.com/msp && peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"function":"RegisterUser","Args":[]}'
+ 1127  history | grep "peer lifecycle chaincode"
+ 1128  history | grep chaincode
+ 1129  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1130  peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser","hospital1@Org1.example.com"]}'
+ 1131  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1132  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1133  peer chaincode query -C emrchannel -n emr -c '{"Args":["GetIdentityAttributes"]}'
+ 1134  export CORE_PEER_TLS_ENABLED=true && export CORE_PEER_LOCALMSPID="Org1MSP" && export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt && export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp && export CORE_PEER_ADDRESS=localhost:7051 && export ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem && peer chaincode query -C emrchannel -n emr -c '{"Args":["GetIdentityAttributes"]}'
+ 1135  peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"Args":["RegisterUser"]}'
+ 1136  peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "hospital1@org1.example.com"]}'
+ 1137  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1138  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1139  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1140  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1141  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh
+ 1142  env | grep CORE
+ 1143  export CORE_PEER_MSPCONFIGPATH=/Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/users/hospital2@org1.example.com/msp && echo "Checking hospital2's role again:" && peer chaincode query -C emrchannel -n emr -c '{"Args":["GetRole"]}'
+ 1144  peer chaincode query -C emrchannel -n emr -c '{"Args":["CheckRoleById"]}'
+ 1145  peer chaincode query -C emrchannel -n emr -c '{"Args":["GetIdentityAttributes"]}'
+ 1146  peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem --peerAddresses localhost:9051 --tlsRootCertFiles /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem -c '{"Args":["RegisterUser"]}'
+ 1147  peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "hospital2@org1.example.com"]}'
+ 1148  chmod +x h1_test.sh
+ 1149  ./h1_test.sh
+ 1150  chmod +x p_reg.sh && ./p_reg.sh
+ 1151  peer chaincode query -C emrchannel -n emr -c '{"Args":["GetIdentityAttributes"]}'
+ 1152  chmod +x p_reg.sh && ./p_reg.sh
+ 1153  ./p_reg.sh
+ 1154  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h1_tests.sh && ./p_reg.sh
+ 1155  ls -al | grep _reg
+ 1156  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h_reg.sh && ./p_reg.sh
+ 1157  ./p_reg.sh
+ 1158  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h_reg.sh && ./p_reg.sh
+ 1159* go mod tidy
+ 1160* go mod vendor
+ 1161* go test -v
+ 1162  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h_reg.sh && ./p_reg.sh
+ 1163  ./h_reg.sh
+ 1164  chmod +x d_reg.sh && ./d_reg.sh
+ 1165  ./d_reg.sh
+ 1166  ./network.sh down && ./network.sh up createChannel -ca -s couchdb && ./network.sh deployCC -ccn emr -ccp ./chaincode -ccl go -c emrchannel && ./h_reg.sh && ./p_reg.sh && ./d_reg.sh
+ 1167  export CORE_PEER_LOCALMSPID="Org1MSP" && \\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem && \\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp && \\nexport CORE_PEER_ADDRESS=localhost:7051 && \\nexport ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem && \\nexport PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem && \\nexport PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem && \\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \\n-C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \\n--peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \\n-c '{"Args":["CreateRecord","EMR111","patient1@org2.example.com","doctor1@org1.example.com","hospital1@org1.example.com","not actually sick"]}'
+ 1168  peer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}'
+ 1169  export CORE_PEER_LOCALMSPID="Org2MSP" && \\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem && \\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/patient1@org2.example.com/msp && \\nexport CORE_PEER_ADDRESS=localhost:9051 && \\npeer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}'
+ 1170  echo "Testing access as patient2..." && \\nexport CORE_PEER_LOCALMSPID="Org2MSP" && \\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem && \\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/patient2@org2.example.com/msp && \\nexport CORE_PEER_ADDRESS=localhost:9051 && \\npeer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}'
+ 1171  echo "Testing access as doctor2..." && \\nexport CORE_PEER_LOCALMSPID="Org1MSP" && \\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem && \\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor2@org1.example.com/msp && \\nexport CORE_PEER_ADDRESS=localhost:7051 && \\npeer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}'
+ 1172  export CORE_PEER_LOCALMSPID="Org1MSP" && \\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem && \\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp && \\nexport CORE_PEER_ADDRESS=localhost:7051 && \\nexport ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem && \\nexport PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem && \\nexport PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem && \\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \\n-C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \\n--peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \\n-c '{"Args":["ShareRecordWithDoctor","EMR111","doctor2@org1.example.com"]}'
+ 1173  peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \\n-C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \\n--peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \\n-c '{"Args":["ShareRecord","EMR111","doctor2@org1.example.com","doctor"]}'
+ 1174  export CORE_PEER_LOCALMSPID="Org1MSP" && \\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem && \\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor2@org1.example.com/msp && \\nexport CORE_PEER_ADDRESS=localhost:7051 && \\npeer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}'
+ 1175  export CORE_PEER_LOCALMSPID="Org1MSP" && \\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem && \\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/doctor1@org1.example.com/msp && \\nexport CORE_PEER_ADDRESS=localhost:7051 && \\nexport ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem && \\nexport PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem && \\nexport PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem && \\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \\n-C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \\n--peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \\n-c '{"Args":["ShareRecord","EMR111","hospital2@org1.example.com","hospital"]}'
+ 1176  export CORE_PEER_LOCALMSPID="Org1MSP" && \\nexport CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem && \\nexport CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital2@org1.example.com/msp && \\nexport CORE_PEER_ADDRESS=localhost:7051 && \\npeer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}'
+ 1177  cat << 'EOF' > create_n_share_111.sh\n#!/bin/bash\n\n# Exit on any error\nset -e\n\n# Function to set environment variables for a specific user\nset_user_env() {\n    local org=$1\n    local user=$2\n    local port=$3\n    \n    export CORE_PEER_LOCALMSPID="${org}MSP"\n    export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/${org,,}.example.com/tlsca/tlsca.${org,,}.example.com-cert.pem\n    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/${org,,}.example.com/users/${user}@${org,,}.example.com/msp\n    export CORE_PEER_ADDRESS=localhost:${port}\n}\n\n# Set common environment variables\nexport ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem\nexport PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem\nexport PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem\n\necho "1. Creating EMR as doctor1..."\nset_user_env "Org1" "doctor1" "7051"\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \\n-C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \\n--peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \\n-c '{"Args":["CreateEMR","EMR111","not actually sick"]}'\nsleep 3\n\necho -e "\n2. Testing access as patient2 (should fail)..."\nset_user_env "Org2" "patient2" "9051"\nif peer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}' 2>/dev/null; then\n    echo "Error: patient2 should not have access"\n    exit 1\nelse\n    echo "Success: patient2 access denied as expected"\nfi\n\necho -e "\n3. Testing access as doctor2 (should fail)..."\nset_user_env "Org1" "doctor2" "7051"\nif peer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}' 2>/dev/null; then\n    echo "Error: doctor2 should not have access"\n    exit 1\nelse\n    echo "Success: doctor2 access denied as expected"\nfi\n\necho -e "\n4. Sharing EMR with doctor2..."\nset_user_env "Org1" "doctor1" "7051"\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \\n-C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \\n--peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \\n-c '{"Args":["ShareRecord","EMR111","doctor2@org1.example.com","doctor"]}'\nsleep 3\n\necho -e "\n5. Verifying doctor2 access (should succeed)..."\nset_user_env "Org1" "doctor2" "7051"\npeer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}'\n\necho -e "\n6. Sharing EMR with hospital2..."\nset_user_env "Org1" "doctor1" "7051"\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \\n-C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \\n--peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \\n-c '{"Args":["ShareRecord","EMR111","hospital2@org1.example.com","hospital"]}'\nsleep 3\n\necho -e "\n7. Verifying hospital2 access (should succeed)..."\nset_user_env "Org1" "hospital2" "7051"\npeer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}'\n\necho -e "\nAll tests completed successfully!"\nEOF\n\nchmod +x create_n_share_111.sh
+ 1178  cat create_n_share_111.sh
+ 1179  ./create_n_share_111.sh
+ 1180  cat << 'EOF' > create_n_share_111.sh\n#!/bin/bash\n\n# Exit on any error\nset -e\n\n# Function to set environment variables for a specific user\nset_user_env() {\n    local org=$1\n    local user=$2\n    local port=$3\n    local org_lower=$(echo "$org" | tr '[:upper:]' '[:lower:]')\n    \n    export CORE_PEER_LOCALMSPID="${org}MSP"\n    export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/${org_lower}.example.com/tlsca/tlsca.${org_lower}.example.com-cert.pem\n    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/${org_lower}.example.com/users/${user}@${org_lower}.example.com/msp\n    export CORE_PEER_ADDRESS=localhost:${port}\n}\n\n# Set common environment variables\nexport ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem\nexport PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem\nexport PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem\n\necho "1. Creating EMR as doctor1..."\nset_user_env "Org1" "doctor1" "7051"\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \\n-C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \\n--peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \\n-c '{"Args":["CreateEMR","EMR111","not actually sick"]}'\nsleep 3\n\necho -e "\n2. Testing access as patient2 (should fail)..."\nset_user_env "Org2" "patient2" "9051"\nif peer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}' 2>/dev/null; then\n    echo "Error: patient2 should not have access"\n    exit 1\nelse\n    echo "Success: patient2 access denied as expected"\nfi\n\necho -e "\n3. Testing access as doctor2 (should fail)..."\nset_user_env "Org1" "doctor2" "7051"\nif peer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}' 2>/dev/null; then\n    echo "Error: doctor2 should not have access"\n    exit 1\nelse\n    echo "Success: doctor2 access denied as expected"\nfi\n\necho -e "\n4. Sharing EMR with doctor2..."\nset_user_env "Org1" "doctor1" "7051"\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \\n-C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \\n--peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \\n-c '{"Args":["ShareRecord","EMR111","doctor2@org1.example.com","doctor"]}'\nsleep 3\n\necho -e "\n5. Verifying doctor2 access (should succeed)..."\nset_user_env "Org1" "doctor2" "7051"\npeer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}'\n\necho -e "\n6. Sharing EMR with hospital2..."\nset_user_env "Org1" "doctor1" "7051"\npeer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA \\n-C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \\n--peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \\n-c '{"Args":["ShareRecord","EMR111","hospital2@org1.example.com","hospital"]}'\nsleep 3\n\necho -e "\n7. Verifying hospital2 access (should succeed)..."\nset_user_env "Org1" "hospital2" "7051"\npeer chaincode query -C emrchannel -n emr -c '{"Args":["ReadRecord","EMR111"]}'\n\necho -e "\nAll tests completed successfully!"\nEOF\n\nchmod +x create_n_share_111.sh
+ 1181  ./create_n_share_111.sh
+ 1182  history > cmd_history_sharing.log 
+ 1183  nano cmd_history_sharing.log
