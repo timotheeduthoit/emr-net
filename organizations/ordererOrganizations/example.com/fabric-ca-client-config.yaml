@@ -117,7 +117,7 @@ csr:
       O: Hyperledger
       OU: Fabric
   hosts:
-    - Timothees-MBP
+    - Timothees-MacBook-Pro.local
 
 #############################################################################
 #  Registration section used to register a new identity with fabric-ca server

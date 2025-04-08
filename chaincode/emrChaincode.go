@@ -15,11 +15,9 @@ type EMRChaincode struct {
 }
 
 type User struct {
-    UserID   string `json:"userId"`
-    Role     string `json:"role"`
-    FullName string `json:"fullName"`
-    Email    string `json:"email"`
-    CreatedOn string `json:"createdOn"`
+	UserID   string `json:"userId"`
+	Role     string `json:"role"`
+	FullName string `json:"fullName"`
 }
 
 type EMR struct {
@@ -239,16 +237,16 @@ func (c *EMRChaincode) isAuthorizedToShare(role string, clientID string, emr *EM
 }
 
 func main() {
-    chaincode, err := contractapi.NewChaincode(new(EMRChaincode))
-    if err != nil {
-        fmt.Printf("Error create EMRChaincode: %s", err.Error())
-        return
-    }
+	chaincode, err := contractapi.NewChaincode(new(EMRChaincode))
+	if err != nil {
+		fmt.Printf("Error create EMRChaincode: %s", err.Error())
+		return
+	}
 
-    // Register the chaincode
-    if err := chaincode.Start(); err != nil {
-        fmt.Printf("Error starting EMRChaincode: %s", err.Error())
-    }
+	// Register the chaincode
+	if err := chaincode.Start(); err != nil {
+		fmt.Printf("Error starting EMRChaincode: %s", err.Error())
+	}
 }
 
 // GetIdentityAttributes retrieves all attributes of the invoking client identity
@@ -282,65 +280,83 @@ func (c *EMRChaincode) GetIdentityAttributes(ctx contractapi.TransactionContextI
 	return attributes, nil
 }
 
-func (c *EMRChaincode) RegisterUser(ctx contractapi.TransactionContextInterface, fullName string, email string) error {
-    // Get the client ID
-    clientID, err := ctx.GetClientIdentity().GetID()
-    if err != nil {
-        return fmt.Errorf("failed to get client ID: %v", err)
-    }
+func (c *EMRChaincode) RegisterUser(ctx contractapi.TransactionContextInterface, fullName string) error {
+	// Get the client ID
+	clientID, err := ctx.GetClientIdentity().GetID()
+	if err != nil {
+		return fmt.Errorf("failed to get client ID: %v", err)
+	}
 
-    // Check if the user is already registered
-    existingUser, err := ctx.GetStub().GetState(clientID)
-    if err != nil {
-        return fmt.Errorf("failed to check if user is already registered: %v", err)
-    }
-    if existingUser != nil {
-        return fmt.Errorf("user with ID %s is already registered", clientID)
-    }
+	// Check if the user is already registered
+	existingUser, err := ctx.GetStub().GetState(clientID)
+	if err != nil {
+		return fmt.Errorf("failed to check if user is already registered: %v", err)
+	}
+	if existingUser != nil {
+		return fmt.Errorf("user with ID %s is already registered", clientID)
+	}
 
-    // Get the role attribute
-    role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
-    if err != nil {
-        return fmt.Errorf("failed to get role attribute: %v", err)
-    }
-    if !found {
-        return fmt.Errorf("role attribute not found for client ID: %s", clientID)
-    }
+	// Check if a user with the same FullName already exists
+	queryString := fmt.Sprintf(`{"selector":{"fullName":"%s"}}`, fullName)
+	resultsIterator, err := ctx.GetStub().GetQueryResult(queryString)
+	if err != nil {
+		return fmt.Errorf("failed to query users by fullName: %v", err)
+	}
+	defer resultsIterator.Close()
 
-    // Create a new user object
-    timestamp := time.Now().Format(time.RFC3339)
-    user := User{
-        UserID:   clientID,
-        Role:     role,
-        FullName: fullName,
-        Email:    email,
-        CreatedOn: timestamp,
-    }
+	if resultsIterator.HasNext() {
+		return fmt.Errorf("a user with the fullName '%s' is already registered", fullName)
+	}
 
-    // Serialize the user object to JSON
-    userJSON, err := json.Marshal(user)
-    if err != nil {
-        return fmt.Errorf("failed to marshal user: %v", err)
-    }
+	// Get the role attribute
+	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
+	if err != nil {
+		return fmt.Errorf("failed to get role attribute: %v", err)
+	}
+	if !found {
+		return fmt.Errorf("role attribute not found for client ID: %s", clientID)
+	}
 
-    // Store the user in the ledger
-    return ctx.GetStub().PutState(clientID, userJSON)
+	// Create a new user object
+	user := User{
+		UserID:   clientID,
+		Role:     role,
+		FullName: fullName,
+	}
+
+	// Serialize the user object to JSON
+	userJSON, err := json.Marshal(user)
+	if err != nil {
+		return fmt.Errorf("failed to marshal user: %v", err)
+	}
+
+	// Store the user in the ledger
+	return ctx.GetStub().PutState(clientID, userJSON)
 }
 
-func (c *EMRChaincode) GetUser(ctx contractapi.TransactionContextInterface, userID string) (*User, error) {
-    userJSON, err := ctx.GetStub().GetState(userID)
-    if err != nil {
-        return nil, fmt.Errorf("failed to get user with ID %s: %v", userID, err)
-    }
-    if userJSON == nil {
-        return nil, fmt.Errorf("user with ID %s does not exist", userID)
-    }
+func (c *EMRChaincode) GetUser(ctx contractapi.TransactionContextInterface, fullName string) (*User, error) {
+	// Query the ledger for a user with the given fullName
+	queryString := fmt.Sprintf(`{"selector":{"fullName":"%s"}}`, fullName)
+	resultsIterator, err := ctx.GetStub().GetQueryResult(queryString)
+	if err != nil {
+		return nil, fmt.Errorf("failed to query user by fullName: %v", err)
+	}
+	defer resultsIterator.Close()
 
-    var user User
-    err = json.Unmarshal(userJSON, &user)
-    if err != nil {
-        return nil, fmt.Errorf("failed to unmarshal user: %v", err)
-    }
+	if !resultsIterator.HasNext() {
+		return nil, fmt.Errorf("user with fullName '%s' does not exist", fullName)
+	}
 
-    return &user, nil
+	queryResponse, err := resultsIterator.Next()
+	if err != nil {
+		return nil, fmt.Errorf("failed to retrieve query result: %v", err)
+	}
+
+	var user User
+	err = json.Unmarshal(queryResponse.Value, &user)
+	if err != nil {
+		return nil, fmt.Errorf("failed to unmarshal user: %v", err)
+	}
+
+	return &user, nil
 }

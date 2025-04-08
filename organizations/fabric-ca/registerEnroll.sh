@@ -96,7 +96,6 @@ function createOrg1() {
 
   infoln "Enrolling hospital1"
   set -x
-  # fabric-ca-client enroll -u https://hospital1:h1pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   fabric-ca-client enroll -u https://hospital1:h1pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp" --enrollment.attrs "role" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
