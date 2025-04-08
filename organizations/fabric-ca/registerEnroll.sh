@@ -49,12 +49,12 @@ function createOrg1() {
   # Register and enroll identities for Org1
   infoln "Registering peer0"
   set -x
-  fabric-ca-client register --caname ca-org1 --id.name peer0 --id.secret peer0pw --id.type peer --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  fabric-ca-client register --caname ca-org1 --id.name peer0 --id.secret peer0pw --id.type peer --id.affiliation org1 --id.attrs "role=peer:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
   infoln "Generating the peer0 msp"
   set -x
-  fabric-ca-client enroll -u https://peer0:peer0pw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  fabric-ca-client enroll -u https://peer0:peer0pw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp" --enrollment.attrs "role,hf.Affiliation" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
   cp "${PWD}/organizations/peerOrganizations/org1.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/config.yaml"
@@ -70,12 +70,12 @@ function createOrg1() {
 
   infoln "Registering peer1"
   set -x
-  fabric-ca-client register --caname ca-org1 --id.name peer1 --id.secret peer1pw --id.type peer --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  fabric-ca-client register --caname ca-org1 --id.name peer1 --id.secret peer1pw --id.type peer --id.affiliation org1 --id.attrs "role=peer:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
   infoln "Generating the peer1 msp"
   set -x
-  fabric-ca-client enroll -u https://peer1:peer1pw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  fabric-ca-client enroll -u https://peer1:peer1pw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp" --enrollment.attrs "role,hf.Affiliation" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
   cp "${PWD}/organizations/peerOrganizations/org1.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp/config.yaml"
@@ -91,36 +91,36 @@ function createOrg1() {
 
   infoln "Registering hospital1"
   set -x
-  fabric-ca-client register --caname ca-org1 --id.name hospital1 --id.secret h1pass --id.type client --id.attrs "role=hospital:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  fabric-ca-client register --caname ca-org1 --id.name hospital1 --id.secret h1pass --id.type client --id.affiliation org1 --id.attrs "role=hospital:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
   infoln "Enrolling hospital1"
   set -x
-  fabric-ca-client enroll -u https://hospital1:h1pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp" --enrollment.attrs "role" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  fabric-ca-client enroll -u https://hospital1:h1pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp" --enrollment.attrs "role,hf.Affiliation" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
-  cp "${PWD}/organizations/peerOrganizations/org1.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital1@org1.example.com/msp/config.yaml"
+  cp "${PWD}/organizations/peerOrganizations/org1.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp/config.yaml"
 
   infoln "Registering hospital2"
   set -x
-  fabric-ca-client register --caname ca-org1 --id.name hospital2 --id.secret h2pass --id.type client --id.attrs "role=hospital:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  fabric-ca-client register --caname ca-org1 --id.name hospital2 --id.secret h2pass --id.type client --id.affiliation org1 --id.attrs "role=hospital:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
   infoln "Enrolling hospital2"
   set -x
-  fabric-ca-client enroll -u https://hospital2:h2pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital2@org1.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  fabric-ca-client enroll -u https://hospital2:h2pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital2@org1.example.com/msp" --enrollment.attrs "role,hf.Affiliation" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
-  cp "${PWD}/organizations/peerOrganizations/org1.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org1.example.com/users/Hospital2@org1.example.com/msp/config.yaml"
+  cp "${PWD}/organizations/peerOrganizations/org1.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital2@org1.example.com/msp/config.yaml"
 
   infoln "Registering the org admin"
   set -x
-  fabric-ca-client register --caname ca-org1 --id.name org1admin --id.secret org1adminpw --id.type admin --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  fabric-ca-client register --caname ca-org1 --id.name org1admin --id.secret org1adminpw --id.type admin --id.affiliation org1 --id.attrs "role=admin:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
   infoln "Enrolling the org admin"
   set -x
-  fabric-ca-client enroll -u https://org1admin:org1adminpw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
+  fabric-ca-client enroll -u https://org1admin:org1adminpw@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp" --enrollment.attrs "role,hf.Affiliation" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem"
   { set +x; } 2>/dev/null
 
   cp "${PWD}/organizations/peerOrganizations/org1.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/config.yaml"
@@ -211,28 +211,28 @@ function createOrg2() {
   # Register and enroll patient1
   infoln "Registering patient1"
   set -x
-  fabric-ca-client register --caname ca-org2 --id.name patient1 --id.secret p1pass --id.type client --id.attrs "role=patient:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org2/ca-cert.pem"
+  fabric-ca-client register --caname ca-org2 --id.name patient1 --id.secret p1pass --id.type client --id.affiliation org2 --id.attrs "role=patient:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org2/ca-cert.pem"
   { set +x; } 2>/dev/null
 
   infoln "Enrolling patient1"
   set -x
-  fabric-ca-client enroll -u https://patient1:p1pass@localhost:8054 --caname ca-org2 -M "${PWD}/organizations/peerOrganizations/org2.example.com/users/Patient1@org2.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/org2/ca-cert.pem"
+  fabric-ca-client enroll -u https://patient1:p1pass@localhost:8054 --caname ca-org2 -M "${PWD}/organizations/peerOrganizations/org2.example.com/users/patient1@org2.example.com/msp" --enrollment.attrs "role,hf.Affiliation" --tls.certfiles "${PWD}/organizations/fabric-ca/org2/ca-cert.pem"
   { set +x; } 2>/dev/null
 
-  cp "${PWD}/organizations/peerOrganizations/org2.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org2.example.com/users/Patient1@org2.example.com/msp/config.yaml"
+  cp "${PWD}/organizations/peerOrganizations/org2.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org2.example.com/users/patient1@org2.example.com/msp/config.yaml"
 
   # Register and enroll patient2
   infoln "Registering patient2"
   set -x
-  fabric-ca-client register --caname ca-org2 --id.name patient2 --id.secret p2pass --id.type client --id.attrs "role=patient:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org2/ca-cert.pem"
+  fabric-ca-client register --caname ca-org2 --id.name patient2 --id.secret p2pass --id.type client --id.affiliation org2 --id.attrs "role=patient:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org2/ca-cert.pem"
   { set +x; } 2>/dev/null
 
   infoln "Enrolling patient2"
   set -x
-  fabric-ca-client enroll -u https://patient2:p2pass@localhost:8054 --caname ca-org2 -M "${PWD}/organizations/peerOrganizations/org2.example.com/users/Patient2@org2.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/org2/ca-cert.pem"
+  fabric-ca-client enroll -u https://patient2:p2pass@localhost:8054 --caname ca-org2 -M "${PWD}/organizations/peerOrganizations/org2.example.com/users/patient2@org2.example.com/msp" --enrollment.attrs "role,hf.Affiliation" --tls.certfiles "${PWD}/organizations/fabric-ca/org2/ca-cert.pem"
   { set +x; } 2>/dev/null
 
-  cp "${PWD}/organizations/peerOrganizations/org2.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org2.example.com/users/Patient2@org2.example.com/msp/config.yaml"
+  cp "${PWD}/organizations/peerOrganizations/org2.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org2.example.com/users/patient2@org2.example.com/msp/config.yaml"
 
   # Register and enroll the org admin
   infoln "Registering the org admin"

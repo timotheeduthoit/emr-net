@@ -131,7 +131,7 @@ registry:
      - name: admin
        pass: adminpw
        type: client
-       affiliation: ""
+       affiliation: "org1"
        attrs:
           hf.Registrar.Roles: "*"
           hf.Registrar.DelegateRoles: "*"
@@ -243,9 +243,15 @@ ldap:
 #############################################################################
 affiliations:
    org1:
+      - hospital
+      - doctor
+      - patient
       - department1
       - department2
    org2:
+      - hospital
+      - doctor
+      - patient
       - department1
 
 #############################################################################

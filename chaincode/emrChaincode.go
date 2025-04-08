@@ -15,9 +15,9 @@ type EMRChaincode struct {
 }
 
 type User struct {
-	UserID   string `json:"userId"`
-	Role     string `json:"role"`
-	FullName string `json:"fullName"`
+	UserID     string `json:"userId"`
+	Role       string `json:"role"`
+	CommonName string `json:"CommonName"`
 }
 
 type EMR struct {
@@ -270,42 +270,58 @@ func (c *EMRChaincode) GetIdentityAttributes(ctx contractapi.TransactionContextI
 	}
 	attributes["role"] = role
 
-	// Add other attributes as needed
-	// Example: department, organization, etc.
-	// department, found, err := ctx.GetClientIdentity().GetAttributeValue("department")
-	// if found {
-	//     attributes["department"] = department
-	// }
+	// Get the organization affiliation
+	orgName, found, err := ctx.GetClientIdentity().GetAttributeValue("hf.Affiliation")
+	if err != nil {
+		return nil, fmt.Errorf("failed to get organization affiliation: %v", err)
+	}
+	if !found {
+		return nil, fmt.Errorf("organization affiliation not found for client ID: %s", clientID)
+	}
+	attributes["organization"] = orgName
+
+	// Get the CommonName from the X.509 certificate
+	cert, err := ctx.GetClientIdentity().GetX509Certificate()
+	if err != nil {
+		return nil, fmt.Errorf("failed to get X.509 certificate: %v", err)
+	}
+	attributes["CommonName"] = cert.Subject.CommonName
 
 	return attributes, nil
 }
 
-func (c *EMRChaincode) RegisterUser(ctx contractapi.TransactionContextInterface, fullName string) error {
+func (c *EMRChaincode) RegisterUser(ctx contractapi.TransactionContextInterface) error {
 	// Get the client ID
 	clientID, err := ctx.GetClientIdentity().GetID()
 	if err != nil {
 		return fmt.Errorf("failed to get client ID: %v", err)
 	}
 
+	// Extract the CommonName from the X.509 certificate
+	cert, err := ctx.GetClientIdentity().GetX509Certificate()
+	if err != nil {
+		return fmt.Errorf("failed to get X.509 certificate: %v", err)
+	}
+
+	// Extract the organization name from the client identity attributes
+	orgName, found, err := ctx.GetClientIdentity().GetAttributeValue("hf.Affiliation")
+	if err != nil {
+		return fmt.Errorf("failed to get organization affiliation: %v", err)
+	}
+	if !found {
+		return fmt.Errorf("organization affiliation not found for client ID: %s", clientID)
+	}
+
+	// Construct the fullName dynamically
+	fullName := fmt.Sprintf("%s@%s.example.com", cert.Subject.CommonName, orgName)
+
 	// Check if the user is already registered
-	existingUser, err := ctx.GetStub().GetState(clientID)
+	existingUser, err := ctx.GetStub().GetState(fullName)
 	if err != nil {
 		return fmt.Errorf("failed to check if user is already registered: %v", err)
 	}
 	if existingUser != nil {
-		return fmt.Errorf("user with ID %s is already registered", clientID)
-	}
-
-	// Check if a user with the same FullName already exists
-	queryString := fmt.Sprintf(`{"selector":{"fullName":"%s"}}`, fullName)
-	resultsIterator, err := ctx.GetStub().GetQueryResult(queryString)
-	if err != nil {
-		return fmt.Errorf("failed to query users by fullName: %v", err)
-	}
-	defer resultsIterator.Close()
-
-	if resultsIterator.HasNext() {
-		return fmt.Errorf("a user with the fullName '%s' is already registered", fullName)
+		return fmt.Errorf("user with CommonName %s is already registered", fullName)
 	}
 
 	// Get the role attribute
@@ -319,9 +335,9 @@ func (c *EMRChaincode) RegisterUser(ctx contractapi.TransactionContextInterface,
 
 	// Create a new user object
 	user := User{
-		UserID:   clientID,
-		Role:     role,
-		FullName: fullName,
+		UserID:     clientID,
+		Role:       role,
+		CommonName: fullName,
 	}
 
 	// Serialize the user object to JSON
@@ -331,29 +347,22 @@ func (c *EMRChaincode) RegisterUser(ctx contractapi.TransactionContextInterface,
 	}
 
 	// Store the user in the ledger
-	return ctx.GetStub().PutState(clientID, userJSON)
+	return ctx.GetStub().PutState(fullName, userJSON)
 }
 
-func (c *EMRChaincode) GetUser(ctx contractapi.TransactionContextInterface, fullName string) (*User, error) {
-	// Query the ledger for a user with the given fullName
-	queryString := fmt.Sprintf(`{"selector":{"fullName":"%s"}}`, fullName)
-	resultsIterator, err := ctx.GetStub().GetQueryResult(queryString)
-	if err != nil {
-		return nil, fmt.Errorf("failed to query user by fullName: %v", err)
-	}
-	defer resultsIterator.Close()
+func (c *EMRChaincode) GetUser(ctx contractapi.TransactionContextInterface, commonName string) (*User, error) {
+	userJSON, err := ctx.GetStub().GetState(commonName)
 
-	if !resultsIterator.HasNext() {
-		return nil, fmt.Errorf("user with fullName '%s' does not exist", fullName)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get user with CommonName %s: %v", commonName, err)
 	}
 
-	queryResponse, err := resultsIterator.Next()
-	if err != nil {
-		return nil, fmt.Errorf("failed to retrieve query result: %v", err)
+	if userJSON == nil {
+		return nil, fmt.Errorf("user with CommonName %s does not exist", commonName)
 	}
 
 	var user User
-	err = json.Unmarshal(queryResponse.Value, &user)
+	err = json.Unmarshal(userJSON, &user)
 	if err != nil {
 		return nil, fmt.Errorf("failed to unmarshal user: %v", err)
 	}

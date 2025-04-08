@@ -49,6 +49,7 @@ if [ ! -d "organizations/peerOrganizations/org1.example.com/peers/peer0.org1.exa
   exit 1
 fi
 
+# export FABRIC_CFG_PATH=${PWD}/compose/docker/peercfg
 export CORE_PEER_TLS_ENABLED=true
 export CORE_PEER_LOCALMSPID="Org1MSP"
 export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
@@ -62,13 +63,47 @@ sleep 3
 
 # Call to chaincode to register hospital1 as a user in the ledger
 echo "Registering hospital1"
-infoln "Invoking chaincode to register hospital1"
-peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C emrchannel -n emr -c '{"Args":["RegisterUser","hospital1"]}'
+# peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C emrchannel -n emr -c '{"Args":["RegisterUser"]}'
+peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C emrchannel -n emr --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"Args":["RegisterUser"]}'
 sleep 3
 echo "Checking if hospital1 is registered"
-peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser","hospital1"]}'
+peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser","hospital1@org1.example.com"]}'
 sleep 3
+
+# Register hospital2
+export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital2@org1.example.com/msp
+export CORE_PEER_ADDRESS=localhost:8051
+
+echo "Checking role of hospital2"
+peer chaincode query -C emrchannel -n emr -c '{"Args":["GetIdentityAttributes"]}'
+sleep 3
+echo "Registering hospital2"
+peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C emrchannel -n emr -c '{"Args":["RegisterUser"]}'
+sleep 3
+echo "Checking if hospital2 is registered"
+peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser","hospital2@org1.example.com"]}'
+sleep 3
+echo "Checking if hospital2 can find hospital1's ID"
+peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser","hospital1@org1.example.com"]}'
+sleep 3
+
+
+
+# export CORE_PEER_TLS_ENABLED=true
+# export CORE_PEER_LOCALMSPID="Org1MSP"
+# export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+# export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital1@org1.example.com/msp
+# export CORE_PEER_ADDRESS=localhost:7051
+# export ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+# peer chaincode query -C emrchannel -n emr -c '{"Args":["GetIdentityAttributes"]}'
+
+
 exit 0
+
+# export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/org1.example.com/ &&
+# fabric-ca-client register --caname ca-org1 --id.name hospital4 --id.secret h4pass --id.type client --id.affiliation org1.hospital --id.attrs "role=hospital:ecert" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && mkdir -p organizations/peerOrganizations/org1.example.com/users/hospital4@org1.example.com/msp/admincerts &&
+# fabric-ca-client enroll -u https://hospital4:h4pass@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/hospital4@org1.example.com/msp" --enrollment.attrs "role" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/ca-cert.pem" && cp organizations/peerOrganizations/org1.example.com/msp/config.yaml organizations/peerOrganizations/org1.example.com/users/hospital4@org1.example.com/msp/config.yaml
 
 
 
