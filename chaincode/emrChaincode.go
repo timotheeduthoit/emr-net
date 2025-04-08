@@ -33,7 +33,8 @@ type EMR struct {
 }
 
 // CreateRecord creates a new EMR record
-func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface, emrID string, patientID string, doctorID string, hospitalID string, diagnosis string) error {
+// patientCommonName should be the CommonName of the patient with patient@orgName.example.com
+func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface, emrID string, patientCommonName string, doctorCommonName string, hospitalCommonName string, diagnosis string) error {
 	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
 	if err != nil {
 		return fmt.Errorf("failed to get role attribute: %v", err)
@@ -47,6 +48,9 @@ func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface,
 	if err != nil {
 		return fmt.Errorf("failed to get client ID: %v", err)
 	}
+
+	doctorID := ""
+	hospitalID := ""
 
 	if role == "doctor" {
 		doctorID = clientID
@@ -63,6 +67,39 @@ func (c *EMRChaincode) CreateRecord(ctx contractapi.TransactionContextInterface,
 	}
 	if existingEMR != nil {
 		return fmt.Errorf("EMR with ID %s already exists", emrID)
+	}
+
+	// Retrieve doctor or hospita ID
+	if role == "doctor" { // DoctorID has already been set to UserID
+		// Check if hospital exists
+		hospital, err := c.GetUser(ctx, hospitalCommonName)
+		if err != nil || hospital == nil {
+			// Failed to get hospital or hospital does not exist (create without hospital)
+			hospitalID = ""
+		} else {
+			hospitalID = hospital.UserID
+		}
+	} else if role == "hospital" { // HospitalID has already been set to UserID
+		// Check if doctor exists
+		doctor, err := c.GetUser(ctx, doctorCommonName)
+		if err != nil || doctor == nil {
+			// Failed to get doctor or doctor does not exist (create without doctor)
+			doctorID = ""
+		} else {
+			doctorID = doctor.UserID
+		}
+	}
+
+	patient, err := c.GetUser(ctx, patientCommonName)
+	if err != nil {
+		return fmt.Errorf("failed to get patient: %v", err)
+	}
+	if patient == nil {
+		return fmt.Errorf("patient with CommonName %s does not exist", patientCommonName)
+	}
+	patientID := patient.UserID
+	if patient.Role != "patient" {
+		return fmt.Errorf("user with CommonName %s is not a patient", patientCommonName)
 	}
 
 	timestamp := time.Now().Format(time.RFC3339)
@@ -123,7 +160,7 @@ func (c *EMRChaincode) ReadRecord(ctx contractapi.TransactionContextInterface, e
 }
 
 // ShareRecord shares an EMR record with another entity
-func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, emrID string, shareWithID string, shareWithRole string) error {
+func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, emrID string, shareWithCommonName string, shareWithRole string) error {
 	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
 	if err != nil {
 		return fmt.Errorf("failed to get role attribute: %v", err)
@@ -156,9 +193,19 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 	}
 
 	if shareWithRole == "doctor" {
-		emr.SharedWithDoctors = append(emr.SharedWithDoctors, shareWithID)
+		// Find the doctor ID from the CommonName
+		doctor, err := c.GetUser(ctx, shareWithCommonName)
+		if err != nil || doctor == nil {
+			return fmt.Errorf("failed to get doctor: %v for sharing emr with ID %s", err, emrID)
+		}
+		emr.SharedWithDoctors = append(emr.SharedWithDoctors, doctor.UserID)
 	} else if shareWithRole == "hospital" {
-		emr.SharedWithHospitals = append(emr.SharedWithHospitals, shareWithID)
+		// Find the hospital ID from the CommonName
+		hospital, err := c.GetUser(ctx, shareWithCommonName)
+		if err != nil || hospital == nil {
+			return fmt.Errorf("failed to get hospital: %v for sharing emr with ID %s", err, emrID)
+		}
+		emr.SharedWithHospitals = append(emr.SharedWithHospitals, hospital.UserID)
 	} else {
 		return fmt.Errorf("invalid role to share with: %s", shareWithRole)
 	}
@@ -172,7 +219,7 @@ func (c *EMRChaincode) ShareRecord(ctx contractapi.TransactionContextInterface, 
 }
 
 // GetAllRecordsForPatient retrieves all EMR records for a given patient
-func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContextInterface, patientID string) ([]EMR, error) {
+func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContextInterface, patientCommonName string) ([]EMR, error) {
 	role, found, err := ctx.GetClientIdentity().GetAttributeValue("role")
 	if err != nil {
 		return nil, fmt.Errorf("failed to get role attribute: %v", err)
@@ -186,7 +233,16 @@ func (c *EMRChaincode) GetAllRecordsForPatient(ctx contractapi.TransactionContex
 		return nil, fmt.Errorf("failed to get client ID: %v", err)
 	}
 
-	queryString := fmt.Sprintf(`{"selector":{"patientID":"%s"}}`, patientID)
+	// Retrieve the patient ID from the CommonName
+	patient, err := c.GetUser(ctx, patientCommonName)
+	if err != nil || patient == nil {
+		return nil, fmt.Errorf("failed to get patient: %v", err)
+	}
+	if patient.Role != "patient" {
+		return nil, fmt.Errorf("user with CommonName %s is not a patient", patientCommonName)
+	}
+
+	queryString := fmt.Sprintf(`{"selector":{"patientID":"%s"}}`, patient.UserID)
 
 	resultsIterator, err := ctx.GetStub().GetQueryResult(queryString)
 	if err != nil {

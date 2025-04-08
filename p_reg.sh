@@ -74,79 +74,126 @@ verify_registration() {
   
   setup_patient_env $patient
   
+  # First attempt - might fail due to transaction not yet committed
+  echo "First attempt at verifying registration..."
+  if peer chaincode query -C emrchannel -n emr -c "{\"Args\":[\"GetUser\", \"$common_name\"]}" 2>/dev/null; then
+    echo "Registration verified on first attempt"
+    return 0
+  fi
+  
+  # Wait and try again
+  echo "Waiting for transaction to be committed (5 seconds)..."
+  sleep 5
+  
+  # Second attempt
+  echo "Second attempt at verifying registration..."
+  if peer chaincode query -C emrchannel -n emr -c "{\"Args\":[\"GetUser\", \"$common_name\"]}" 2>/dev/null; then
+    echo "Registration verified on second attempt"
+    return 0
+  fi
+  
+  # Wait longer and try one more time
+  echo "Waiting longer for transaction to be committed (10 seconds)..."
+  sleep 10
+  
+  # Final attempt
+  echo "Final attempt at verifying registration..."
   peer chaincode query -C emrchannel -n emr -c "{\"Args\":[\"GetUser\", \"$common_name\"]}" || {
     echo "Failed to verify registration for $patient"
     return 1
   }
 }
+# Function to safely register and verify a user
+safe_register_and_verify() {
+  local patient=$1
+  
+  echo -e "\n========== Testing $patient ==========="
+  
+  # Check identity
+  if ! check_identity "$patient"; then
+    echo "⚠️ Could not check identity for $patient"
+    return 1
+  fi
+  echo "✓ Identity check for $patient successful"
+  
+  # Try to register
+  echo "Attempting to register $patient..."
+  if ! register_user "$patient"; then
+    echo "⚠️ $patient registration failed"
+    return 1
+  fi
+  echo "✓ $patient registration command completed successfully"
+  
+  # Verify registration
+  if ! verify_registration "$patient"; then
+    echo "⚠️ Could not verify $patient registration"
+    return 1
+  fi
+  echo "✓ $patient registration verified"
+  return 0
+}
 
 # Main execution
 
-echo "========== Testing Patient 1 ==========="
-if ! check_identity "patient1"; then
-  echo "⚠️ Could not check identity for patient1"
-else
-  echo "✓ Identity check for patient1 successful"
-fi
+# Make sure we're starting with Org2 environment
+export CORE_PEER_LOCALMSPID="Org2MSP"
+export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem
+export CORE_PEER_ADDRESS=localhost:9051  # Org2's peer address
 
-if ! register_user "patient1"; then
-  echo "⚠️ Patient1 registration failed or already registered"
-else
-  echo "✓ Patient1 registered successfully"
-fi
+# Process patient1
+safe_register_and_verify "patient1"
+PATIENT1_STATUS=$?
 
-if ! verify_registration "patient1"; then
-  echo "⚠️ Could not verify patient1 registration"
-else
-  echo "✓ Patient1 registration verified"
-fi
+# Process patient2
+safe_register_and_verify "patient2"
+PATIENT2_STATUS=$?
 
-echo -e "\n========== Testing Patient 2 ==========="
-if ! check_identity "patient2"; then
-  echo "⚠️ Could not check identity for patient2"
-else
-  echo "✓ Identity check for patient2 successful"
-fi
-
-if ! register_user "patient2"; then
-  echo "⚠️ Patient2 registration failed or already registered"
-else
-  echo "✓ Patient2 registered successfully"
-fi
-
-if ! verify_registration "patient2"; then
-  echo "⚠️ Could not verify patient2 registration"
-else
-  echo "✓ Patient2 registration verified"
+if [ $PATIENT1_STATUS -ne 0 ] || [ $PATIENT2_STATUS -ne 0 ]; then
+  echo -e "\n⚠️ One or more patient registrations failed. Cross-lookup tests skipped."
+  exit 1
 fi
 
 echo -e "\n========== Testing Cross-Patient Lookup ==========="
+
 # Test if patient2 can find patient1's registration
 setup_patient_env "patient2"
 echo "Checking if patient2 can find patient1's registration"
-peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "patient1@org2.example.com"]}' || {
-  echo "⚠️ Patient2 cannot find patient1's registration"
-  exit 1
-}
+if ! peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "patient1@org2.example.com"]}' 2>/dev/null; then
+  echo "First attempt failed, waiting 5 seconds and trying again..."
+  sleep 5
+  peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "patient1@org2.example.com"]}' || {
+    echo "⚠️ Patient2 cannot find patient1's registration"
+    exit 1
+  }
+fi
 echo "✓ Patient2 can find patient1's registration"
 
 # Test if patient1 can find patient2's registration
 setup_patient_env "patient1"
 echo "Checking if patient1 can find patient2's registration"
-peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "patient2@org2.example.com"]}' || {
-  echo "⚠️ Patient1 cannot find patient2's registration"
-  exit 1
-}
+if ! peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "patient2@org2.example.com"]}' 2>/dev/null; then
+  echo "First attempt failed, waiting 5 seconds and trying again..."
+  sleep 5
+  peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "patient2@org2.example.com"]}' || {
+    echo "⚠️ Patient1 cannot find patient2's registration"
+    exit 1
+  }
+fi
 echo "✓ Patient1 can find patient2's registration"
 
 echo -e "\n========== Testing Cross-Organization Lookup ==========="
 # Test if patient1 can find hospital1's registration
 setup_patient_env "patient1"
 echo "Checking if patient1 can find hospital1's registration"
-peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "hospital1@org1.example.com"]}' || {
-  echo "⚠️ Patient1 cannot find hospital1's registration"
-}
-if [ $? -eq 0 ]; then
+if ! peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "hospital1@org1.example.com"]}' 2>/dev/null; then
+  echo "First attempt failed, waiting 5 seconds and trying again..."
+  sleep 5
+  if ! peer chaincode query -C emrchannel -n emr -c '{"Args":["GetUser", "hospital1@org1.example.com"]}' 2>/dev/null; then
+    echo "⚠️ Patient1 cannot find hospital1's registration"
+  else
+    echo "✓ Patient1 can find hospital1's registration"
+  fi
+else
   echo "✓ Patient1 can find hospital1's registration"
 fi
 
