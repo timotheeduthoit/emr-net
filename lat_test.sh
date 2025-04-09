@@ -304,7 +304,13 @@ measure_create_record() {
   local end_time=$(date +%s.%N)
   
   # Calculate latency
-  local latency=$(echo "$end_time - $start_time" | bc)
+  # Calculate latency with error handling
+  local latency
+  latency=$(echo "scale=2; $end_time - $start_time" | bc 2>/dev/null || echo "0")
+  # Ensure it's a valid number
+  if ! [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+    latency="0"
+  fi
   echo "$latency"
 }
 
@@ -345,7 +351,13 @@ measure_read_record() {
   local end_time=$(date +%s.%N)
   
   # Calculate latency
-  local latency=$(echo "$end_time - $start_time" | bc)
+  # Calculate latency with error handling
+  local latency
+  latency=$(echo "scale=2; $end_time - $start_time" | bc 2>/dev/null || echo "0")
+  # Ensure it's a valid number
+  if ! [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+    latency="0"
+  fi
   echo "$latency"
 }
 
@@ -395,7 +407,13 @@ measure_share_record() {
   local end_time=$(date +%s.%N)
   
   # Calculate latency
-  local latency=$(echo "$end_time - $start_time" | bc)
+  # Calculate latency with error handling
+  local latency
+  latency=$(echo "scale=2; $end_time - $start_time" | bc 2>/dev/null || echo "0")
+  # Ensure it's a valid number
+  if ! [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+    latency="0"
+  fi
   echo "$latency"
 }
 
@@ -486,43 +504,118 @@ run_latency_test() {
   # Calculate average for CreateRecord
   if [ ${#create_latencies[@]} -gt 0 ]; then
     local sum=0
+    local valid_count=0
     for latency in "${create_latencies[@]}"; do
-      sum=$(echo "$sum + $latency" | bc)
+      # Verify the latency is a valid number before adding
+      if [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+        sum=$(echo "scale=6; $sum + $latency" | bc 2>/dev/null || echo "$sum")
+        valid_count=$((valid_count + 1))
+      fi
     done
-    create_avg=$(echo "scale=6; $sum / ${#create_latencies[@]}" | bc)
+    # Only calculate average if we have valid measurements
+    if [ $valid_count -gt 0 ]; then
+      create_avg=$(echo "scale=6; $sum / $valid_count" | bc 2>/dev/null || echo "0")
+      # Final verification of the result
+      if ! [[ "$create_avg" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+        create_avg="0"
+      fi
+    else
+      create_avg="0"
+    fi
   fi
   
   # Calculate average for ReadRecord
   if [ ${#read_latencies[@]} -gt 0 ]; then
     local sum=0
+    local valid_count=0
     for latency in "${read_latencies[@]}"; do
-      sum=$(echo "$sum + $latency" | bc)
+      # Verify the latency is a valid number before adding
+      if [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+        sum=$(echo "scale=6; $sum + $latency" | bc 2>/dev/null || echo "$sum")
+        valid_count=$((valid_count + 1))
+      fi
     done
-    read_avg=$(echo "scale=6; $sum / ${#read_latencies[@]}" | bc)
+    # Only calculate average if we have valid measurements
+    if [ $valid_count -gt 0 ]; then
+      read_avg=$(echo "scale=6; $sum / $valid_count" | bc 2>/dev/null || echo "0")
+      # Final verification of the result
+      if ! [[ "$read_avg" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+        read_avg="0"
+      fi
+    else
+      read_avg="0"
+    fi
   fi
   
   # Calculate average for ShareRecord
   if [ ${#share_latencies[@]} -gt 0 ]; then
     local sum=0
+    local valid_count=0
     for latency in "${share_latencies[@]}"; do
-      sum=$(echo "$sum + $latency" | bc)
+      # Verify the latency is a valid number before adding
+      if [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+        sum=$(echo "scale=6; $sum + $latency" | bc 2>/dev/null || echo "$sum")
+        valid_count=$((valid_count + 1))
+      fi
     done
-    share_avg=$(echo "scale=6; $sum / ${#share_latencies[@]}" | bc)
+    # Only calculate average if we have valid measurements
+    if [ $valid_count -gt 0 ]; then
+      share_avg=$(echo "scale=6; $sum / $valid_count" | bc 2>/dev/null || echo "0")
+      # Final verification of the result
+      if ! [[ "$share_avg" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+        share_avg="0"
+      fi
+    else
+      share_avg="0"
+    fi
   fi
   
   # Append results to latency_res.txt
   echo "----------------------------------------" >> latency_res.txt
   echo "Timestamp: $timestamp" >> latency_res.txt
   echo "Users: $total_users ($hospitals hospitals, $doctors doctors, $patients patients)" >> latency_res.txt
-  echo "CreateRecord average latency: $create_avg seconds (${#create_latencies[@]} successful operations)" >> latency_res.txt
-  echo "ReadRecord average latency: $read_avg seconds (${#read_latencies[@]} successful operations)" >> latency_res.txt
-  echo "ShareRecord average latency: $share_avg seconds (${#share_latencies[@]} successful operations)" >> latency_res.txt
+  
+  # Safe output of results
+  if [ ${#create_latencies[@]} -gt 0 ]; then
+    echo "CreateRecord average latency: $create_avg seconds (${#create_latencies[@]} successful operations)" >> latency_res.txt
+  else
+    echo "CreateRecord: No successful operations" >> latency_res.txt
+  fi
+  
+  if [ ${#read_latencies[@]} -gt 0 ]; then
+    echo "ReadRecord average latency: $read_avg seconds (${#read_latencies[@]} successful operations)" >> latency_res.txt
+  else
+    echo "ReadRecord: No successful operations" >> latency_res.txt
+  fi
+  
+  if [ ${#share_latencies[@]} -gt 0 ]; then
+    echo "ShareRecord average latency: $share_avg seconds (${#share_latencies[@]} successful operations)" >> latency_res.txt
+  else
+    echo "ShareRecord: No successful operations" >> latency_res.txt
+  fi
   
   # Print summary
   echo "Test results for $total_users users:"
-  echo "  CreateRecord average latency: $create_avg seconds"
-  echo "  ReadRecord average latency: $read_avg seconds"
-  echo "  ShareRecord average latency: $share_avg seconds"
+  
+  # Safe output of results to console
+  if [ ${#create_latencies[@]} -gt 0 ]; then
+    echo "  CreateRecord average latency: $create_avg seconds (${#create_latencies[@]} successful operations)"
+  else
+    echo "  CreateRecord: No successful operations"
+  fi
+  
+  if [ ${#read_latencies[@]} -gt 0 ]; then
+    echo "  ReadRecord average latency: $read_avg seconds (${#read_latencies[@]} successful operations)"
+  else
+    echo "  ReadRecord: No successful operations"
+  fi
+  
+  if [ ${#share_latencies[@]} -gt 0 ]; then
+    echo "  ShareRecord average latency: $share_avg seconds (${#share_latencies[@]} successful operations)"
+  else
+    echo "  ShareRecord: No successful operations"
+  fi
+  
   echo "Results appended to latency_res.txt"
   echo ""
 }

@@ -1,3 +1,9 @@
 === EMR Network Latency Test Results ===
 Started: Tue  8 Apr 2025 22:10:16 EDT
 ----------------------------------------
+----------------------------------------
+Timestamp: 2025-04-08 22:41:02
+Users: 6 (2 hospitals, 2 doctors, 2 patients)
+CreateRecord average latency: 0 seconds (5 successful operations)
+ReadRecord average latency: 0 seconds (4 successful operations)
+ShareRecord average latency: 0 seconds (4 successful operations)
