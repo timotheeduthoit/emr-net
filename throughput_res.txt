@@ -1,0 +1,431 @@
+=== EMR Network Throughput Test Results ===
+Started: Wed  9 Apr 2025 12:32:24 EDT
+----------------------------------------
+----------------------------------------
+Timestamp: 2025-04-09 12:32:40
+Operation: CreateRecord
+Group size: 6
+Concurrency: 3
+Total operations: 20 (20 successful, 0 failed)
+Success rate: 100.00%
+Average operation time: 1.950000 seconds
+Total execution time: 15.0 seconds
+Throughput: 1.33 transactions per second
+========================================
+SUMMARY - Group Size: 6, Concurrency: 3
+Timestamp: 2025-04-09 12:32:50
+CreateRecord TPS: Running 20 CreateRecord operations with concurrency 3 for group size 6
+Environment set for doctor2
+Environment set for doctor2
+Environment set for doctor2
+[34m2025-04-09 12:32:27.245 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [bbcd7571875982c147bc9e906350523383f67d087c127da671ff43c472a79f8c] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:27.246 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [bbcd7571875982c147bc9e906350523383f67d087c127da671ff43c472a79f8c] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:27.246 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:27.247 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [299c73637239bac2b4f2e017a67577e59f58f54f16bde32902f0b00670b09a06] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:27.247 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [299c73637239bac2b4f2e017a67577e59f58f54f16bde32902f0b00670b09a06] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:27.247 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:27.245 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [f7242a92d527065676cd6d28216451d4dfbe171fce367541c54ef624e40df2a3] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:27.247 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [f7242a92d527065676cd6d28216451d4dfbe171fce367541c54ef624e40df2a3] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:27.247 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor1
+Environment set for doctor1
+Environment set for doctor1
+[34m2025-04-09 12:32:29.463 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [7dd80fb65c7e7cbbd8c81f457bdebe3703fa0e2ddfcc7bbdf9d3e565a17490c2] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:29.463 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [7dd80fb65c7e7cbbd8c81f457bdebe3703fa0e2ddfcc7bbdf9d3e565a17490c2] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:29.463 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [5fc767bb33679ac01a04676975859908a12c11a164d01e4db3bf1460fffc1988] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:29.463 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [5fc767bb33679ac01a04676975859908a12c11a164d01e4db3bf1460fffc1988] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:29.463 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [9a367ce91bd3c5c155213025037c523dc601ecd661315c4dd8d9a7092f41dd90] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:29.463 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [9a367ce91bd3c5c155213025037c523dc601ecd661315c4dd8d9a7092f41dd90] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:29.464 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:29.464 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:29.464 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor2
+Environment set for doctor1
+Environment set for doctor1
+[34m2025-04-09 12:32:31.694 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [0eda045a65f7f4c80df04b0b1082b5cf134a39a8c4b0d2011892002b0a2cb2ae] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:31.693 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [1cd3ba26b9c343e0af5b085258cfd87168bd74dba0d71f8165072dcf8be55f19] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:31.694 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [1cd3ba26b9c343e0af5b085258cfd87168bd74dba0d71f8165072dcf8be55f19] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:31.694 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:31.694 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [bbaaa130dda6ccdcb0b38aa3c4561e1cd70a1a1ad57f6ee846e548e9c69bf3bd] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:31.694 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [bbaaa130dda6ccdcb0b38aa3c4561e1cd70a1a1ad57f6ee846e548e9c69bf3bd] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:31.694 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:31.696 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [0eda045a65f7f4c80df04b0b1082b5cf134a39a8c4b0d2011892002b0a2cb2ae] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:31.696 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor1
+Environment set for doctor2
+Environment set for doctor2
+[34m2025-04-09 12:32:33.910 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [ab9a6c870266ca697f15b3b3cc48628ad5d246203a5b02940619542db87ea53f] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:33.910 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [b1c45faa7ca997168b8409cc8def3b975d1c7f0dcb0420b7ccaa681b6991d2f7] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:33.910 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [a36686c4e02dc8b3c9336eba496b9ef58f0260d6e0911a68a24e89541abdaf1a] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:33.912 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [b1c45faa7ca997168b8409cc8def3b975d1c7f0dcb0420b7ccaa681b6991d2f7] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:33.913 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:33.913 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [a36686c4e02dc8b3c9336eba496b9ef58f0260d6e0911a68a24e89541abdaf1a] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:33.913 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:33.914 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [ab9a6c870266ca697f15b3b3cc48628ad5d246203a5b02940619542db87ea53f] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:33.915 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor1
+Environment set for doctor1
+Environment set for doctor2
+[34m2025-04-09 12:32:36.137 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [aeaff7aec83f003bae321a7500728e408e2252df2d0875e201e2f8cecfb18853] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:36.138 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [aeaff7aec83f003bae321a7500728e408e2252df2d0875e201e2f8cecfb18853] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:36.138 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:36.138 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [16f8903271b52f00e25e139ac6ed5b05be9b2de86d1a737755345b747639581f] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:36.139 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [16f8903271b52f00e25e139ac6ed5b05be9b2de86d1a737755345b747639581f] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:36.139 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:36.139 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [48dbcb1be8fd509d7fc802e3f36422a440910bf863e1eb46af976d8980d7380f] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:36.139 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [48dbcb1be8fd509d7fc802e3f36422a440910bf863e1eb46af976d8980d7380f] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:36.139 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor1
+Environment set for doctor1
+Environment set for doctor1
+[34m2025-04-09 12:32:38.374 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [20b4ba295227c8eeba3976aeed299a0bc1c8686c2eeedea99592b0e0aa7f6330] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:38.374 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [03a622cab9671c00d2e062d9b606489e7d739c4d965e594a2242b65d0ac86a23] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:38.374 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [03a622cab9671c00d2e062d9b606489e7d739c4d965e594a2242b65d0ac86a23] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:38.374 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [6259b144f285fcec4f083087f63c58cdfe6ba86e1eecbef0fe0906c56586f69b] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:38.374 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [6259b144f285fcec4f083087f63c58cdfe6ba86e1eecbef0fe0906c56586f69b] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:38.374 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:38.375 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:38.376 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [20b4ba295227c8eeba3976aeed299a0bc1c8686c2eeedea99592b0e0aa7f6330] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:38.376 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor2
+Environment set for doctor1
+Waiting for all operations to complete...
+[34m2025-04-09 12:32:40.604 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [ecb8e514e139512996666aecbebc09b5ce0363052d2b54d3da6753f098c97352] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:40.605 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [ecb8e514e139512996666aecbebc09b5ce0363052d2b54d3da6753f098c97352] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:40.605 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:32:40.605 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [3b30976e9e20c3ad608edd04442f5a151df94060c60f0f351486f0de68e531e4] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:32:40.606 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [3b30976e9e20c3ad608edd04442f5a151df94060c60f0f351486f0de68e531e4] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:32:40.606 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[0;32m=== CreateRecord Results ===[0m
+Total operations: 20 (20 successful, 0 failed)
+Success rate: 100.00%
+Average operation time: 1.950000 seconds
+Total execution time: 15.0 seconds
+Throughput: 1.33 transactions per second
+1.33
+ReadRecord TPS: Running 50 ReadRecord operations with concurrency 3 for group size 6
+No records available for ReadRecord test
+ShareRecord TPS: Running 20 ShareRecord operations with concurrency 3 for group size 6
+No records available for ShareRecord test
+========================================
+----------------------------------------
+Timestamp: 2025-04-09 12:33:48
+Operation: CreateRecord
+Group size: 12
+Concurrency: 5
+Total operations: 20 (20 successful, 0 failed)
+Success rate: 100.00%
+Average operation time: 1.850000 seconds
+Total execution time: 9.0 seconds
+Throughput: 2.22 transactions per second
+========================================
+SUMMARY - Group Size: 12, Concurrency: 5
+Timestamp: 2025-04-09 12:33:58
+CreateRecord TPS: Running 20 CreateRecord operations with concurrency 5 for group size 12
+Environment set for doctor2
+Environment set for doctor1
+Environment set for doctor2
+Environment set for doctor1
+Environment set for doctor1
+[34m2025-04-09 12:33:41.918 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [2bae4b1374a0631be1ebb49fed8a0d62af0647d1c3ccf8b57301fd0dd7f4757e] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:41.918 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [b5b4ee40873bac46125101637f9721b95f7886d2adad19e9d285314271814bef] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:41.918 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [2bae4b1374a0631be1ebb49fed8a0d62af0647d1c3ccf8b57301fd0dd7f4757e] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:41.918 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [b5b4ee40873bac46125101637f9721b95f7886d2adad19e9d285314271814bef] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:41.919 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:41.919 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [fc29951ac4c800bfa76094372a68aa7fa83c3ec824fa96bac557ee5504700c80] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:41.919 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [fc29951ac4c800bfa76094372a68aa7fa83c3ec824fa96bac557ee5504700c80] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:41.919 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:41.921 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [39aa8e4270c3e00dfc784652367e4c01252bd2eab88e55f043253d01c113b971] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:41.921 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [39aa8e4270c3e00dfc784652367e4c01252bd2eab88e55f043253d01c113b971] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:41.921 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:41.922 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [86d44582a287318e959a343607f1aa4690afdbfbb1569273562f8e40dedac784] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:41.922 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [86d44582a287318e959a343607f1aa4690afdbfbb1569273562f8e40dedac784] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:41.922 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:41.923 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor3
+Environment set for doctor3
+Environment set for doctor2
+Environment set for doctor2
+Environment set for doctor1
+[34m2025-04-09 12:33:44.154 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [475b8f4b2268a27481b9a4f535ccaf3000240aebbec87dac45667bbbbd2c524e] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:44.154 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [7e1cb33ddf22c367f4ab7245d2aaf847256b59fb7bc875db944f101c7efc579b] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:44.155 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [c7d7df4cbd2820dc862cbaad973affa8c9f78d0728ee12aa9f21b379c2a6768d] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:44.155 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [53c3ab467f9af025ea244cb22ef9670c6417b62965eb31bebc8ad6535fda9ca3] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:44.155 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [23835f0e1397b6b85bde6d958c7c57102218e3b2bb64b70ad309134fca758267] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:44.155 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [23835f0e1397b6b85bde6d958c7c57102218e3b2bb64b70ad309134fca758267] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:44.156 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [475b8f4b2268a27481b9a4f535ccaf3000240aebbec87dac45667bbbbd2c524e] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:44.156 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:44.156 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:44.158 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [7e1cb33ddf22c367f4ab7245d2aaf847256b59fb7bc875db944f101c7efc579b] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:44.158 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [53c3ab467f9af025ea244cb22ef9670c6417b62965eb31bebc8ad6535fda9ca3] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:44.158 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:44.158 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:44.159 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [c7d7df4cbd2820dc862cbaad973affa8c9f78d0728ee12aa9f21b379c2a6768d] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:44.159 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor1
+Environment set for doctor3
+Environment set for doctor2
+Environment set for doctor1
+Environment set for doctor2
+[34m2025-04-09 12:33:46.366 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [77a898dedcbaa2673a9af033c43fea2e300bd1fb5571511b3cb81203a65afb2c] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:46.367 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [94ec989f1a5b0bc7775b815a17fb1e551b0a0ba4fce0460efb268426a599d01f] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:46.367 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [94ec989f1a5b0bc7775b815a17fb1e551b0a0ba4fce0460efb268426a599d01f] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:46.367 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:46.367 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [7f8f8d7080ca663e33e8f970b2473bda72192f69b5bbcec162bdea55e991d8d1] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:46.367 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [7f8f8d7080ca663e33e8f970b2473bda72192f69b5bbcec162bdea55e991d8d1] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:46.367 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:46.369 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [6c372146b07901b83742d564249b9a6b69e87fa62caf991cfec716710d927ba8] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:46.369 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [3428e05352843b94b2596ec8fcb85e0fc8e8b0609221cdbff3512c0a263fa066] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:46.370 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [3428e05352843b94b2596ec8fcb85e0fc8e8b0609221cdbff3512c0a263fa066] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:46.370 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [77a898dedcbaa2673a9af033c43fea2e300bd1fb5571511b3cb81203a65afb2c] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:46.370 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:46.370 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:46.370 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [6c372146b07901b83742d564249b9a6b69e87fa62caf991cfec716710d927ba8] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:46.371 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor4
+Environment set for doctor3
+Environment set for doctor4
+Environment set for doctor1
+Environment set for doctor2
+[34m2025-04-09 12:33:48.605 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [d350d8e1d56ffedf777b66f8e888947acb2ed631acac61c93343759a79903185] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:48.605 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [01ceb41d841adb5393a6bc60da4c89ea45323859dae0811b4076789638e7d583] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:48.605 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [d350d8e1d56ffedf777b66f8e888947acb2ed631acac61c93343759a79903185] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:48.606 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [01ceb41d841adb5393a6bc60da4c89ea45323859dae0811b4076789638e7d583] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:48.606 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:48.606 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:48.607 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [4d6cce6fad86bdb575c1da94608ff6cc50d4436b476f51e4d97b61a279375b43] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:48.608 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [4d6cce6fad86bdb575c1da94608ff6cc50d4436b476f51e4d97b61a279375b43] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:48.608 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [0f683519f1ea16b10c1c1dec9e339341a7dd19eda1e091175d131b9468be9b69] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:48.608 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:48.608 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [0f683519f1ea16b10c1c1dec9e339341a7dd19eda1e091175d131b9468be9b69] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:48.608 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:33:48.609 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [3bd9161f6fcb8c6c00ca3cecad35e51e5a8be8b4dc1c161c021ce6d9895528cc] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:33:48.609 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [3bd9161f6fcb8c6c00ca3cecad35e51e5a8be8b4dc1c161c021ce6d9895528cc] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:33:48.610 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Waiting for all operations to complete...
+[0;32m=== CreateRecord Results ===[0m
+Total operations: 20 (20 successful, 0 failed)
+Success rate: 100.00%
+Average operation time: 1.850000 seconds
+Total execution time: 9.0 seconds
+Throughput: 2.22 transactions per second
+2.22
+ReadRecord TPS: Running 50 ReadRecord operations with concurrency 5 for group size 12
+No records available for ReadRecord test
+ShareRecord TPS: Running 20 ShareRecord operations with concurrency 5 for group size 12
+No records available for ShareRecord test
+========================================
+----------------------------------------
+Timestamp: 2025-04-09 12:34:57
+Operation: CreateRecord
+Group size: 18
+Concurrency: 8
+Total operations: 20 (20 successful, 0 failed)
+Success rate: 100.00%
+Average operation time: 1.950000 seconds
+Total execution time: 6.0 seconds
+Throughput: 3.33 transactions per second
+========================================
+SUMMARY - Group Size: 18, Concurrency: 8
+Timestamp: 2025-04-09 12:35:07
+CreateRecord TPS: Running 20 CreateRecord operations with concurrency 8 for group size 18
+Environment set for doctor5
+Environment set for doctor5
+Environment set for doctor4
+Environment set for doctor3
+Environment set for doctor5
+Environment set for doctor2
+Environment set for doctor2
+Environment set for doctor2
+[34m2025-04-09 12:34:53.120 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [a8bd270213272184062a004c998e57be26198bd5e5da1e6891ec775ba390d57a] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:53.120 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [f618f2b1f777ebf9273d22b03dfd7eea448969e09f3dff6091d9a69ab7607fbd] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:53.120 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [a8bd270213272184062a004c998e57be26198bd5e5da1e6891ec775ba390d57a] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:53.120 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [f618f2b1f777ebf9273d22b03dfd7eea448969e09f3dff6091d9a69ab7607fbd] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:53.121 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:53.121 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [fefd2ee84be9214a52e31977c65157876b80b0b55fdc9504d7e2fafbaf83e8e0] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:53.121 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [fefd2ee84be9214a52e31977c65157876b80b0b55fdc9504d7e2fafbaf83e8e0] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:53.121 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:53.122 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [f400d98080cc1565264c72600334082f58e44b693a008d4e7c48c115d6099c35] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:53.122 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [f400d98080cc1565264c72600334082f58e44b693a008d4e7c48c115d6099c35] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:53.123 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:53.123 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [b79a6e9538df62893a5d54b82a12d373d90b25ec985adb1a14a951b1310fde16] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:53.124 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [b79a6e9538df62893a5d54b82a12d373d90b25ec985adb1a14a951b1310fde16] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:53.124 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:53.125 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [5e7d947c9168fb4df1a3475f7d5d0f6414a52015d03985a4cacf2129d2fc7cf2] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:53.125 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [5e7d947c9168fb4df1a3475f7d5d0f6414a52015d03985a4cacf2129d2fc7cf2] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:53.125 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:53.125 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [bb17bc4f1bf3efea5626a1acfb004aa859659741bffff554bcc916d47f62ca35] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:53.126 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [bb17bc4f1bf3efea5626a1acfb004aa859659741bffff554bcc916d47f62ca35] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:53.126 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:53.126 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [108ca357af67703d479e3d5ac3291784f206b32f9e0e9a57cdbbf5055c052e01] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:53.127 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [108ca357af67703d479e3d5ac3291784f206b32f9e0e9a57cdbbf5055c052e01] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:53.127 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:53.121 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor4
+Environment set for doctor6
+Environment set for doctor4
+Environment set for doctor3
+Environment set for doctor1
+Environment set for doctor2
+Environment set for doctor5
+Environment set for doctor2
+[34m2025-04-09 12:34:55.365 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [9e9d0eec648dc5435d08ab72578cbb3d84cab609372cdbbd2c7ed259d438a1e0] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:55.366 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [9e9d0eec648dc5435d08ab72578cbb3d84cab609372cdbbd2c7ed259d438a1e0] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:55.366 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:55.366 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [e06333e7c3165508ae5594ab57b92bd445785dc4d86d206bcb88b260cd6a269c] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:55.367 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [e06333e7c3165508ae5594ab57b92bd445785dc4d86d206bcb88b260cd6a269c] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:55.367 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:55.368 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [e986530950af17a805bfb277c327e6eeb04446ad1fa0188cb120753bc04db343] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:55.369 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [e986530950af17a805bfb277c327e6eeb04446ad1fa0188cb120753bc04db343] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:55.369 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:55.369 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [79de37feb59411e5015e445b8af10153124d20ae033f531538ec4e951a1bdb69] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:55.369 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [79de37feb59411e5015e445b8af10153124d20ae033f531538ec4e951a1bdb69] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:55.369 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:55.371 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [1a0ea2d3c3af525c43b2a4d28791971cc5abbf3bdbb0d0e55260cd7473cf8558] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:55.371 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [56191784f4bfc528981e298f5cdfb847ae00cd614dfb673086c0a0423ab1bdff] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:55.371 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [1a0ea2d3c3af525c43b2a4d28791971cc5abbf3bdbb0d0e55260cd7473cf8558] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:55.371 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [56191784f4bfc528981e298f5cdfb847ae00cd614dfb673086c0a0423ab1bdff] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:55.371 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:55.371 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:55.373 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [286c415d4e3077fcf8d0f931ed347da3bc87c4e3dd585d423d9e96abc3e3716a] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:55.373 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [4edbd6358fa562cffcfe50909f39aa9f64f47bab955597f9fc936d40fe074474] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:55.373 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [286c415d4e3077fcf8d0f931ed347da3bc87c4e3dd585d423d9e96abc3e3716a] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:55.373 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [4edbd6358fa562cffcfe50909f39aa9f64f47bab955597f9fc936d40fe074474] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:55.373 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:55.373 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor5
+Environment set for doctor4
+Environment set for doctor4
+Environment set for doctor4
+Waiting for all operations to complete...
+[34m2025-04-09 12:34:57.605 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [e01b86ead650020dfbef6b028d0036f3b116bdf407dbfb65358dee885e20c3c6] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:57.606 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [e01b86ead650020dfbef6b028d0036f3b116bdf407dbfb65358dee885e20c3c6] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:57.607 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:57.606 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [97ee6cfe0b6e01f4c64c5c3e4da05364d867379a901f1eb98ac3e0bc58cdb47d] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:57.607 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [97ee6cfe0b6e01f4c64c5c3e4da05364d867379a901f1eb98ac3e0bc58cdb47d] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:57.608 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:57.609 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [2f9e9ac5f36a1cccf536ba8920c3a9c4dc5c12646d85df3e715ea29ca84d1183] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:57.609 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [2f9e9ac5f36a1cccf536ba8920c3a9c4dc5c12646d85df3e715ea29ca84d1183] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:57.609 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:34:57.609 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [6f0fa821ca4273580230582786ca16a5cd15b2150665a82f7d657ab8e671c6b4] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:34:57.605 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [6f0fa821ca4273580230582786ca16a5cd15b2150665a82f7d657ab8e671c6b4] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:34:57.610 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[0;32m=== CreateRecord Results ===[0m
+Total operations: 20 (20 successful, 0 failed)
+Success rate: 100.00%
+Average operation time: 1.950000 seconds
+Total execution time: 6.0 seconds
+Throughput: 3.33 transactions per second
+3.33
+ReadRecord TPS: Running 50 ReadRecord operations with concurrency 8 for group size 18
+No records available for ReadRecord test
+ShareRecord TPS: Running 20 ShareRecord operations with concurrency 8 for group size 18
+No records available for ShareRecord test
+========================================
+----------------------------------------
+Timestamp: 2025-04-09 12:36:05
+Operation: CreateRecord
+Group size: 24
+Concurrency: 10
+Total operations: 20 (20 successful, 0 failed)
+Success rate: 100.00%
+Average operation time: .400000 seconds
+Total execution time: 2.0 seconds
+Throughput: 10.00 transactions per second
+========================================
+SUMMARY - Group Size: 24, Concurrency: 10
+Timestamp: 2025-04-09 12:36:15
+CreateRecord TPS: Running 20 CreateRecord operations with concurrency 10 for group size 24
+Environment set for doctor3
+Environment set for doctor3
+Environment set for doctor4
+Environment set for doctor2
+Environment set for doctor1
+Environment set for doctor7
+Environment set for doctor3
+Environment set for doctor6
+Environment set for doctor4
+Environment set for doctor8
+[34m2025-04-09 12:36:03.588 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [99682e33b8bfff488d2f023bb2b32deb0819a99b7dd6ba7f4bfc61acee048bab] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:03.588 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [71a055a0f4800c31652e8da0b45d7061892ddacb9dc4331e942dc22eefa3c185] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:03.588 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [5f7723383746597e014bb9d7d9bc4eddd268e7818053a5af56c18370ec81afac] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:03.588 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [a30f71f0f26f42910fd281b09db08ccddfe072ea93c4d3f78fa18ccc0ef81018] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:03.588 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [08802538598ff6ca8b8ad2e2569c0f30ae98ead6129af24be94c1adf63bab665] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:03.588 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [21e83c6ef7a0e41e3f7e75132a72e931e4453a118d6dd0b95791f7dedcdee92a] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:03.588 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [86d38fdf9160353233107ac2bda389b4672f145112de37bb0826053fc2be9e1c] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:03.588 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [545d0f57c2922d76bbb496d96d34f1d8402212519d25cccf59ddf313dbd46fee] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:03.588 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [2a73cf666b00235ede69ce014fd48cc063a364c9b1209dabd6f4e5904edb029a] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:03.588 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [ab1058805f9ac71c066b2b9978feadf813216ee1ee698245de5ced34843671fe] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:03.589 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [5f7723383746597e014bb9d7d9bc4eddd268e7818053a5af56c18370ec81afac] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:03.589 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [08802538598ff6ca8b8ad2e2569c0f30ae98ead6129af24be94c1adf63bab665] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:03.589 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:03.589 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [ab1058805f9ac71c066b2b9978feadf813216ee1ee698245de5ced34843671fe] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:03.589 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:03.589 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [21e83c6ef7a0e41e3f7e75132a72e931e4453a118d6dd0b95791f7dedcdee92a] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:03.589 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:03.589 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:03.589 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [71a055a0f4800c31652e8da0b45d7061892ddacb9dc4331e942dc22eefa3c185] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:03.589 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:03.589 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [99682e33b8bfff488d2f023bb2b32deb0819a99b7dd6ba7f4bfc61acee048bab] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:03.589 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [545d0f57c2922d76bbb496d96d34f1d8402212519d25cccf59ddf313dbd46fee] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:03.590 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [a30f71f0f26f42910fd281b09db08ccddfe072ea93c4d3f78fa18ccc0ef81018] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:03.590 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:03.590 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:03.590 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [86d38fdf9160353233107ac2bda389b4672f145112de37bb0826053fc2be9e1c] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:03.590 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:03.589 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [2a73cf666b00235ede69ce014fd48cc063a364c9b1209dabd6f4e5904edb029a] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:03.589 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:03.591 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Environment set for doctor5
+Environment set for doctor2
+Environment set for doctor8
+Environment set for doctor8
+Environment set for doctor6
+Environment set for doctor2
+Environment set for doctor8
+Environment set for doctor8
+Environment set for doctor3
+Environment set for doctor2
+[34m2025-04-09 12:36:04.777 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [13bc6a96af1172ef2779c1a1bc5f5caf9035424342808b5cd8b67bd74e7db427] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:04.777 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [a97f7ee602300ab600487519e607fb989f807259c382976540c6e182eb0d6bd9] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:04.777 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [8b6a154206dc790fb2ce45b3f3630dc12c1725105e240a95500b606621e24a8b] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:04.777 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [df8cdace3111a479036922b5cd823fd8f9d6533584b90367078bb8a4b0ec63b8] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:04.777 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [0ae1a3dedee06d4d181c5e380a4ae9cd41c18162e5f1c56ee85ba2f5e14122cc] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:04.777 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [df8cdace3111a479036922b5cd823fd8f9d6533584b90367078bb8a4b0ec63b8] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:04.777 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [0ae1a3dedee06d4d181c5e380a4ae9cd41c18162e5f1c56ee85ba2f5e14122cc] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:04.777 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:04.777 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:04.777 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [27b26d22483cdf83ad12e0c9b42ffb468fc5ddf22254e22ef50c9ec8d31d4c45] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:04.777 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [27b26d22483cdf83ad12e0c9b42ffb468fc5ddf22254e22ef50c9ec8d31d4c45] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:04.777 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [13bc6a96af1172ef2779c1a1bc5f5caf9035424342808b5cd8b67bd74e7db427] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:04.777 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [8b6a154206dc790fb2ce45b3f3630dc12c1725105e240a95500b606621e24a8b] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:04.778 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:04.778 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [a97f7ee602300ab600487519e607fb989f807259c382976540c6e182eb0d6bd9] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:04.778 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:04.778 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:04.778 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:04.776 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [6691b3756b640c123ba3ba13aecd0456000ed4cc7f9b4dbf1d62504b8965bced] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:04.778 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [6691b3756b640c123ba3ba13aecd0456000ed4cc7f9b4dbf1d62504b8965bced] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:04.777 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [b8fbaf74d2e29e0acc160afaa9009b4575f4536445dfe3ba180c6091a5f83984] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:04.778 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [b8fbaf74d2e29e0acc160afaa9009b4575f4536445dfe3ba180c6091a5f83984] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:04.778 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:04.779 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:04.777 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [0f2bcd72341523dc8c4a67e06e4125497c913a47dc9b58c3a06161d68c4fd5bf] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:04.777 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [0f2bcd72341523dc8c4a67e06e4125497c913a47dc9b58c3a06161d68c4fd5bf] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:04.779 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+[34m2025-04-09 12:36:04.779 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [d85436a77c6f808a0e050dd4f43354d14cfd6962f0bb812140150cde25be3a9a] committed with status (VALID) at localhost:7051
+[34m2025-04-09 12:36:04.779 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [d85436a77c6f808a0e050dd4f43354d14cfd6962f0bb812140150cde25be3a9a] committed with status (VALID) at localhost:9051
+[34m2025-04-09 12:36:04.779 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Waiting for all operations to complete...
+[0;32m=== CreateRecord Results ===[0m
+Total operations: 20 (20 successful, 0 failed)
+Success rate: 100.00%
+Average operation time: .400000 seconds
+Total execution time: 2.0 seconds
+Throughput: 10.00 transactions per second
+10.00
+ReadRecord TPS: Running 50 ReadRecord operations with concurrency 10 for group size 24
+No records available for ReadRecord test
+ShareRecord TPS: Running 20 ShareRecord operations with concurrency 10 for group size 24
+No records available for ShareRecord test
+========================================

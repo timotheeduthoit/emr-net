@@ -1,3 +1,43 @@
+# Throughput Testing Script for Hyperledger Fabric EMR Network
+
+## Overview
+The `th_test.sh` script tests the throughput performance of the Hyperledger Fabric EMR (Electronic Medical Records) network by executing operations in parallel and measuring transaction rates.
+
+## Features
+- Tests three types of operations: CreateRecord, ReadRecord, and ShareRecord
+- Supports varying group sizes (6, 12, 18, 24 users)
+- Automatically adjusts concurrency based on group size
+- Verifies and registers users as needed
+- Records comprehensive test results to `throughput_res.txt`
+
+## Prerequisites
+- A running Hyperledger Fabric network with the EMR chaincode deployed
+- Fabric binaries (peer, fabric-ca-client) in PATH
+- Basic calculator (bc) installed for computation
+
+## Usage
+```
+$ ./th_test.sh
+```
+
+The script will:
+1. Check for required tools
+2. Register/verify users if needed
+3. Run throughput tests for each group size
+4. Store results in throughput_res.txt
+
+## Test Operations
+- **CreateRecord**: Creates new medical records
+- **ReadRecord**: Retrieves existing records
+- **ShareRecord**: Shares records between users
+
+## Results Format
+Results include:
+- Transaction success rate
+- Average operation time
+- Throughput (transactions per second)
+- Group size and concurrency settings
+
 # Running the test network
 
 You can use the `./network.sh` script to stand up a simple Fabric test network. The test network has two peer organizations with one peer each and a single node raft ordering service. You can also use the `./network.sh` script to create channels and deploy chaincode. For more information, see [Using the Fabric test network](https://hyperledger-fabric.readthedocs.io/en/latest/test_network.html). The test network is being introduced in Fabric v2.0 as the long term replacement for the `first-network` sample.

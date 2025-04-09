@@ -300,14 +300,32 @@ measure_create_record() {
   local end_time=$(date +%s.%N)
   
   # Calculate latency
+  # Calculate latency
   # Calculate latency with error handling
   local latency
-  latency=$(echo "scale=2; $end_time - $start_time" | bc 2>/dev/null || echo "0")
-  # Ensure it's a valid number
-  if ! [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
-    latency="0"
+  # Increase scale for more precision and ensure consistent decimal places
+  latency=$(echo "scale=6; $end_time - $start_time" | bc 2>/dev/null || echo "0")
+  # Ensure it's a valid number and format consistently
+  if [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+    # Force consistent decimal places (6) using printf
+    latency=$(printf "%.6f" $latency)
+  else
+    latency="0.000000"
   fi
-  echo "$latency"
+istently
+  if [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+    # Force consistent decimal places (6) using printf
+    latency=$(printf "%.6f" $latency)
+  else
+    latency="0.000000"
+  fi
+istently
+  if [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+    # Force consistent decimal places (6) using printf
+    latency=$(printf "%.6f" $latency)
+  else
+    latency="0.000000"
+  fi
 }
 
 # Function to measure latency for ReadRecord operation
@@ -511,11 +529,12 @@ run_latency_test() {
     # Only calculate average if we have valid measurements
     if [ $valid_count -gt 0 ]; then
       create_avg=$(echo "scale=6; $sum / $valid_count" | bc 2>/dev/null || echo "0")
+      # Format with consistent decimal places
+      create_avg=$(printf "%.6f" $create_avg)
       # Final verification of the result
       if ! [[ "$create_avg" =~ ^[0-9]*\.?[0-9]+$ ]]; then
-        create_avg="0"
+        create_avg="0.000000"
       fi
-    else
       create_avg="0"
     fi
   fi
@@ -534,11 +553,12 @@ run_latency_test() {
     # Only calculate average if we have valid measurements
     if [ $valid_count -gt 0 ]; then
       read_avg=$(echo "scale=6; $sum / $valid_count" | bc 2>/dev/null || echo "0")
+      # Format with consistent decimal places
+      read_avg=$(printf "%.6f" $read_avg)
       # Final verification of the result
       if ! [[ "$read_avg" =~ ^[0-9]*\.?[0-9]+$ ]]; then
-        read_avg="0"
+        read_avg="0.000000"
       fi
-    else
       read_avg="0"
     fi
   fi
@@ -557,11 +577,12 @@ run_latency_test() {
     # Only calculate average if we have valid measurements
     if [ $valid_count -gt 0 ]; then
       share_avg=$(echo "scale=6; $sum / $valid_count" | bc 2>/dev/null || echo "0")
+      # Format with consistent decimal places
+      share_avg=$(printf "%.6f" $share_avg)
       # Final verification of the result
       if ! [[ "$share_avg" =~ ^[0-9]*\.?[0-9]+$ ]]; then
-        share_avg="0"
+        share_avg="0.000000"
       fi
-    else
       share_avg="0"
     fi
   fi
