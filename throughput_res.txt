@@ -429,3 +429,111 @@ No records available for ReadRecord test
 ShareRecord TPS: Running 20 ShareRecord operations with concurrency 10 for group size 24
 No records available for ShareRecord test
 ========================================
+========================================
+SUMMARY - Group Size: 6, Concurrency: 3
+Timestamp: 2025-04-09 13:06:19
+CreateRecord TPS: 
+ReadRecord TPS: 
+ShareRecord TPS: 
+========================================
+========================================
+SUMMARY - Group Size: 12, Concurrency: 5
+Timestamp: 2025-04-09 13:06:40
+CreateRecord TPS: 
+ReadRecord TPS: 
+ShareRecord TPS: 
+========================================
+========================================
+SUMMARY - Group Size: 18, Concurrency: 8
+Timestamp: 2025-04-09 13:07:01
+CreateRecord TPS: 
+ReadRecord TPS: 
+ShareRecord TPS: 
+========================================
+========================================
+SUMMARY - Group Size: 24, Concurrency: 10
+Timestamp: 2025-04-09 13:07:23
+CreateRecord TPS: 
+ReadRecord TPS: 
+ShareRecord TPS: 
+========================================
+========================================
+SUMMARY - Group Size: 6, Concurrency: 3
+Timestamp: 2025-04-09 13:08:50
+CreateRecord TPS: Running 20 CreateRecord operations with concurrency 3 for group size 6
+Running record creation synchronously: EMR_TH_1744218517_1
+Environment set for doctor1
+[34m2025-04-09 13:08:40.619 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [28146f257a1c68db6f9a35acc58d7fc01d7b909fda66a9a403eb433ce22693e8] committed with status (VALID) at localhost:7051
+[34m2025-04-09 13:08:40.619 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [28146f257a1c68db6f9a35acc58d7fc01d7b909fda66a9a403eb433ce22693e8] committed with status (VALID) at localhost:9051
+[34m2025-04-09 13:08:40.620 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Record EMR_TH_1744218517_1 added to tracking array, owned by doctor1 (total: 1)
+Created record EMR_TH_1744218517_1 owned by doctor1 (total records: 1)
+Synchronous record creation complete: EMR_TH_1744218517_1 (1 records now tracked)
+Running record creation synchronously: EMR_TH_1744218517_1
+Environment set for doctor2
+Error: endorsement failure during invoke. response: status:500 message:"EMR with ID EMR_TH_1744218517_1 already exists" 
+ReadRecord TPS: Running 50 ReadRecord operations with concurrency 3 for group size 6
+No records available for ReadRecord test (record_ids array is empty)
+ShareRecord TPS: Running 20 ShareRecord operations with concurrency 3 for group size 6
+No records available for ShareRecord test (record_ids array is empty)
+========================================
+========================================
+SUMMARY - Group Size: 12, Concurrency: 5
+Timestamp: 2025-04-09 13:09:14
+CreateRecord TPS: Running 20 CreateRecord operations with concurrency 5 for group size 12
+Running record creation synchronously: EMR_TH_1744218540_1
+Environment set for doctor4
+[34m2025-04-09 13:09:04.171 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [8f9dad142bab2284777a57f7d3b9d3708d4a2614f525395fa6a557b6b9763cd9] committed with status (VALID) at localhost:7051
+[34m2025-04-09 13:09:04.174 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [8f9dad142bab2284777a57f7d3b9d3708d4a2614f525395fa6a557b6b9763cd9] committed with status (VALID) at localhost:9051
+[34m2025-04-09 13:09:04.174 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Record EMR_TH_1744218540_1 added to tracking array, owned by doctor4 (total: 1)
+Created record EMR_TH_1744218540_1 owned by doctor4 (total records: 1)
+Synchronous record creation complete: EMR_TH_1744218540_1 (1 records now tracked)
+Running record creation synchronously: EMR_TH_1744218540_1
+Environment set for doctor4
+Error: endorsement failure during invoke. response: status:500 message:"EMR with ID EMR_TH_1744218540_1 already exists" 
+ReadRecord TPS: Running 50 ReadRecord operations with concurrency 5 for group size 12
+No records available for ReadRecord test (record_ids array is empty)
+ShareRecord TPS: Running 20 ShareRecord operations with concurrency 5 for group size 12
+No records available for ShareRecord test (record_ids array is empty)
+========================================
+========================================
+SUMMARY - Group Size: 18, Concurrency: 8
+Timestamp: 2025-04-09 13:09:38
+CreateRecord TPS: Running 20 CreateRecord operations with concurrency 8 for group size 18
+Running record creation synchronously: EMR_TH_1744218564_1
+Environment set for doctor3
+[34m2025-04-09 13:09:27.796 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [42cf3ac21c64dd0b0db4d8da48aebdd914a3343297d322d0426b650fa6a1e22a] committed with status (VALID) at localhost:9051
+[34m2025-04-09 13:09:27.796 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [42cf3ac21c64dd0b0db4d8da48aebdd914a3343297d322d0426b650fa6a1e22a] committed with status (VALID) at localhost:7051
+[34m2025-04-09 13:09:27.796 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Record EMR_TH_1744218564_1 added to tracking array, owned by doctor3 (total: 1)
+Created record EMR_TH_1744218564_1 owned by doctor3 (total records: 1)
+Synchronous record creation complete: EMR_TH_1744218564_1 (1 records now tracked)
+Running record creation synchronously: EMR_TH_1744218564_1
+Environment set for doctor2
+Error: endorsement failure during invoke. response: status:500 message:"EMR with ID EMR_TH_1744218564_1 already exists" 
+ReadRecord TPS: Running 50 ReadRecord operations with concurrency 8 for group size 18
+No records available for ReadRecord test (record_ids array is empty)
+ShareRecord TPS: Running 20 ShareRecord operations with concurrency 8 for group size 18
+No records available for ShareRecord test (record_ids array is empty)
+========================================
+========================================
+SUMMARY - Group Size: 24, Concurrency: 10
+Timestamp: 2025-04-09 13:10:01
+CreateRecord TPS: Running 20 CreateRecord operations with concurrency 10 for group size 24
+Running record creation synchronously: EMR_TH_1744218588_1
+Environment set for doctor5
+[34m2025-04-09 13:09:51.423 EDT 0001 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [07b61c95e1636d37de043577565242eeab8313a32c2b637eacb9767eb50ca085] committed with status (VALID) at localhost:7051
+[34m2025-04-09 13:09:51.425 EDT 0002 INFO[0m [chaincodeCmd] [34;1mClientWait[0m -> txid [07b61c95e1636d37de043577565242eeab8313a32c2b637eacb9767eb50ca085] committed with status (VALID) at localhost:9051
+[34m2025-04-09 13:09:51.425 EDT 0003 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+Record EMR_TH_1744218588_1 added to tracking array, owned by doctor5 (total: 1)
+Created record EMR_TH_1744218588_1 owned by doctor5 (total records: 1)
+Synchronous record creation complete: EMR_TH_1744218588_1 (1 records now tracked)
+Running record creation synchronously: EMR_TH_1744218588_1
+Environment set for doctor4
+Error: endorsement failure during invoke. response: status:500 message:"EMR with ID EMR_TH_1744218588_1 already exists" 
+ReadRecord TPS: Running 50 ReadRecord operations with concurrency 10 for group size 24
+No records available for ReadRecord test (record_ids array is empty)
+ShareRecord TPS: Running 20 ShareRecord operations with concurrency 10 for group size 24
+No records available for ShareRecord test (record_ids array is empty)
+========================================

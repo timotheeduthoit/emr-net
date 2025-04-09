@@ -312,20 +312,6 @@ measure_create_record() {
   else
     latency="0.000000"
   fi
-istently
-  if [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
-    # Force consistent decimal places (6) using printf
-    latency=$(printf "%.6f" $latency)
-  else
-    latency="0.000000"
-  fi
-istently
-  if [[ "$latency" =~ ^[0-9]*\.?[0-9]+$ ]]; then
-    # Force consistent decimal places (6) using printf
-    latency=$(printf "%.6f" $latency)
-  else
-    latency="0.000000"
-  fi
 }
 
 # Function to measure latency for ReadRecord operation

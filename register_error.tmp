@@ -1,11 +1,11 @@
-2025/04/09 12:35:54 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
-2025/04/09 12:35:54 [INFO] TLS Enabled
-2025/04/09 12:35:54 [INFO] TLS Enabled
-2025/04/09 12:35:54 [INFO] TLS Enabled
-2025/04/09 12:35:54 [INFO] generating key: &{A:ecdsa S:256}
-2025/04/09 12:35:54 [INFO] encoded CSR
-2025/04/09 12:35:55 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/patient8@org2.example.com/msp/signcerts/cert.pem
-2025/04/09 12:35:55 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/patient8@org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem
-2025/04/09 12:35:55 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/patient8@org2.example.com/msp/IssuerPublicKey
-2025/04/09 12:35:55 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/patient8@org2.example.com/msp/IssuerRevocationPublicKey
-[34m2025-04-09 12:35:55.122 EDT 0001 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
+2025/04/09 13:51:55 [INFO] Configuration file location: /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/fabric-ca-client-config.yaml
+2025/04/09 13:51:55 [INFO] TLS Enabled
+2025/04/09 13:51:55 [INFO] TLS Enabled
+2025/04/09 13:51:55 [INFO] TLS Enabled
+2025/04/09 13:51:55 [INFO] generating key: &{A:ecdsa S:256}
+2025/04/09 13:51:55 [INFO] encoded CSR
+2025/04/09 13:51:55 [INFO] Stored client certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/patient8@org2.example.com/msp/signcerts/cert.pem
+2025/04/09 13:51:55 [INFO] Stored root CA certificate at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/patient8@org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem
+2025/04/09 13:51:55 [INFO] Stored Issuer public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/patient8@org2.example.com/msp/IssuerPublicKey
+2025/04/09 13:51:55 [INFO] Stored Issuer revocation public key at /Users/timotheeduthoit/hyperledger/fabric-samples/emr-net/organizations/peerOrganizations/org2.example.com/users/patient8@org2.example.com/msp/IssuerRevocationPublicKey
+[34m2025-04-09 13:51:55.451 EDT 0001 INFO[0m [chaincodeCmd] [34;1mchaincodeInvokeOrQuery[0m -> Chaincode invoke successful. result: status:200 
