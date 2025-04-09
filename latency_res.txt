@@ -7,3 +7,33 @@ Users: 6 (2 hospitals, 2 doctors, 2 patients)
 CreateRecord average latency: 0 seconds (5 successful operations)
 ReadRecord average latency: 0 seconds (4 successful operations)
 ShareRecord average latency: 0 seconds (4 successful operations)
+----------------------------------------
+Timestamp: 2025-04-09 11:46:29
+Users: 6 (2 hospitals, 2 doctors, 2 patients)
+CreateRecord average latency: 0 seconds (5 successful operations)
+ReadRecord average latency: 0 seconds (2 successful operations)
+ShareRecord average latency: 0 seconds (2 successful operations)
+----------------------------------------
+Timestamp: 2025-04-09 12:07:18
+Users: 6 (2 hospitals, 2 doctors, 2 patients)
+CreateRecord: No successful operations
+ReadRecord average latency: 0 seconds (2 successful operations)
+ShareRecord average latency: 0 seconds (2 successful operations)
+----------------------------------------
+Timestamp: 2025-04-09 12:08:32
+Users: 12 (4 hospitals, 4 doctors, 4 patients)
+CreateRecord average latency: 0 seconds (5 successful operations)
+ReadRecord average latency: 0 seconds (2 successful operations)
+ShareRecord average latency: 0 seconds (2 successful operations)
+----------------------------------------
+Timestamp: 2025-04-09 12:10:00
+Users: 18 (6 hospitals, 6 doctors, 6 patients)
+CreateRecord average latency: 0 seconds (5 successful operations)
+ReadRecord: No successful operations
+ShareRecord: No successful operations
+----------------------------------------
+Timestamp: 2025-04-09 12:11:26
+Users: 24 (8 hospitals, 8 doctors, 8 patients)
+CreateRecord average latency: 0 seconds (5 successful operations)
+ReadRecord: No successful operations
+ShareRecord: No successful operations

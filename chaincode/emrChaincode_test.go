@@ -91,8 +91,13 @@ func TestCreateRecordDoctor(t *testing.T) {
 	mockStub := new(MockStub)
 	mockClientIdentity := new(MockClientIdentity)
 
+	// Mock user registration (not needed for doctor since it is the one creating the record)
+	mockStub.On("GetState", "patient1@orgName.example.com").Return([]byte(`{"userId":"patient1","role":"patient","commonName":"patient1@orgName.example.com"}`), nil)
+	mockStub.On("GetState", "hospital1@orgName.example.com").Return([]byte(`{"userId":"hospital1","role":"hospital","commonName":"hospital1@orgName.example.com"}`), nil)
+
 	mockClientIdentity.On("GetAttributeValue", "role").Return("doctor", true, nil)
 	mockClientIdentity.On("GetID").Return("doctor1", nil)
+
 	mockStub.On("GetState", "emr1").Return(nil, nil) // Mock no existing record
 	mockStub.On("PutState", "emr1", mock.Anything).Return(nil)
 
@@ -101,7 +106,7 @@ func TestCreateRecordDoctor(t *testing.T) {
 		clientIdentity: mockClientIdentity,
 	}
 
-	err := chaincode.CreateRecord(ctx, "emr1", "patient1", "doctor1", "hospital1", "diagnosis1")
+	err := chaincode.CreateRecord(ctx, "emr1", "patient1@orgName.example.com", "doctor1@orgName.example.com", "hospital1@orgName.example.com", "diagnosis1")
 	assert.NoError(t, err)
 
 	mockClientIdentity.AssertExpectations(t)
@@ -114,6 +119,10 @@ func TestCreateRecordHospital(t *testing.T) {
 	mockStub := new(MockStub)
 	mockClientIdentity := new(MockClientIdentity)
 
+	// Mock user registration (not needed for hospital since it is the one creating the record)
+	mockStub.On("GetState", "patient1@orgName.example.com").Return([]byte(`{"userId":"patient1","role":"patient","commonName":"patient1@orgName.example.com"}`), nil)
+	mockStub.On("GetState", "doctor1@orgName.example.com").Return([]byte(`{"userId":"doctor1","role":"doctor","commonName":"doctor1@orgName.example.com"}`), nil)
+
 	mockClientIdentity.On("GetAttributeValue", "role").Return("hospital", true, nil)
 	mockClientIdentity.On("GetID").Return("hospital1", nil)
 	mockStub.On("GetState", "emr1").Return(nil, nil) // Mock no existing record
@@ -124,7 +133,7 @@ func TestCreateRecordHospital(t *testing.T) {
 		clientIdentity: mockClientIdentity,
 	}
 
-	err := chaincode.CreateRecord(ctx, "emr1", "patient1", "doctor1", "hospital1", "diagnosis1")
+	err := chaincode.CreateRecord(ctx, "emr1", "patient1@orgName.example.com", "doctor1@orgName.example.com", "hospital1@orgName.example.com", "diagnosis1")
 	assert.NoError(t, err)
 
 	mockClientIdentity.AssertExpectations(t)
@@ -137,15 +146,16 @@ func TestCreateRecordPatient(t *testing.T) {
 	mockStub := new(MockStub)
 	mockClientIdentity := new(MockClientIdentity)
 
+	// No user registration needed for patient since they are not creating the record (denied)
+
 	mockClientIdentity.On("GetAttributeValue", "role").Return("patient", true, nil)
-	// Don't need mock for rest as it should not be called
 
 	ctx := &mockTransactionContext{
 		stub:           mockStub,
 		clientIdentity: mockClientIdentity,
 	}
 
-	err := chaincode.CreateRecord(ctx, "emr1", "patient1", "doctor1", "hospital1", "diagnosis1")
+	err := chaincode.CreateRecord(ctx, "emr1", "patient1@orgName.example.com", "doctor1@orgName.example.com", "hospital1@orgName.example.com", "diagnosis1")
 	assert.Error(t, err)
 
 	mockClientIdentity.AssertExpectations(t)
@@ -491,13 +501,22 @@ func TestShareRecordDoctorOwnerToDoctor(t *testing.T) {
 	mockStub.On("GetState", "emr1").Return(emrBaseJSON, nil)
 	mockStub.On("PutState", "emr1", emrExpectedJSON).Return(nil)
 
+	// Mock GetUser for doctor2
+	doctor2 := User{
+		UserID:     "doctor2",
+		Role:       "doctor",
+		CommonName: "doctor2@orgName.example.com",
+	}
+	doctor2JSON, _ := json.Marshal(doctor2)
+	mockStub.On("GetState", "doctor2@orgName.example.com").Return(doctor2JSON, nil)
+
 	ctx := &mockTransactionContext{
 		stub:           mockStub,
 		clientIdentity: mockClientIdentity,
 	}
 
 	// Share the record with another doctor
-	err := chaincode.ShareRecord(ctx, "emr1", "doctor2", "doctor")
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor2@orgName.example.com", "doctor")
 	assert.NoError(t, err)
 
 	// Verify doctor2 can access the record
@@ -546,12 +565,21 @@ func TestShareRecordDoctorShareListToDoctor(t *testing.T) {
 	mockStub.On("GetState", "emr1").Return(emrBaseJSON, nil)
 	mockStub.On("PutState", "emr1", emrExpectedJSON).Return(nil)
 
+	// Mock GetUser for doctor3
+	doctor3 := User{
+		UserID:     "doctor3",
+		Role:       "doctor",
+		CommonName: "doctor3@orgName.example.com",
+	}
+	doctor3JSON, _ := json.Marshal(doctor3)
+	mockStub.On("GetState", "doctor3@orgName.example.com").Return(doctor3JSON, nil)
+
 	ctx := &mockTransactionContext{
 		stub:           mockStub,
 		clientIdentity: mockClientIdentity,
 	}
 
-	err := chaincode.ShareRecord(ctx, "emr1", "doctor3", "doctor")
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor3@orgName.example.com", "doctor")
 	assert.NoError(t, err)
 
 	// Verify doctor3 can access the record
@@ -600,12 +628,21 @@ func TestShareRecordDoctorOwnerToHospital(t *testing.T) {
 	mockStub.On("GetState", "emr1").Return(emrBaseJSON, nil)
 	mockStub.On("PutState", "emr1", emrExpectedJSON).Return(nil)
 
+	// Mock GetUser for hospital2
+	hospital2 := User{
+		UserID:     "hospital2",
+		Role:       "hospital",
+		CommonName: "hospital2@orgName.example.com",
+	}
+	hospital2JSON, _ := json.Marshal(hospital2)
+	mockStub.On("GetState", "hospital2@orgName.example.com").Return(hospital2JSON, nil)
+
 	ctx := &mockTransactionContext{
 		stub:           mockStub,
 		clientIdentity: mockClientIdentity,
 	}
 
-	err := chaincode.ShareRecord(ctx, "emr1", "hospital2", "hospital")
+	err := chaincode.ShareRecord(ctx, "emr1", "hospital2@orgName.example.com", "hospital")
 	assert.NoError(t, err)
 
 	// Verify hospital2 can access the record
@@ -654,12 +691,21 @@ func TestShareRecordHospitalOwnerToDoctor(t *testing.T) {
 	mockStub.On("GetState", "emr1").Return(emrBaseJSON, nil)
 	mockStub.On("PutState", "emr1", emrExpectedJSON).Return(nil)
 
+	// Mock GetUser for doctor2
+	doctor2 := User{
+		UserID:     "doctor2",
+		Role:       "doctor",
+		CommonName: "doctor2@orgName.example.com",
+	}
+	doctor2JSON, _ := json.Marshal(doctor2)
+	mockStub.On("GetState", "doctor2@orgName.example.com").Return(doctor2JSON, nil)
+
 	ctx := &mockTransactionContext{
 		stub:           mockStub,
 		clientIdentity: mockClientIdentity,
 	}
 
-	err := chaincode.ShareRecord(ctx, "emr1", "doctor2", "doctor")
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor2@orgName.example.com", "doctor")
 	assert.NoError(t, err)
 
 	// Verify doctor2 can access the record
@@ -708,12 +754,21 @@ func TestShareRecordHospitalShareListToHospital(t *testing.T) {
 	mockStub.On("GetState", "emr1").Return(emrBaseJSON, nil)
 	mockStub.On("PutState", "emr1", emrExpectedJSON).Return(nil)
 
+	// Mock GetUser for hospital3
+	hospital3 := User{
+		UserID:     "hospital3",
+		Role:       "hospital",
+		CommonName: "hospital3@orgName.example.com",
+	}
+	hospital3JSON, _ := json.Marshal(hospital3)
+	mockStub.On("GetState", "hospital3@orgName.example.com").Return(hospital3JSON, nil)
+
 	ctx := &mockTransactionContext{
 		stub:           mockStub,
 		clientIdentity: mockClientIdentity,
 	}
 
-	err := chaincode.ShareRecord(ctx, "emr1", "hospital3", "hospital")
+	err := chaincode.ShareRecord(ctx, "emr1", "hospital3@orgName.example.com", "hospital")
 	assert.NoError(t, err)
 
 	// Verify hospital3 can access the record
@@ -762,12 +817,21 @@ func TestShareRecordPatientOwnerToDoctor(t *testing.T) {
 	mockStub.On("GetState", "emr1").Return(emrBaseJSON, nil)
 	mockStub.On("PutState", "emr1", emrExpectedJSON).Return(nil)
 
+	// Mock GetUser for doctor2
+	doctor2 := User{
+		UserID:     "doctor2",
+		Role:       "doctor",
+		CommonName: "doctor2@orgName.example.com",
+	}
+	doctor2JSON, _ := json.Marshal(doctor2)
+	mockStub.On("GetState", "doctor2@orgName.example.com").Return(doctor2JSON, nil)
+
 	ctx := &mockTransactionContext{
 		stub:           mockStub,
 		clientIdentity: mockClientIdentity,
 	}
 
-	err := chaincode.ShareRecord(ctx, "emr1", "doctor2", "doctor")
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor2@orgName.example.com", "doctor")
 	assert.NoError(t, err)
 
 	// Verify doctor2 can access the record
@@ -815,12 +879,21 @@ func TestShareRecordPatientOwnerToHospital(t *testing.T) {
 	mockStub.On("GetState", "emr1").Return(emrBaseJSON, nil)
 	mockStub.On("PutState", "emr1", emrExpectedJSON).Return(nil)
 
+	// Mock GetUser for hospital2
+	hospital2 := User{
+		UserID:     "hospital2",
+		Role:       "hospital",
+		CommonName: "hospital2@orgName.example.com",
+	}
+	hospital2JSON, _ := json.Marshal(hospital2)
+	mockStub.On("GetState", "hospital2@orgName.example.com").Return(hospital2JSON, nil)
+
 	ctx := &mockTransactionContext{
 		stub:           mockStub,
 		clientIdentity: mockClientIdentity,
 	}
 
-	err := chaincode.ShareRecord(ctx, "emr1", "hospital2", "hospital")
+	err := chaincode.ShareRecord(ctx, "emr1", "hospital2@orgName.example.com", "hospital")
 	assert.NoError(t, err)
 
 	// Verify hospital2 can access the record
@@ -1031,13 +1104,23 @@ func TestShareRecordRightIDWrongRole(t *testing.T) {
 	mockClientIdentity.On("GetID").Return("doctor1", nil)
 	mockStub.On("GetState", "emr1").Return(emrBaseJSON, nil).Once()
 	mockStub.On("PutState", "emr1", emrExpectedJSON).Return(nil).Once()
+
+	// Mock GetUser for doctor3
+	doctor3 := User{
+		UserID:     "doctor3",
+		Role:       "doctor",
+		CommonName: "doctor3@orgName.example.com",
+	}
+	doctor3JSON, _ := json.Marshal(doctor3)
+	mockStub.On("GetState", "doctor3@orgName.example.com").Return(doctor3JSON, nil).Once()
+
 	ctx := &mockTransactionContext{
 		stub:           mockStub,
 		clientIdentity: mockClientIdentity,
 	}
 
 	// Share with a doctor using right ID but wrong role
-	err := chaincode.ShareRecord(ctx, "emr1", "doctor3", "hospital")
+	err := chaincode.ShareRecord(ctx, "emr1", "doctor3@orgName.example.com", "hospital")
 	assert.NoError(t, err)
 
 	// Verify doctor3 cannot access the record as doctor
@@ -1080,6 +1163,15 @@ func TestGetAllRecordsForPatient(t *testing.T) {
 	mockStub := new(MockStub)
 	mockClientIdentity := new(MockClientIdentity)
 	mockResultsIterator := new(MockResultsIterator)
+
+	// Mock GetState for patient2
+	patient := User{
+		UserID:     "patient2",
+		Role:       "patient",
+		CommonName: "patient2@orgName.example.com",
+	}
+	patientJSON, _ := json.Marshal(patient)
+	mockStub.On("GetState", "patient2@orgName.example.com").Return(patientJSON, nil)
 
 	// Create total of 10 EMRs
 	var emrs []EMR
@@ -1130,7 +1222,7 @@ func TestGetAllRecordsForPatient(t *testing.T) {
 	}
 
 	// Call the function to retrieve all records for patient2
-	results, err := chaincode.GetAllRecordsForPatient(ctx, "patient2")
+	results, err := chaincode.GetAllRecordsForPatient(ctx, "patient2@orgName.example.com")
 	assert.NoError(t, err)
 	assert.Len(t, results, len(expectedEMRs))
 

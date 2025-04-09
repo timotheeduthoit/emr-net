@@ -51,51 +51,41 @@ check_user_registered() {
 register_user() {
   local user_type=$1
   local user_num=$2
-  local script_name
+  local add_script
   local org_num
+  local error_file="register_error.tmp"
+  
+  # Ensure cleanup happens even on unexpected exit
+  trap 'rm -f "$error_file" 2>/dev/null || true' EXIT
   
   if [ "$user_type" = "patient" ]; then
     org_num=2
-    script_name="p_reg.sh"
+    add_script="./p_add.sh"
   elif [ "$user_type" = "doctor" ]; then
     org_num=1
-    script_name="d_reg.sh"
+    add_script="./d_add.sh"
   elif [ "$user_type" = "hospital" ]; then
     org_num=1
-    script_name="h_reg.sh"
+    add_script="./h_add.sh"
   else
     echo "Invalid user type: $user_type"
     return 1
   fi
 
-  # Check if user MSP directory exists
-  if [ -d "${PWD}/organizations/peerOrganizations/org${org_num}.example.com/users/${user_type}${user_num}@org${org_num}.example.com" ]; then
-    echo "User credentials for ${user_type}${user_num} exist, attempting direct registration"
+  # Check if the add script exists and is executable
+  if [ -f "$add_script" ] && [ -x "$add_script" ]; then
+    echo "Running $add_script to register ${user_type}${user_num}"
     
-    # Set up environment for registration
-    export CORE_PEER_LOCALMSPID="Org${org_num}MSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org${org_num}.example.com/tlsca/tlsca.org${org_num}.example.com-cert.pem
-    export CORE_PEER_ADDRESS=localhost:$((7051 + (org_num-1)*2000))
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org${org_num}.example.com/users/${user_type}${user_num}@org${org_num}.example.com/msp
-    
-    # Register user directly with chaincode
-    peer chaincode invoke -o localhost:7050 \
-      --ordererTLSHostnameOverride orderer.example.com \
-      --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem \
-      -C emrchannel -n emr \
-      --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem \
-      --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem \
-      -c '{"Args":["RegisterUser"]}' --waitForEvent &>/dev/null || true
-  else
-    # Use registration script if available
-    if [ -f "$script_name" ] && [ -x "$script_name" ]; then
-      echo "Running $script_name to register ${user_type}${user_num}"
-      # Capture output but ignore errors about user already registered
-      ./$script_name &>/dev/null || true
-    else
-      echo "Registration script $script_name not found or not executable"
-      return 1
+    # Execute the add script with the user number, capturing stderr separately
+    if ! $add_script "$user_num" >/dev/null 2>"$error_file"; then
+      local error_msg
+      error_msg=$(cat "$error_file" 2>/dev/null)
+      echo "Failed to register ${user_type}${user_num}${error_msg:+: $error_msg}"
+      # Don't return yet, let the verification step determine if it succeeded
     fi
+  else
+    echo "Registration script $add_script not found or not executable"
+    return 1
   fi
 
   # Verify registration
@@ -149,6 +139,7 @@ verify_setup_users() {
       echo "Registering hospital$i..."
       if ! register_user "hospital" $i; then
         reg_success=false
+        sleep 2  # Add delay after failed registration
       fi
     fi
     
@@ -156,6 +147,7 @@ verify_setup_users() {
       echo "Registering doctor$i..."
       if ! register_user "doctor" $i; then
         reg_success=false
+        sleep 2  # Add delay after failed registration
       fi
     fi
     
@@ -163,8 +155,12 @@ verify_setup_users() {
       echo "Registering patient$i..."
       if ! register_user "patient" $i; then
         reg_success=false
+        sleep 2  # Add delay after failed registration
       fi
     fi
+    
+    # Add small delay between registration attempts
+    sleep 1
   done
   
   if [ "$reg_success" = false ]; then
