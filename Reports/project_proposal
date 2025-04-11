@@ -1,0 +1,101 @@
+% TEMPLATE for Usenix papers, specifically to meet requirements of
+%  USENIX '05
+% originally a template for producing IEEE-format articles using LaTeX.
+%   written by Matthew Ward, CS Department, Worcester Polytechnic Institute.
+% adapted by David Beazley for his excellent SWIG paper in Proceedings,
+%   Tcl 96
+% turned into a smartass generic template by De Clarke, with thanks to
+%   both the above pioneers
+% use at your own risk.  Complaints to /dev/null.
+% make it two column with no page numbering, default is 10 point
+
+% Munged by Fred Douglis <douglis@research.att.com> 10/97 to separate
+% the .sty file from the LaTeX source template, so that people can
+% more easily include the .sty file into an existing document.  Also
+% changed to more closely follow the style guidelines as represented
+% by the Word sample file.
+
+% Note that since 2010, USENIX does not require endnotes. If you want
+% foot of page notes, don't include the endnotes package in the
+% usepackage command, below.
+
+\documentclass[letterpaper,twocolumn,10pt]{article}
+\usepackage{usenix,epsfig,endnotes,graphicx}
+\begin{document}
+
+%don't want date printed
+\date{}
+
+%make title bold and 14 pt font (Latex default is non-bold, 16 pt)
+\title{\Large \bf Blockchain for Electronic Medical Records Using HyperLedger Fabric}
+
+\author{
+{\rm Timothee Duthoit}\\
+{[40120801]}\\
+Concordia University
+}
+
+\maketitle
+
+\section{Problem Statement}
+
+\qquad Current Electronic Medical Records (EMRs) face significant challenges in terms of data integrity, security, and access control. Traditional centralized EMR systems are vulnerable to unauthorized access, data breaches, and inefficient patient record management. Healthcare providers and patients need a secure, transparent and role-based access control mechanism, helping to avoid compliance issues and inefficiencies. A way to alleviate these inefficiencies is to provide patients with more control over their records. These challenges can be addressed by adopting a decentralized, immutable, and transparent system - such as one built on HyperLedger Fabric - to ensure secure access and tamper-proof data management.\\
+
+\section{Relevance}
+\qquad Ensuring secure and tamper-proof access to medical records is critical for patient privacy, regulatory compliance, and efficient healthcare delivery. A blockchain-based EMR system would provide an immutable audit trail, decentralized data management, along with fine-grained role-based access control. Ultimately, reducing fraud, data loss, and unauthorized access.
+
+\section{Interest}
+\qquad This problem is challenging due to the complexity of access control policies, the setup of smart contracts and certificate authorities for secure identity management, and the scalability requirements needed to handle high transaction loads efficiently. Implementing HyperLedger Fabric’s permissioned blockchain model requires careful design of smart contracts (chaincode), consensus mechanisms, and authentication processes to ensure efficient data sharing while preserving privacy.
+
+\section{Related Approaches}
+\qquad Previous solutions include MIT’s MedRec~\cite{medrec2016}, which uses Ethereum-based smart contracts but lacks fine-grained access control. Other blockchain-based EMR models store encrypted data in the cloud while using blockchain for access logs~\cite{yuan2023}, yet they rely on public blockchains, leading to scalability and privacy concerns. Recent research proposes HyperLedger Fabric for permissioned EMR sharing, optimizing latency, throughput, and role-based access management~\cite{tanwar2020}. The approach for this project will be most similar to \cite{tanwar2020} with a focus on fine-grained access control and role-based permissions with smart contracts.
+
+\section{Approach Overview and Methodology}
+\qquad The approach taken here leverages HyperLedger Fabric to design a secure and scalable EMR system. The implementation plan will be the following:
+\begin{enumerate}
+    \item Setup HyperLedger Fabric to deploy a permissioned blockchain network, configure peers, orderers and channels.
+    \item Develop chaincode with smart contracts to implement access control and define roles.
+    \item Implement an API layer to interface with a CLI-based EMR system.
+    \item Evaluate system performance in terms of security, scalability, and access control efficiency.
+\end{enumerate}
+
+\section{System Architecture}
+The diagrams on the following page show the system's overall architecture (Figure~\ref{fig:overall_arch}) and the structure of the HyperLedger Fabric Network (Figure~\ref{fig:HL_arch})
+
+
+\section{Anticipated Difficulties}
+The anticipated difficulties are the following:
+\begin{itemize}
+
+    \item Defining and Managing Access Control Policies — Ensuring doctors, patients, and admins have correct permissions without overcomplicating role management.
+    \item Scalability Challenges — Handling high transaction loads all while the blockchain remains efficient with an increasing number of EMRs
+    \item Ensuring Compliance with Regulations — Mainly when it comes to data deletion and the “Right to be forgotten” (GDPR).
+\end{itemize}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{overall_arch.png}
+    \caption{Architecture of the Blockchain based EMR solution.}
+    \label{fig:overall_arch}
+\end{figure}
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{HL_arch.png}
+    \caption{Architecture of the HyperLedger Fabric network.}
+    \label{fig:HL_arch}
+\end{figure}
+
+
+{\footnotesize \bibliographystyle{acm}
+\bibliography{sample}}
+
+\end{document}
+
+
+
+
+
+
+
